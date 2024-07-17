@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <FactionDef Name="SuperFactionBase" Abstract="True">
+        <defName>SHG_MinorSuperGroup</defName>
+        <label>minor super group</label>
+        <description>A small group of supers who are unaffiliated with The Hero Organization and The League of Villains. They are unlikely to ever become a major player on the world stage, and try to stay out of the eternal squabbles of Heroes and Villains.</description>
+        <settlementGenerationWeight>0.3</settlementGenerationWeight>
+        <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+        <pawnSingular>super</pawnSingular>
+        <pawnsPlural>supers</pawnsPlural>
+        <leaderTitle>chief</leaderTitle>
+        <configurationListOrderPriority>990</configurationListOrderPriority>
+        <maxConfigurableAtWorldCreation>99</maxConfigurableAtWorldCreation>
+        <requiredCountAtGameStart>0</requiredCountAtGameStart>
+        <maxCountAtGameStart>99</maxCountAtGameStart>
+        <fixedLeaderKinds>
+            <li></li>
+        </fixedLeaderKinds>
+        <backstoryFilters>
+            <li>
+                <categories>
+                    <li>Hero</li>
+                    <li>Villain</li>
+                </categories>
+            </li>
+        </backstoryFilters>
+    </FactionDef>
+</Defs>
+
+<!-- <autoFlee>false</autoFlee> -->
