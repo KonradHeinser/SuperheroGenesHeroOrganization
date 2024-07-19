@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <PawnKindDef Name="SHG_HeroBase" Abstract="True">
+        <race>Human</race>
+        <defaultFactionType>SHG_MinorSuperGroup</defaultFactionType>
+        <chemicalAddictionChance>0.1</chemicalAddictionChance>
+        <invNutrition>2.55</invNutrition>
+        <itemQuality>Normal</itemQuality>
+        <backstoryCryptosleepCommonality>0.08</backstoryCryptosleepCommonality>
+        <minGenerationAge>40</minGenerationAge>
+        <maxGenerationAge>120</maxGenerationAge>
+        <combatEnhancingDrugsChance>0.15</combatEnhancingDrugsChance>
+        <combatEnhancingDrugsCount>0~2</combatEnhancingDrugsCount>
+        <biocodeWeaponChance>0.1</biocodeWeaponChance>
+        <initialWillRange>3~5</initialWillRange>
+        <initialResistanceRange>15~23</initialResistanceRange>
+    </PawnKindDef>
+
+</Defs>

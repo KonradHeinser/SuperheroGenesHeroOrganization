@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-    <FactionDef Name="SuperFactionBase" Abstract="True">
+    <FactionDef ParentName="SuperFactionBase">
         <defName>SHG_MinorSuperGroup</defName>
         <label>minor super group</label>
         <description>A small group of supers who are unaffiliated with The Hero Organization and The League of Villains. They are unlikely to ever become a major player on the world stage, and try to stay out of the eternal squabbles of Heroes and Villains.</description>
@@ -24,7 +24,148 @@
                 </categories>
             </li>
         </backstoryFilters>
+        <pawnGroupMakers>
+            <li>
+                <kindDef>Combat</kindDef>
+                <options>
+                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
+                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
+                    <SHG_VillainSniper>10</SHG_VillainSniper>
+                    <SHG_VillainBoss>1</SHG_VillainBoss>
+                </options>
+            </li>
+            <li>
+                <kindDef>Trader</kindDef>
+                <traders>
+                    <SHG_VillainTrader>1</SHG_VillainTrader>
+                </traders>
+                <carriers>
+                    <Muffalo>6</Muffalo>
+                    <Dromedary>5</Dromedary>
+                    <Alpaca>2</Alpaca>
+                    <Elephant>1</Elephant>
+                </carriers>
+                <guards>
+                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
+                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
+                    <SHG_VillainSniper>10</SHG_VillainSniper>
+                </guards>
+            </li>
+            <li>
+                <kindDef>Settlement</kindDef>
+                <options>
+                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
+                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
+                    <SHG_VillainSniper>10</SHG_VillainSniper>
+                    <SHG_VillainBoss>1</SHG_VillainBoss>
+                </options>
+            </li>
+        </pawnGroupMakers>
     </FactionDef>
+
+    <FactionDef ParentName="SuperFactionBase">
+        <defName>SHG_SuperheroOrganization</defName>
+        <label>superhero organization</label>
+        <description>.</description>
+        <pawnSingular>hero</pawnSingular>
+        <pawnsPlural>heroes</pawnsPlural>
+        <leaderTitle>hero</leaderTitle>
+        <fixedLeaderKinds>
+            <li></li>
+        </fixedLeaderKinds>
+
+        <configurationListOrderPriority>998</configurationListOrderPriority>
+        <fixedName>The Superhero Organization</fixedName>
+        <settlementTexturePath>VillainFactionIcon</settlementTexturePath>
+        <royalFavorLabel>infamy</royalFavorLabel>
+
+        <fixedIdeo>true</fixedIdeo>
+        <ideoName>Heroism</ideoName>
+        <ideoDescription></ideoDescription>
+        <structureMemeWeights>
+            <Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
+        </structureMemeWeights>
+        <deityPresets>
+            <li>
+                <nameType>
+                    <name>Unknown</name>
+                    <type>The First Hero</type>
+                </nameType>
+                <gender>Male</gender>
+                <iconPath>UI/Deities/DeityGeneric</iconPath>
+            </li>
+        </deityPresets>
+        <requiredMemes>
+            <li MayRequire="Ludeon.RimWorld.Ideology">SHG_HolySupers</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Proselytizer</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Guilty</li>
+        </requiredMemes>
+        <disallowedPrecepts>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_Acceptable</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_Preferred</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_RequiredStrong</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_RequiredRavenous</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Abhorrent</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Horrible</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Disapproved</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">OrganUse_Abhorrent</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">OrganUse_HorribleNoSell</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Execution_Required</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Execution_RespectedIfGuilty</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Execution_DontCare</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Skullspike_Desired</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Honorable</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Acceptable</li>
+        </disallowedPrecepts>
+        
+        <backstoryFilters>
+            <li>
+                <categories>
+                    <li>Hero</li>
+                </categories>
+            </li>
+        </backstoryFilters>
+
+        <pawnGroupMakers>
+            <li>
+                <kindDef>Combat</kindDef>
+                <options>
+                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
+                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
+                    <SHG_VillainSniper>10</SHG_VillainSniper>
+                    <SHG_VillainBoss>1</SHG_VillainBoss>
+                </options>
+            </li>
+            <li>
+                <kindDef>Trader</kindDef>
+                <traders>
+                    <SHG_VillainTrader>1</SHG_VillainTrader>
+                </traders>
+                <carriers>
+                    <Muffalo>6</Muffalo>
+                    <Dromedary>5</Dromedary>
+                    <Alpaca>2</Alpaca>
+                    <Elephant>1</Elephant>
+                </carriers>
+                <guards>
+                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
+                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
+                    <SHG_VillainSniper>10</SHG_VillainSniper>
+                </guards>
+            </li>
+            <li>
+                <kindDef>Settlement</kindDef>
+                <options>
+                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
+                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
+                    <SHG_VillainSniper>10</SHG_VillainSniper>
+                    <SHG_VillainBoss>1</SHG_VillainBoss>
+                </options>
+            </li>
+        </pawnGroupMakers>
+    </FactionDef>
+
 </Defs>
 
 <!-- <autoFlee>false</autoFlee> -->
