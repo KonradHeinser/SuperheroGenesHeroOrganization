@@ -66,7 +66,7 @@
     <FactionDef ParentName="SuperFactionBase">
         <defName>SHG_SuperheroOrganization</defName>
         <label>superhero organization</label>
-        <description>.</description>
+        <description>Hundreds of years ago, super-powered beings were successfully created in a laboratory on a now desolated planet. Many of these supers turned to villainy, but a small number of supers found their destructive tendencies deplorable. This small group successfully stopped the villains' tyranical rule and formed The Superhero Organization, thus beginning hundreds of years of war with The League of Villains.</description>
         <pawnSingular>hero</pawnSingular>
         <pawnsPlural>heroes</pawnsPlural>
         <leaderTitle>hero</leaderTitle>
@@ -77,24 +77,14 @@
         <configurationListOrderPriority>998</configurationListOrderPriority>
         <fixedName>The Superhero Organization</fixedName>
         <settlementTexturePath>VillainFactionIcon</settlementTexturePath>
-        <royalFavorLabel>infamy</royalFavorLabel>
+        <royalFavorLabel>valor</royalFavorLabel>
 
         <fixedIdeo>true</fixedIdeo>
         <ideoName>Heroism</ideoName>
-        <ideoDescription></ideoDescription>
+        <ideoDescription>Many years after the first villain began his tyrannical rule, a new group of super powered beings arose, ones who pledged to do everything in their power to everything they can to destroy the evil around them, stop evils that seek to consume the innocent, and atone for the evils they could not stop in the past.</ideoDescription>
         <structureMemeWeights>
             <Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
         </structureMemeWeights>
-        <deityPresets>
-            <li>
-                <nameType>
-                    <name>Unknown</name>
-                    <type>The First Hero</type>
-                </nameType>
-                <gender>Male</gender>
-                <iconPath>UI/Deities/DeityGeneric</iconPath>
-            </li>
-        </deityPresets>
         <requiredMemes>
             <li MayRequire="Ludeon.RimWorld.Ideology">SHG_HolySupers</li>
             <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
