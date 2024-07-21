@@ -5,10 +5,11 @@
         <label>minor super group</label>
         <description>A small group of supers who are unaffiliated with The Hero Organization and The League of Villains. They are unlikely to ever become a major player on the world stage, and try to stay out of the eternal squabbles of Heroes and Villains.</description>
         <settlementGenerationWeight>0.3</settlementGenerationWeight>
-        <factionNameMaker>NamerFactionOutlander</factionNameMaker>
         <pawnSingular>super</pawnSingular>
         <pawnsPlural>supers</pawnsPlural>
         <leaderTitle>chief</leaderTitle>
+        <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
+        <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
         <configurationListOrderPriority>990</configurationListOrderPriority>
         <maxConfigurableAtWorldCreation>99</maxConfigurableAtWorldCreation>
         <requiredCountAtGameStart>0</requiredCountAtGameStart>
@@ -21,6 +22,8 @@
                 <categories>
                     <li>Hero</li>
                     <li>Villain</li>
+                    <li>FormerHero</li>
+                    <li>FormerVillain</li>
                 </categories>
             </li>
         </backstoryFilters>
@@ -73,10 +76,11 @@
         <fixedLeaderKinds>
             <li></li>
         </fixedLeaderKinds>
-
+        <autoFlee>false</autoFlee>
         <configurationListOrderPriority>998</configurationListOrderPriority>
+        <factionIconPath>Base/SuperheroGeneBase</factionIconPath>
+        <settlementTexturePath>Base/SuperheroGeneBase</settlementTexturePath>
         <fixedName>The Superhero Organization</fixedName>
-        <settlementTexturePath>VillainFactionIcon</settlementTexturePath>
         <royalFavorLabel>valor</royalFavorLabel>
 
         <fixedIdeo>true</fixedIdeo>
@@ -157,5 +161,3 @@
     </FactionDef>
 
 </Defs>
-
-<!-- <autoFlee>false</autoFlee> -->
