@@ -15,7 +15,7 @@
         <requiredCountAtGameStart>0</requiredCountAtGameStart>
         <maxCountAtGameStart>99</maxCountAtGameStart>
         <fixedLeaderKinds>
-            <li></li>
+            <li>SHG_SuperChief</li>
         </fixedLeaderKinds>
         <backstoryFilters>
             <li>
@@ -31,16 +31,16 @@
             <li>
                 <kindDef>Combat</kindDef>
                 <options>
-                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
-                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
-                    <SHG_VillainSniper>10</SHG_VillainSniper>
-                    <SHG_VillainBoss>1</SHG_VillainBoss>
+                    <SHG_SuperSoldier_Melee>7</SHG_SuperSoldier_Melee>
+                    <SHG_SuperSoldier>10</SHG_SuperSoldier>
+                    <SHG_SuperSoldier_Sniper>10</SHG_SuperSoldier_Sniper>
+                    <SHG_SuperChief>1</SHG_SuperChief>
                 </options>
             </li>
             <li>
                 <kindDef>Trader</kindDef>
                 <traders>
-                    <SHG_VillainTrader>1</SHG_VillainTrader>
+                    <SHG_MinorSuperTrader>1</SHG_MinorSuperTrader>
                 </traders>
                 <carriers>
                     <Muffalo>6</Muffalo>
@@ -49,21 +49,28 @@
                     <Elephant>1</Elephant>
                 </carriers>
                 <guards>
-                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
-                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
-                    <SHG_VillainSniper>10</SHG_VillainSniper>
+                    <SHG_SuperSoldier_Melee>7</SHG_SuperSoldier_Melee>
+                    <SHG_SuperSoldier>10</SHG_SuperSoldier>
+                    <SHG_SuperSoldier_Sniper>10</SHG_SuperSoldier_Sniper>
                 </guards>
             </li>
             <li>
                 <kindDef>Settlement</kindDef>
                 <options>
-                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
-                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
-                    <SHG_VillainSniper>10</SHG_VillainSniper>
-                    <SHG_VillainBoss>1</SHG_VillainBoss>
+                    <SHG_SuperSoldier_Melee>7</SHG_SuperSoldier_Melee>
+                    <SHG_SuperSoldier>10</SHG_SuperSoldier>
+                    <SHG_SuperSoldier_Sniper>10</SHG_SuperSoldier_Sniper>
+                    <SHG_SuperChief>1</SHG_SuperChief>
                 </options>
             </li>
         </pawnGroupMakers>
+
+        <baseTraderKinds>
+            <li>SHG_MinorSuperBase</li>
+        </baseTraderKinds>
+        <caravanTraderKinds>
+            <li>SHG_MinorSuperCaravan</li>
+        </caravanTraderKinds>
     </FactionDef>
 
     <FactionDef ParentName="SuperFactionBase">
@@ -74,7 +81,7 @@
         <pawnsPlural>heroes</pawnsPlural>
         <leaderTitle>hero</leaderTitle>
         <fixedLeaderKinds>
-            <li></li>
+            <li>SHG_HeroLeader</li>
         </fixedLeaderKinds>
         <autoFlee>false</autoFlee>
         <configurationListOrderPriority>998</configurationListOrderPriority>
@@ -82,6 +89,10 @@
         <settlementTexturePath>Base/SuperheroGeneBase</settlementTexturePath>
         <fixedName>The Superhero Organization</fixedName>
         <royalFavorLabel>valor</royalFavorLabel>
+        <royalFavorIconPath>Base/SuperheroGeneBase</royalFavorIconPath>
+        <royalTitleTags>
+            <li>SHG_HeroRank</li>
+        </royalTitleTags>
 
         <fixedIdeo>true</fixedIdeo>
         <ideoName>Heroism</ideoName>
@@ -111,8 +122,18 @@
             <li MayRequire="Ludeon.RimWorld.Ideology">Skullspike_Desired</li>
             <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Honorable</li>
             <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Acceptable</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Pain_Idealized</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">ChildLabor_Encouraged</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">GrowthVat_Essential</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">PreferredXenotype</li>
         </disallowedPrecepts>
         
+        <baseTraderKinds>
+            <li>SHG_HeroBase</li>
+        </baseTraderKinds>
+        <caravanTraderKinds>
+            <li>SHG_HeroCaravan</li>
+        </caravanTraderKinds>
         <backstoryFilters>
             <li>
                 <categories>
@@ -125,16 +146,16 @@
             <li>
                 <kindDef>Combat</kindDef>
                 <options>
-                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
-                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
-                    <SHG_VillainSniper>10</SHG_VillainSniper>
-                    <SHG_VillainBoss>1</SHG_VillainBoss>
+                    <SHG_HeroSoldier_Melee>7</SHG_HeroSoldier_Melee>
+                    <SHG_HeroSoldier>10</SHG_HeroSoldier>
+                    <SHG_HeroSoldier_Sniper>10</SHG_HeroSoldier_Sniper>
+                    <SHG_HeroLeader>1</SHG_HeroLeader>
                 </options>
             </li>
             <li>
                 <kindDef>Trader</kindDef>
                 <traders>
-                    <SHG_VillainTrader>1</SHG_VillainTrader>
+                    <SHG_MinorHeroTrader>1</SHG_MinorHeroTrader>
                 </traders>
                 <carriers>
                     <Muffalo>6</Muffalo>
@@ -143,21 +164,20 @@
                     <Elephant>1</Elephant>
                 </carriers>
                 <guards>
-                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
-                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
-                    <SHG_VillainSniper>10</SHG_VillainSniper>
+                    <SHG_HeroSoldier_Melee>7</SHG_HeroSoldier_Melee>
+                    <SHG_HeroSoldier>10</SHG_HeroSoldier>
+                    <SHG_HeroSoldier_Sniper>10</SHG_HeroSoldier_Sniper>
                 </guards>
             </li>
             <li>
                 <kindDef>Settlement</kindDef>
                 <options>
-                    <SHG_VillainSlasher>7</SHG_VillainSlasher>
-                    <SHG_VillainTrooper>10</SHG_VillainTrooper>
-                    <SHG_VillainSniper>10</SHG_VillainSniper>
-                    <SHG_VillainBoss>1</SHG_VillainBoss>
+                    <SHG_HeroSoldier_Melee>7</SHG_HeroSoldier_Melee>
+                    <SHG_HeroSoldier>10</SHG_HeroSoldier>
+                    <SHG_HeroSoldier_Sniper>10</SHG_HeroSoldier_Sniper>
+                    <SHG_HeroLeader>1</SHG_HeroLeader>
                 </options>
             </li>
         </pawnGroupMakers>
     </FactionDef>
-
 </Defs>

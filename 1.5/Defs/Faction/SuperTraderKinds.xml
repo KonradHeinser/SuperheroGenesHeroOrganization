@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <TraderKindDef ParentName="SuperTrader_SettlmentBase">
+        <defName>SHG_MinorSuperBase</defName>
+        <faction>SHG_MinorSuperGroup</faction>
+        <stockGenerators>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>SuperCreatingDrug</tradeTag>
+                <thingDefCountRange>3</thingDefCountRange>
+                <countRange>0~2</countRange>
+            </li>
+        </stockGenerators>
+    </TraderKindDef>
+
+    <TraderKindDef ParentName="SuperTrader_CaravanBase">
+        <defName>SHG_MinorSuperCaravan</defName>
+        <faction>SHG_MinorSuperGroup</faction>
+        <stockGenerators>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>SuperCreatingDrug</tradeTag>
+                <thingDefCountRange>2</thingDefCountRange>
+                <countRange>0~1</countRange>
+            </li>
+        </stockGenerators>
+    </TraderKindDef>    
+
+    <TraderKindDef ParentName="SuperTrader_SettlmentBase">
+        <defName>SHG_HeroBase</defName>
+        <faction>SHG_SuperheroOrganization</faction>
+        <stockGenerators>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>SuperCreatingDrug</tradeTag>
+                <thingDefCountRange>3</thingDefCountRange>
+                <countRange>3~5</countRange>
+            </li>
+        </stockGenerators>
+    </TraderKindDef>
+
+    <TraderKindDef ParentName="SuperTrader_CaravanBase">
+        <defName>SHG_HeroCaravan</defName>
+        <faction>SHG_SuperheroOrganization</faction>
+        <stockGenerators>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>SuperCreatingDrug</tradeTag>
+                <thingDefCountRange>3</thingDefCountRange>
+                <countRange>1~3</countRange>
+            </li>
+        </stockGenerators>
+    </TraderKindDef>
+</Defs>
