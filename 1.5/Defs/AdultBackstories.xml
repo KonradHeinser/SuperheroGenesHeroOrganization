@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-    
+    <BackstoryDef Abstract="True" Name="SHG_VillainAdultBackstoryBase">
+        <slot>Adulthood</slot>
+        <spawnCategories><li>Hero</li></spawnCategories>
+        <bodyTypeMale>Hulk</bodyTypeMale>
+        <bodyTypeFemale>Hulk</bodyTypeFemale>
+    </BackstoryDef>
+
 </Defs>
+
+<!-- Legend
+[PAWN_nameDef]
+[PAWN_possessive] His/Hers
+[PAWN_pronoun] He/She
+[PAWN_objective] Him/Her
+    -->
