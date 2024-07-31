@@ -1,4 +1,94 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+    <BackstoryDef Abstract="True" Name="SHG_HeroChildBackstoryBase">
+        <slot>Childhood</slot>
+        <spawnCategories><li>Hero</li></spawnCategories>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroChildBackstoryBase">
+        <defName>SHG_Hero_ChildGenius</defName>
+        <title>child genius</title>
+        <titleShort>genius</titleShort>
+        <baseDesc>From the moment they were born, [PAWN_nameDef]'s brain processed many things differently than normal. [PAWN_pronoun] was always seeking new bits of knowledge, and that insatiable appetite for knowledge made it hard for [PAWN_objective] to connect with their peers.</baseDesc>
+        <skillGains>
+            <Intellectual>10</Intellectual>
+            <Social>-4</Social>
+        </skillGains>
+        <forcedTraits>
+            <TooSmart>0</TooSmart>
+        </forcedTraits>
+        <spawnCategories><li>FormerHero</li></spawnCategories>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroChildBackstoryBase">
+        <defName>SHG_Hero_ScientistApprentice</defName>
+        <title>scientist's apprentice</title>
+        <titleShort>apprentice</titleShort>
+        <baseDesc>[PAWN_nameDef] spent large amounts of time in [PAWN_possessive] neighbor's lab as an assistant. While there, [PAWN_pronoun] assisted with many experiments to create miraculous medicine that showed promise. After a time, the scientist was killed by a small group of Villains, and [PAWN_nameDef] decided to leave the planet to put their knowledge to use elsewhere.</baseDesc>
+        <skillGains>
+            <Intellectual>5</Intellectual>
+            <Medicine>5</Medicine>
+            <Social>-4</Social>
+        </skillGains>
+        <spawnCategories><li>FormerHero</li></spawnCategories>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroChildBackstoryBase">
+        <defName>SHG_Hero_ChildSoldier</defName>
+        <title>child soldier</title>
+        <titleShort>soldier</titleShort>
+        <baseDesc>[PAWN_nameDef] was kidnapped at a young age and turned into a living weapon by a group of villains, but [PAWN_pronoun] was saved a few years later by a wandering hero who destroyed the villain gang and took [PAWN_nameDef] under their wing, with somewhat limited success.</baseDesc>
+        <skillGains>
+            <Social>-4</Social>
+            <Melee>8</Melee>
+            <Shooting>8</Shooting>
+            <Artistic>-6</Artistic>
+        </skillGains>
+        <spawnCategories><li>FormerHero</li></spawnCategories>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroChildBackstoryBase">
+        <defName>SHG_Hero_SuperFan</defName>
+        <title>super fan</title>
+        <titleShort>fan</titleShort>
+        <baseDesc>[PAWN_nameDef] had a hero [PAWN_pronoun] adored, and after becoming inspired by that hero's many good deeds, [PAWN_nameDef] spent many of [PAWN_possessive] formative years training to be a hero.</baseDesc>
+        <skillGains>
+            <Intellectual>2</Intellectual>
+            <Melee>2</Melee>
+            <Shooting>2</Shooting>
+            <Medicine>2</Medicine>
+            <Social>2</Social>
+            <Artistic>-4</Artistic>
+        </skillGains>
+        <forcedTraits>
+            <Kind>0</Kind>
+        </forcedTraits>
+    </BackstoryDef>
     
+    <BackstoryDef ParentName="SHG_HeroChildBackstoryBase">
+        <defName>SHG_Hero_LightBringer</defName>
+        <title>light-bringer</title>
+        <titleShort>light-bringer</titleShort>
+        <baseDesc>[PAWN_nameDef]'s parents were told by a diviner that [PAWN_pronoun] would end up saving the world one day, and as a result they showered [PAWN_objective] with gifts and taught [PAWN_objective] to do everything they could to save others. As a result, [PAWN_nameDef] spent a lot of [PAWN_possessive] childhood learning medicine and helping everyone they could.</baseDesc>
+        <workDisables>
+            <li>Cooking</li>
+            <li>Caring</li>
+        </workDisables>
+        <skillGains>
+            <Melee>-3</Melee>
+            <Construction>-3</Construction>
+            <Social>6</Social>
+            <Medicine>6</Medicine>
+        </skillGains>
+        <forcedTraits>
+            <Kind>0</Kind>
+        </forcedTraits>
+    </BackstoryDef>
 </Defs>
+
+<!-- Legend
+[PAWN_nameDef]
+[PAWN_possessive] His/Her
+[PAWN_pronoun] He/She
+[PAWN_objective] Him/Her
+    -->
