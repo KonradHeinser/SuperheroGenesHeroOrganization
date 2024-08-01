@@ -1,12 +1,130 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-    <BackstoryDef Abstract="True" Name="SHG_VillainAdultBackstoryBase">
+    <BackstoryDef Abstract="True" Name="SHG_HeroAdultBackstoryBase">
         <slot>Adulthood</slot>
         <spawnCategories><li>Hero</li></spawnCategories>
-        <bodyTypeMale>Hulk</bodyTypeMale>
-        <bodyTypeFemale>Hulk</bodyTypeFemale>
+        <bodyTypeMale>Male</bodyTypeMale>
+        <bodyTypeFemale>Female</bodyTypeFemale>
     </BackstoryDef>
 
+    <BackstoryDef ParentName="SHG_HeroAdultBackstoryBase">
+        <defName>SHG_Hero_OmniHero</defName>
+        <title>omni-hero</title>
+        <titleShort>hero</titleShort>
+        <baseDesc>[PAWN_nameDef] trained for many years to be proficient in many skills, and while [PAWN_pronoun] may not be as skilled in specific areas as most heroes are, the process helped them develop the skills needed to quickly assimilate new information quickly.</baseDesc>
+        <skillGains>
+            <Shooting>1</Shooting>
+            <Melee>1</Melee>
+            <Construction>1</Construction>
+            <Mining>1</Mining>
+            <Cooking>1</Cooking>
+            <Plants>1</Plants>
+            <Animals>1</Animals>
+            <Crafting>1</Crafting>
+            <Artistic>1</Artistic>
+            <Medicine>1</Medicine>
+            <Social>1</Social>
+            <Intellectual>1</Intellectual>
+        </skillGains>
+        <forcedTraits>
+            <FastLearner>0</FastLearner>
+        </forcedTraits>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroAdultBackstoryBase">
+        <defName>SHG_Hero_SuperGenius</defName>
+        <title>super genius</title>
+        <titleShort>genius</titleShort>
+        <baseDesc>[PAWN_nameDef] was exposed to some archotech machine that forcefully altered some of the parts of [PAWN_possessive] brain usually dedicated to emotions to instead assist the other parts of [PAWN_possessive] brain with processing and storing new information. As a result, [PAWN_nameDef] found themselves capable of leaning new things at a rate normally unsustainable by a normal humanoid brain.</baseDesc>
+        <spawnCategories><li>FormerHero</li></spawnCategories>
+        <bodyTypeMale>Thin</bodyTypeMale>
+        <bodyTypeFemale>Thin</bodyTypeFemale>
+        <skillGains>
+            <Intellectual>10</Intellectual>
+            <Social>-4</Social>
+        </skillGains>
+        <forcedTraits>
+            <FastLearner>0</FastLearner>
+            <TooSmart>0</TooSmart>
+        </forcedTraits>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroAdultBackstoryBase">
+        <defName>SHG_Hero_TrickedSurvivor</defName>
+        <title>tricked survivor</title>
+        <titleShort>survivor</titleShort>
+        <baseDesc>[PAWN_nameDef] was administered a drug that the mad doctor had claimed would enhance [PAWN_nameDef]'s innate survival instincts, making it easier for [PAWN_objective] to survive in harsh environments. This drug was actually a placebo, and the survival instincts [PAWN_nameDef] developed were due more to the hostile nature environment [PAWN_pronoun] suddenly found [PAWN_objective]self thrown into.</baseDesc>
+        <spawnCategories><li>FormerHero</li></spawnCategories>
+        <skillGains>
+            <Melee>6</Melee>
+            <Plants>4</Plants>
+            <Animals>2</Animals>
+        </skillGains>
+        <bodyTypeMale>Hulk</bodyTypeMale>
+        <bodyTypeFemale>Hulk</bodyTypeFemale>
+        <spawnCategories><li>FormerHero</li></spawnCategories>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroAdultBackstoryBase">
+        <defName>SHG_Hero_SuperWarrior</defName>
+        <title>super warrior</title>
+        <titleShort>warrior</titleShort>
+        <baseDesc>[PAWN_nameDef] fought more battles than [PAWN_pronoun] can count, and enjoyed the experience a lot. While others usually seek to live a comfortable life, [PAWN_nameDef] always avoided it so [PAWN_pronoun] could train themselves for another battle, another war, another victory.</baseDesc>
+        <spawnCategories><li>FormerHero</li></spawnCategories>
+        <skillGains>
+            <Shooting>6</Shooting>
+            <Melee>6</Melee>
+        </skillGains>
+        <forcedTraits>
+            <Ascetic>0</Ascetic>
+        </forcedTraits>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroAdultBackstoryBase">
+        <defName>SHG_Hero_BattleDoc</defName>
+        <title>battle-doc</title>
+        <titleShort>doctor</titleShort>
+        <baseDesc>[PAWN_nameDef] spent their life on battlefields patching people up. Their personality ensured nobody would want to rate them doctor of the year, but every battlefield they were on had substantially lower death tolls.</baseDesc>
+        <skillGains>
+            <Medicine>10</Medicine>
+            <Plants>5</Plants>
+            <Melee>2</Melee>
+            <Social>-5</Social>
+        </skillGains>
+        <forcedTraits>
+            <Abrasive>0</Abrasive>
+        </forcedTraits>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroAdultBackstoryBase">
+        <defName>SHG_Hero_Mechanist</defName>
+        <title>mechanist</title>
+        <titleShort>mechanist</titleShort>
+        <baseDesc>[PAWN_nameDef] had an obsession with the mechanical for a while that made them want a career in a workshop. Ultimately, [PAWN_pronoun] ended up leaving the workshop because [PAWN_pronoun] found that the work being done there was slow and boring, and [PAWN_nameDef] made their own little shop where [PAWN_pronoun] could work on mechanical this to [PAWN_possessive] heart's desire.</baseDesc>
+        <spawnCategories><li>FormerHero</li></spawnCategories>
+        <workDisables>
+            <li>Caring</li>
+        </workDisables>
+        <skillGains>
+            <Construction>7</Construction>
+            <Crafting>7</Crafting>
+            <Social>-2</Social>
+        </skillGains>
+        <forcedTraits>
+            <Neurotic>1</Neurotic>
+        </forcedTraits>
+    </BackstoryDef>
+
+    <BackstoryDef ParentName="SHG_HeroAdultBackstoryBase">
+        <defName>SHG_Hero_FolkHero</defName>
+        <title>folk hero</title>
+        <titleShort>hero</titleShort>
+        <baseDesc>[PAWN_nameDef] was able to save a city from a mechanoid threat by hijacking a nearby artillery and firing it just right to destroy an exceptionally large warqueen that had been harrassing the city for weeks with lancers and pikeman. [PAWN_nameDef] ended up leaving town due to law enforcement taking offense to the hijacking, but [PAWN_pronoun] knew [PAWN_pronoun] would do it again.</baseDesc>
+        <skillGains>
+            <Shooting>8</Shooting>
+            <Melee>4</Melee>
+        </skillGains>
+    </BackstoryDef>
 </Defs>
 
 <!-- Legend

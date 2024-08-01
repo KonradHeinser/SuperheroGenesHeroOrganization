@@ -22,8 +22,6 @@
                 <categories>
                     <li>Hero</li>
                     <li>Villain</li>
-                    <li>FormerHero</li>
-                    <li>FormerVillain</li>
                 </categories>
             </li>
         </backstoryFilters>
@@ -138,6 +136,7 @@
             <li>
                 <categories>
                     <li>Hero</li>
+                    <li>Offworld</li>
                     <li>FormerVillain</li>
                 </categories>
             </li>
