@@ -85,7 +85,7 @@
         <configurationListOrderPriority>998</configurationListOrderPriority>
         <factionIconPath>Base/SuperheroGeneBase</factionIconPath>
         <settlementTexturePath>Base/SuperheroGeneBase</settlementTexturePath>
-        <fixedName>The Superhero Organization</fixedName>
+        <fixedName>The Hero Organization</fixedName>
         <royalFavorLabel>valor</royalFavorLabel>
         <royalFavorIconPath>Base/SuperheroGeneBase</royalFavorIconPath>
         <royalTitleTags>
@@ -182,7 +182,7 @@
     </FactionDef>
 </Defs>
 
-<!-- Saving for misfits faction
+<!-- Saving for misfits faction mod
         <backstoryFilters>
             <li>
                 <categories>
@@ -191,5 +191,4 @@
                 </categories>
             </li>
         </backstoryFilters>
-
 -->

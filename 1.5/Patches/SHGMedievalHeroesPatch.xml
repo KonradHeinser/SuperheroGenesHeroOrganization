@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="SuperHeroGenesBase.PatchOperationSetting">
+        <setting>medievalVillains</setting>
+        <active Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/PawnKindDef[defName="SHG_SuperSoldier" or defName="SHG_HeroSoldier"]/weaponTags</xpath>
+                    <value>
+                        <weaponTags>
+                            <li>NeolithicRangedDecent</li>
+                            <li>MedievalRanged</li>
+                            <li>MedievalRangedHeavy</li>
+                        </weaponTags>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/PawnKindDef[defName="SHG_SuperSoldier_Sniper" or defName="SHG_HeroSoldier_Sniper"]/weaponTags</xpath>
+                    <value>
+                        <weaponTags Inherit="False">
+                            <li>NeolithicRangedChief</li>
+                            <li>MedievalRangedHeavy</li>
+                        </weaponTags>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/PawnKindDef[defName="SHG_SuperChief" or defName="SHG_HeroLeader"]/weaponTags</xpath>
+                    <value>
+                        <weaponTags>
+                            <li>NeolithicRangedChief</li>
+                            <li>MedievalRangedHeavy</li>
+                        </weaponTags>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/PawnKindDef[defName="SHG_SuperChief" or defName="SHG_HeroLeader"]/techHediffsChance</xpath>
+                    <value><techHediffsChance>0</techHediffsChance></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/PawnKindDef[defName="SHG_SuperSoldier" or defName="SHG_SuperSoldier_Melee" or defName="SHG_SuperChief"
+                        or defName="SHG_HeroSoldier" or defName="SHG_HeroSoldier_Melee" or defName="SHG_HeroLeader"]/apparelTags</xpath>
+                    <value>
+                        <apparelTags>
+                            <li>MedievalMilitary</li>
+                            <li>MedievalArmorDecent</li>
+                        </apparelTags>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/PawnKindDef[defName="SHG_SuperLaborer" or defName="SHG_HeroLaborer"]/apparelTags</xpath>
+                    <value>
+                        <apparelTags>
+                            <li>Neolithic</li>
+                            <li>Medieval</li>
+                        </apparelTags>
+                    </value>
+                </li>
+            </operations>
+        </active>
+    </Operation>
+</Patch>

@@ -186,7 +186,8 @@
         <factionLeader>true</factionLeader>
         <combatPower>160</combatPower>
         <apparelTags>
-            <li>PrestigeCombatGear</li>
+            <li>IndustrialMilitaryBasic</li>
+            <li>IndustrialMilitaryAdvanced</li>
         </apparelTags>
         <apparelMoney>10000~12000</apparelMoney>
         <apparelAllowHeadgearChance>1</apparelAllowHeadgearChance>
