@@ -62,7 +62,6 @@
         </skillGains>
         <bodyTypeMale>Hulk</bodyTypeMale>
         <bodyTypeFemale>Hulk</bodyTypeFemale>
-        <spawnCategories><li>FormerHero</li></spawnCategories>
     </BackstoryDef>
 
     <BackstoryDef ParentName="SHG_HeroAdultBackstoryBase">

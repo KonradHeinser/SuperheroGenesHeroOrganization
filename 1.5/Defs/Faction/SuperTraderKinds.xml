@@ -14,6 +14,7 @@
 
     <TraderKindDef ParentName="SuperTrader_CaravanBase">
         <defName>SHG_MinorSuperCaravan</defName>
+        <label>super trading caravan</label>
         <faction>SHG_MinorSuperGroup</faction>
         <stockGenerators>
             <li Class="StockGenerator_Tag">
@@ -38,6 +39,7 @@
 
     <TraderKindDef ParentName="SuperTrader_CaravanBase">
         <defName>SHG_HeroCaravan</defName>
+        <label>hero trading caravan</label>
         <faction>SHG_SuperheroOrganization</faction>
         <stockGenerators>
             <li Class="StockGenerator_Tag">

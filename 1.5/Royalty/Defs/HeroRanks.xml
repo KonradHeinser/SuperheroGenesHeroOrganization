@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <RoyalTitleDef Abstract="True" Name="SHG_HeroTitle">
+        <tags>
+            <li>SHG_HeroRank</li>
+        </tags>
+        <awardThought>GainedTitle</awardThought>
+        <lostThought>LostTitle</lostThought>
+        <permitPointsAwarded>1</permitPointsAwarded> <!--All ranks give points, with some of the higher ranks giving more. Players receive up to 7 points.-->
+        <commonality>1</commonality> <!--Very high ranks are rarer to find.-->
+        <awardWorkerClass>SuperHeroGenesBase.RoyalTitleAwardWorker_InstantHediffGiver</awardWorkerClass> <!--All titles are granted instantly. A hero's time is better spent fighting.-->
+        <changeHeirQuestPoints>1000</changeHeirQuestPoints>
+        <canBeInherited>False</canBeInherited>
+    </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="SHG_HeroTitle">
+        <defName>SHG_HeroRank_F</defName>
+        <label>F-rank hero</label>
+        <description>In an ideal world, an F-Rank hero wouldn't see any combat outside of hunting the occasional manhunting animal, but in a Rimworld some rules need to be bent.</description>
+        <seniority>0</seniority>
+        <favorCost>1</favorCost>
+        <recruitmentResistanceOffset>10</recruitmentResistanceOffset>
+    </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="SHG_HeroTitle">
+        <defName>SHG_HeroRank_E</defName>
+        <label>E-rank hero</label>
+        <description>E-rank heroes are those who have truly taken the first few steps on the path of heroism. They still need practice, but one day they may become a beacon of hope.</description>
+        <seniority>100</seniority>
+        <favorCost>7</favorCost>
+        <recruitmentResistanceOffset>25</recruitmentResistanceOffset>
+        <modExtensions>
+            <li Class="SuperHeroGenesBase.SHGExtension">
+                <hediffsToApply>
+                    <li>
+                        <hediff>SHG_HeroRank_E</hediff>
+                    </li>
+                </hediffsToApply>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="SHG_HeroTitle">
+        <defName>SHG_HeroRank_D</defName>
+        <label>D-rank hero</label>
+        <description>D-rank heroes often end up leading E-ranks and F-ranks on missions to deal with manhunter packs or to explore ancient ruins. Every now and then they may join higher ranks on Villain subjugation missions, but it is not uncommon for them to fall in combat in more dangerous missions.</description>
+        <seniority>200</seniority>
+        <favorCost>12</favorCost>
+        <recruitmentResistanceOffset>60</recruitmentResistanceOffset>
+        <modExtensions>
+            <li Class="SuperHeroGenesBase.SHGExtension">
+                <hediffsToApply>
+                    <li>
+                        <hediff>SHG_HeroRank_D</hediff>
+                    </li>
+                </hediffsToApply>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="SHG_HeroTitle">
+        <defName>SHG_HeroRank_C</defName>
+        <label>C-rank hero</label>
+        <description>C-rank heroes are considered decent heroes, and can frequently be found following B-ranks and A-ranks on villain subjugation missions.</description>
+        <seniority>300</seniority>
+        <favorCost>25</favorCost>
+        <recruitmentResistanceOffset>75</recruitmentResistanceOffset>
+        <modExtensions>
+            <li Class="SuperHeroGenesBase.SHGExtension">
+                <hediffsToApply>
+                    <li>
+                        <hediff>SHG_HeroRank_C</hediff>
+                    </li>
+                </hediffsToApply>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="SHG_HeroTitle">
+        <defName>SHG_HeroRank_B</defName>
+        <label>B-rank hero</label>
+        <description>B-rank heroes are considered full-fledged heroes. Their minds are resilient enough to work through pain and difficult situations better than most.</description>
+        <seniority>400</seniority>
+        <favorCost>40</favorCost>
+        <recruitmentResistanceOffset>125</recruitmentResistanceOffset>
+        <modExtensions>
+            <li Class="SuperHeroGenesBase.SHGExtension">
+                <hediffsToApply>
+                    <li>
+                        <hediff>SHG_HeroRank_B</hediff>
+                    </li>
+                </hediffsToApply>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="SHG_HeroTitle">
+        <defName>SHG_HeroRank_A</defName>
+        <label>A-rank hero</label>
+        <description>A-rank heroes are stalwart defenders of the innocent, and are some of the first people called to fight The League of Villains.</description>
+        <seniority>500</seniority>
+        <favorCost>55</favorCost>
+        <recruitmentResistanceOffset>150</recruitmentResistanceOffset>
+        <modExtensions>
+            <li Class="SuperHeroGenesBase.SHGExtension">
+                <hediffsToApply>
+                    <li>
+                        <hediff>SHG_HeroRank_A</hediff>
+                    </li>
+                </hediffsToApply>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
+
+    <RoyalTitleDef ParentName="SHG_HeroTitle">
+        <defName>SHG_HeroRank_S</defName>
+        <label>S-rank hero</label>
+        <description>S-rank heroes are The Hero Organization's final line of defense against the encroaching evils of Villains and other monsters. They aren't always the strongest ones on the battlefield, but even death has difficulties pulling them out of a fight.</description>
+        <seniority>600</seniority>
+        <favorCost>80</favorCost>
+        <recruitmentResistanceOffset>200</recruitmentResistanceOffset>
+        <modExtensions>
+            <li Class="SuperHeroGenesBase.SHGExtension">
+                <hediffsToApply>
+                    <li>
+                        <hediff>SHG_HeroRank_S</hediff>
+                    </li>
+                </hediffsToApply>
+            </li>
+        </modExtensions>
+    </RoyalTitleDef>
+
+    <!--The bonuses for the ranks-->
+
+    <HediffDef>
+        <defName>SHG_HeroRank_E</defName>
+        <label>E-rank hero</label>
+        <description>The current rank this pawn has in The Hero Organization, and the benefits it provides.</description>
+        <stages>
+            <li>
+                <statOffsets>
+                    <PainShockThreshold>0.01</PainShockThreshold>
+                    <MentalBreakThreshold>-0.01</MentalBreakThreshold>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <HediffDef>
+        <defName>SHG_HeroRank_D</defName>
+        <label>D-rank hero</label>
+        <description>The current rank this pawn has in The Hero Organization, and the benefits it provides.</description>
+        <stages>
+            <li>
+                <statOffsets>
+                    <PainShockThreshold>0.05</PainShockThreshold>
+                    <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <HediffDef>
+        <defName>SHG_HeroRank_C</defName>
+        <label>C-rank hero</label>
+        <description>The current rank this pawn has in The Hero Organization, and the benefits it provides.</description>
+        <stages>
+            <li>
+                <statOffsets>
+                    <PainShockThreshold>0.10</PainShockThreshold>
+                    <MentalBreakThreshold>-0.10</MentalBreakThreshold>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <HediffDef>
+        <defName>SHG_HeroRank_B</defName>
+        <label>B-rank hero</label>
+        <description>The current rank this pawn has in The Hero Organization, and the benefits it provides.</description>
+        <stages>
+            <li>
+                <statOffsets>
+                    <PainShockThreshold>0.15</PainShockThreshold>
+                    <MentalBreakThreshold>-0.15</MentalBreakThreshold>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <HediffDef>
+        <defName>SHG_HeroRank_A</defName>
+        <label>A-rank hero</label>
+        <description>The current rank this pawn has in The Hero Organization, and the benefits it provides.</description>
+        <stages>
+            <li>
+                <statOffsets>
+                    <PainShockThreshold>0.20</PainShockThreshold>
+                    <MentalBreakThreshold>-0.20</MentalBreakThreshold>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+
+    <HediffDef>
+        <defName>SHG_HeroRank_S</defName>
+        <label>S-rank hero</label>
+        <description>The current rank this pawn has in The Hero Organization, and the benefits it provides.</description>
+        <stages>
+            <li>
+                <statOffsets>
+                    <PainShockThreshold>0.30</PainShockThreshold>
+                    <MentalBreakThreshold>-0.30</MentalBreakThreshold>
+                </statOffsets>
+            </li>
+        </stages>
+    </HediffDef>
+</Defs>

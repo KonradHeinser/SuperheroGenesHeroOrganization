@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef/heldByFactionCategoryTags/li[text()="Empire"]</xpath>
+        <value>
+            <li>Empire</li>
+            <li>SHG_SuperheroOrganization</li>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="MedicineIndustrial"]/statBases/RoyalFavorValue</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="MedicineIndustrial"]/statBases</xpath>
+            <value>
+                <RoyalFavorValue>0.027</RoyalFavorValue>
+            </value>
+        </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="MedicineUltratech"]/statBases/RoyalFavorValue</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="MedicineUltratech"]/statBases</xpath>
+            <value>
+                <RoyalFavorValue>0.075</RoyalFavorValue>
+            </value>
+        </nomatch>
+    </Operation>
+
+    <Operation Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="MealSurvivalPack"]/statBases/RoyalFavorValue</xpath>
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="MealSurvivalPack"]/statBases</xpath>
+            <value>
+                <RoyalFavorValue>0.036</RoyalFavorValue>
+            </value>
+        </nomatch>
+    </Operation>
+</Patch>

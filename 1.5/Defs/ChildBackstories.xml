@@ -70,10 +70,6 @@
         <title>light-bringer</title>
         <titleShort>light-bringer</titleShort>
         <baseDesc>[PAWN_nameDef]'s parents were told by a diviner that [PAWN_pronoun] would end up saving the world one day, and as a result they showered [PAWN_objective] with gifts and taught [PAWN_objective] to do everything they could to save others. As a result, [PAWN_nameDef] spent a lot of [PAWN_possessive] childhood learning medicine and helping everyone they could.</baseDesc>
-        <workDisables>
-            <li>Cooking</li>
-            <li>Caring</li>
-        </workDisables>
         <skillGains>
             <Melee>-3</Melee>
             <Construction>-3</Construction>

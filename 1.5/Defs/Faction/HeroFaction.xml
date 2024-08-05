@@ -74,7 +74,7 @@
     <FactionDef ParentName="SuperFactionBase">
         <defName>SHG_SuperheroOrganization</defName>
         <label>superhero organization</label>
-        <description>Hundreds of years ago, super-powered beings were successfully created in a laboratory on a now desolated planet. Many of these supers turned to villainy, but a small number of supers found their destructive tendencies deplorable. This small group successfully stopped the villains' tyranical rule and formed The Superhero Organization, thus beginning hundreds of years of war with The League of Villains.</description>
+        <description>Hundreds of years ago, super-powered beings were successfully created in a laboratory on a now desolated planet. Many of these supers turned to villainy, but a small number of supers found their destructive tendencies deplorable. This small group successfully stopped the villains' tyranical rule and formed The Superhero Organization, thus beginning hundreds of years of war with The League of Villains.\n\nThis faction offers a type of royal favor in some of their quests, but unlike most "royal" titles, heroes never demand better food, bedrooms, thronerooms, or any sort of special apparel. The titles also do not get inherited when the pawn dies.</description>
         <pawnSingular>hero</pawnSingular>
         <pawnsPlural>heroes</pawnsPlural>
         <leaderTitle>hero</leaderTitle>
@@ -146,9 +146,9 @@
             <li>
                 <kindDef>Combat</kindDef>
                 <options>
-                    <SHG_HeroSoldier_Melee>7</SHG_HeroSoldier_Melee>
-                    <SHG_HeroSoldier>10</SHG_HeroSoldier>
-                    <SHG_HeroSoldier_Sniper>10</SHG_HeroSoldier_Sniper>
+                    <SHG_HeroSoldier_Melee>3</SHG_HeroSoldier_Melee>
+                    <SHG_HeroSoldier>5</SHG_HeroSoldier>
+                    <SHG_HeroSoldier_Sniper>5</SHG_HeroSoldier_Sniper>
                     <SHG_HeroLeader>1</SHG_HeroLeader>
                 </options>
             </li>
@@ -179,6 +179,21 @@
                 </options>
             </li>
         </pawnGroupMakers>
+
+        <!--Only here because errors are thrown without an heir-->
+        <royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
+        <royalTitleInheritanceRelations>
+            <li>Child</li>
+            <li>Grandchild</li>
+            <li>GreatGrandchild</li>
+            <li>NephewOrNiece</li>
+            <li>Spouse</li>
+            <li>Sibling</li>
+            <li>HalfSibling</li>
+            <li>Cousin</li>
+            <li>Parent</li>
+            <li>UncleOrAunt</li>
+        </royalTitleInheritanceRelations>
     </FactionDef>
 </Defs>
 

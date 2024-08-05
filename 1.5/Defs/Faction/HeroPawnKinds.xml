@@ -28,6 +28,7 @@
                 <weightFactor>1</weightFactor>
             </li>
         </styleItemTags>
+        <titleRequired MayRequire="Ludeon.Rimworld.Royalty">SHG_HeroRank_E</titleRequired>
         <forceNormalGearQuality>true</forceNormalGearQuality>
         <isFighter>false</isFighter>
         <requiredWorkTags> <!-- Must be capable of labor, as this pawn kind is used in laborer quests. -->
@@ -52,6 +53,13 @@
                 <SHG_RandomSupportSuper>.15</SHG_RandomSupportSuper>
             </xenotypeChances>
         </xenotypeSet>
+        <startingHediffs Inherit="False">
+            <li>
+                <def>SHG_HeroRank_E</def>
+                <chance>1</chance>
+                <severity>1</severity>
+            </li>
+        </startingHediffs>
     </PawnKindDef>
 
     <PawnKindDef ParentName="SHG_MinorHeroBase" Name="SHG_MinorHeroSoldierBase">
@@ -67,12 +75,14 @@
             <li>IndustrialMilitaryAdvanced</li>
             <li>BeltDefensePop</li>
         </apparelTags>
+        <titleRequired MayRequire="Ludeon.Rimworld.Royalty">SHG_HeroRank_B</titleRequired>
         <apparelMoney>1000~1500</apparelMoney>
         <apparelAllowHeadgearChance>0.5</apparelAllowHeadgearChance>
         <weaponMoney>330~650</weaponMoney>
         <weaponTags>
             <li>Gun</li>
             <li>SpacerGun</li>
+            <li>MedievalMeleeAdvanced</li>
         </weaponTags>
         <disallowedTraits>
             <li>Brawler</li>
@@ -90,8 +100,12 @@
         </inventoryOptions>
         <skills>
             <li>
+                <skill>Melee</skill>
+                <range>5~10</range>
+            </li>
+            <li>
                 <skill>Shooting</skill>
-                <range>4~14</range>
+                <range>5~10</range>
             </li>
         </skills>
         <xenotypeSet Inherit="False">
@@ -100,6 +114,13 @@
                 <SHG_RandomMundaneMancer>.20</SHG_RandomMundaneMancer>
             </xenotypeChances>
         </xenotypeSet>
+        <startingHediffs Inherit="False">
+            <li>
+                <def>SHG_HeroRank_B</def>
+                <chance>1</chance>
+                <severity>1</severity>
+            </li>
+        </startingHediffs>
         <modExtensions>
             <li Class="CombatExtended.LoadoutPropertiesExtension" MayRequire="ceteam.combatextended">
 			    <primaryMagazineCount>
@@ -127,15 +148,17 @@
         <label>hero</label>
         <combatPower>100</combatPower>
         <weaponMoney>1000~1250</weaponMoney>
+        <titleRequired MayRequire="Ludeon.Rimworld.Royalty">SHG_HeroRank_C</titleRequired>
+        <startingHediffs Inherit="False">
+            <li>
+                <def>SHG_HeroRank_C</def>
+                <chance>1</chance>
+                <severity>1</severity>
+            </li>
+        </startingHediffs>
         <weaponTags Inherit="False">
             <li>SniperRifle</li>
         </weaponTags>
-        <skills>
-            <li>
-                <skill>Shooting</skill>
-                <range>8~16</range>
-            </li>
-        </skills>
     </PawnKindDef>
 
     <PawnKindDef ParentName="SHG_MinorHeroBase" Name="SHG_MinorHero_MeleeBase">
@@ -144,6 +167,7 @@
         <combatPower>85</combatPower>
         <canBeSapper>true</canBeSapper>
         <gearHealthRange>0.7~3.2</gearHealthRange>
+        <titleRequired MayRequire="Ludeon.Rimworld.Royalty">SHG_HeroRank_A</titleRequired>
         <apparelTags>
             <li>SpacerMilitary</li>
             <li>IndustrialBasic</li>
@@ -151,10 +175,21 @@
             <li>IndustrialMilitaryBasic</li>
             <li>IndustrialMilitaryAdvanced</li>
         </apparelTags>
+        <startingHediffs Inherit="False">
+            <li>
+                <def>SHG_HeroRank_A</def>
+                <chance>1</chance>
+                <severity>1</severity>
+            </li>
+        </startingHediffs>
         <skills>
             <li>
+                <skill>Shooting</skill>
+                <range>7~12</range>
+            </li>
+            <li>
                 <skill>Melee</skill>
-                <range>4~14</range>
+                <range>10~15</range>
             </li>
         </skills>
         <apparelRequired>
@@ -179,6 +214,14 @@
         <defName>SHG_MinorHeroTrader</defName>
         <label>hero trader</label>
         <trader>true</trader>
+        <titleRequired MayRequire="Ludeon.Rimworld.Royalty">SHG_HeroRank_D</titleRequired>
+        <startingHediffs Inherit="False">
+            <li>
+                <def>SHG_HeroRank_D</def>
+                <chance>1</chance>
+                <severity>1</severity>
+            </li>
+        </startingHediffs>
     </PawnKindDef>
 
     <PawnKindDef ParentName="SHG_MinorHeroBase">
@@ -186,6 +229,7 @@
         <label>hero leader</label>
         <labelPlural>leaders</labelPlural>
         <factionLeader>true</factionLeader>
+        <titleRequired MayRequire="Ludeon.Rimworld.Royalty">SHG_HeroRank_S</titleRequired>
         <combatPower>160</combatPower>
         <apparelTags>
             <li>SpacerMilitary</li>
@@ -204,6 +248,13 @@
                 <range>15~20</range>
             </li>
         </skills>
+        <startingHediffs Inherit="False">
+            <li>
+                <def>SHG_HeroRank_S</def>
+                <chance>1</chance>
+                <severity>1</severity>
+            </li>
+        </startingHediffs>
         <weaponTags>
             <li>IndustrialGunAdvanced</li>
         </weaponTags>
