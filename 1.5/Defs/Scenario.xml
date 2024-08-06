@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <ScenarioDef Name="Crashlanded">
+        <defName>SHG_Hero_Protagonist</defName>
+        <label>Protagonist</label>
+        <description>Start with one pawn that has some bonuses that make it a bit more likely that things will go their way. Maybe this pawn will see the story to its end. Maybe they'll manage to create a colony that lasts long after their death. Or maybe the universe just has a cruel sense of humor, and they'll achieve nothing.</description>
+        <scenario>
+            <summary>Start with just one pawn that usually has things go their way, and hope you don't lose them before they can convince some more people to join the colony.</summary>
+            <playerFaction>
+                <def>PlayerFaction</def>
+                <factionDef>PlayerColony</factionDef>
+            </playerFaction>
+            <parts>
+                <!-- Config pages -->
+                <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+                    <def>ConfigPage_ConfigureStartingPawns</def>
+                    <pawnCount>1</pawnCount>
+                    <pawnChoiceCount>8</pawnChoiceCount>
+                </li>
+
+                <!-- Player starting stuff spawn method-->
+                <li Class="ScenPart_PlayerPawnsArriveMethod">
+                    <def>PlayerPawnsArriveMethod</def>
+                    <method>Standing</method>
+                </li>
+
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>MealSurvivalPack</thingDef>
+                    <count>10</count>
+                </li>
+
+                <li Class="ScenPart_StartingThing_Defined">
+                    <def>StartingThing_Defined</def>
+                    <thingDef>MedicineIndustrial</thingDef>
+                    <count>5</count>
+                </li>
+
+                <li Class="ScenPart_ForcedHediff">
+                    <def>ForcedHediff</def>
+                    <visible>true</visible>
+                    <context>PlayerStarter</context>
+                    <chance>1</chance>
+                    <hediff>SHG_Protagonist</hediff>
+                    <severityRange>1</severityRange>
+                </li>
+  
+                <!-- Game start dialog -->
+                <li Class="ScenPart_GameStartDialog">
+                    <def>GameStartDialog</def>
+                    <text>Things have usually gone your way before, but is this innate luck going to be enough to survive out here?</text>
+                    <closeSound>GameStartSting</closeSound>
+                </li>
+            </parts>
+        </scenario>
+    </ScenarioDef>
+
+    <HediffDef>
+        <defName>SHG_Protagonist</defName>
+        <label>protagonist</label>
+        <description>This pawn seems to have things go their way more often than not. While they can't always do the impossible, the universe does seem to favor them for some reason.</description>
+        <stages>
+			<li>
+                <statFactors>
+                    <SocialImpact>1.1</SocialImpact>
+                    <NegotiationAbility>1.1</NegotiationAbility>
+                    <ConversionPower MayRequire="Ludeon.Rimworld.Ideology">1.1</ConversionPower>
+                    <SuppressionPower MayRequire="Ludeon.Rimworld.Ideology">1.1</SuppressionPower>
+                    <PawnTrapSpringChance>0.9</PawnTrapSpringChance>
+                    <IncomingDamageFactor>0.9</IncomingDamageFactor>
+                    <ImmunityGainSpeed>1.1</ImmunityGainSpeed>
+                    <TameAnimalChance>1.1</TameAnimalChance>
+                    <MedicalSurgerySuccessChance>1.1</MedicalSurgerySuccessChance>
+                    <ArrestSuccessChance>1.1</ArrestSuccessChance>
+                    <ConstructSuccessChance>1.1</ConstructSuccessChance>
+                    <ShootingAccuracyPawn>1.1</ShootingAccuracyPawn>
+                    <TrainAnimalChance>1.1</TrainAnimalChance>
+                    <MeleeDodgeChance>1.1</MeleeDodgeChance>
+                    <MeleeHitChance>1.1</MeleeHitChance>
+                </statFactors>
+            </li>
+        </stages>
+    </HediffDef>
+
+</Defs>
