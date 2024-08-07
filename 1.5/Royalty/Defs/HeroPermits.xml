@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <RoyalTitlePermitDef Abstract="True" Name="SHG_HeroPermitBase" ParentName="SHG_VillainPermitBase">
+        <faction>SHG_SuperheroOrganization</faction>
+    </RoyalTitlePermitDef>
+    
+    <RoyalTitlePermitDef ParentName="SHG_HeroPermitBase">
+        <defName>SHG_Hero_EmergencyDrop</defName>
+        <label>emergency drop</label>
+        <description>Call for a drop of 20 survival packs and 20 medicines.</description>
+        <minTitle>SHG_HeroRank_F</minTitle>
+        <uiPosition>(0,0)</uiPosition>
+        <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
+        <usableOnWorldMap>true</usableOnWorldMap>
+        <royalAid>
+            <itemsToDrop>
+                <MealSurvivalPack>20</MealSurvivalPack>
+                <MedicineIndustrial>20</MedicineIndustrial>
+            </itemsToDrop>
+        </royalAid>
+    </RoyalTitlePermitDef>
+
+    <RoyalTitlePermitDef ParentName="SHG_HeroPermitBase">
+        <defName>SHG_Hero_CallDoctors</defName>
+        <label>request hero doctors</label>
+        <description>Call the Organization to request they send two doctors to aid any of your wounded colonists. They will have decent medical skill and be a random support super.</description>
+        <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
+        <minTitle>SHG_HeroRank_E</minTitle>
+        <prerequisite>SHG_Hero_EmergencyDrop</prerequisite>
+        <uiPosition>(1,0)</uiPosition>
+        <royalAid>
+            <pawnKindDef>SHG_Hero_Doctor</pawnKindDef>
+            <pawnCount>2</pawnCount>
+            <aidDurationDays>6</aidDurationDays>
+        </royalAid>
+    </RoyalTitlePermitDef>
+
+    <RoyalTitlePermitDef ParentName="SHG_HeroPermitBase">
+        <defName>SHG_Hero_BuilderDrop</defName>
+        <label>builder's drop</label>
+        <description>Call for a drop of 300 wood, 300 steel, and 10 components.</description>
+        <minTitle>SHG_HeroRank_E</minTitle>
+        <uiPosition>(0,1)</uiPosition>
+        <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
+        <usableOnWorldMap>true</usableOnWorldMap>
+        <royalAid>
+            <itemsToDrop>
+                <Steel>300</Steel>
+                <WoodLog>300</WoodLog>
+                <ComponentIndustrial>10</ComponentIndustrial>
+            </itemsToDrop>
+        </royalAid>
+    </RoyalTitlePermitDef>
+
+    <RoyalTitlePermitDef ParentName="SHG_HeroPermitBase">
+        <defName>SHG_Hero_CallLaborer</defName>
+        <label>request hero laborers</label>
+        <description>Call the Organization to request they send three laborers to assist your colony develop for 6 days. The expertise of the laborers is randomized, from intellectual to summoner to all-rounder.</description>
+        <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
+        <prerequisite>SHG_Hero_BuilderDrop</prerequisite>
+        <minTitle>SHG_HeroRank_E</minTitle>
+        <uiPosition>(1,1)</uiPosition>
+        <royalAid>
+            <pawnKindDef>SHG_HeroLaborer</pawnKindDef>
+            <pawnCount>3</pawnCount>
+            <aidDurationDays>6</aidDurationDays>
+        </royalAid>
+    </RoyalTitlePermitDef>
+
+    <RoyalTitlePermitDef ParentName="SHG_HeroPermitBase">
+        <defName>SHG_Hero_CallHeroes</defName>
+        <label>call heroes</label>
+        <description>Call a group of 4 A-rank heroes to aid you in the current battle.</description>
+        <workerClass>RoyalTitlePermitWorker_CallAid</workerClass>
+        <minTitle>SHG_HeroRank_A</minTitle>
+        <uiPosition>(0,2)</uiPosition>
+        <royalAid>
+            <pawnKindDef>SHG_HeroSoldier_Melee</pawnKindDef>
+            <pawnCount>4</pawnCount>
+        </royalAid>
+    </RoyalTitlePermitDef>
+
+    <RoyalTitlePermitDef ParentName="SHG_HeroPermitBase">
+        <defName>SHG_VillainSuperCreatingPill</defName>
+        <label>super creating pill</label>
+        <description>Request a pill that allows for turning a non-super pawn into a super. If used on a pawn that already has the basic superhero gene, this item is wasted.</description>
+        <minTitle>SHG_HeroRank_C</minTitle>
+        <uiPosition>(1,2)</uiPosition>
+        <workerClass>RoyalTitlePermitWorker_DropResources</workerClass>
+        <usableOnWorldMap>true</usableOnWorldMap>
+        <royalAid>
+            <itemsToDrop>
+                <SHG_SuperCreatingPill>1</SHG_SuperCreatingPill>
+            </itemsToDrop>
+        </royalAid>
+    </RoyalTitlePermitDef>
+    
+    <RoyalTitlePermitDef ParentName="SHG_HeroPermitBase" Name="SHG_HeroShuttleBase">
+        <defName>SHG_Hero_FirstShuttle</defName>
+        <label>call transport shuttle</label>
+        <description>Call a shuttle for your own use. It will transport colonists, items, and animals anywhere you like within 70 world tiles. The other call transport shuttle permit adds an extra use that recharge separately from each other.</description>
+        <workerClass>RoyalTitlePermitWorker_CallShuttle</workerClass>
+        <minTitle>SHG_HeroRank_D</minTitle>
+        <usableOnWorldMap>true</usableOnWorldMap>
+        <uiPosition>(0,3)</uiPosition>
+        <royalAid>
+            <targetingRequireLOS>false</targetingRequireLOS>
+        </royalAid>
+    </RoyalTitlePermitDef>
+    
+    <RoyalTitlePermitDef ParentName="SHG_HeroShuttleBase">
+        <defName>SHG_Hero_SecondShuttle</defName>
+        <label>call transport shuttle</label>
+        <minTitle>SHG_HeroRank_B</minTitle>
+        <uiPosition>(1,3)</uiPosition>
+    </RoyalTitlePermitDef>
+</Defs>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-    <PawnKindDef Name="SHG_MinorHeroBase" Abstract="True">
+    <PawnKindDef Name="SHG_HeroBase" Abstract="True">
         <race>Human</race>
         <defaultFactionType>SHG_SuperheroOrganization</defaultFactionType>
         <chemicalAddictionChance>0.1</chemicalAddictionChance>
@@ -16,7 +16,7 @@
         <initialResistanceRange>30~40</initialResistanceRange>
     </PawnKindDef>
 
-    <PawnKindDef ParentName="SHG_MinorHeroBase">
+    <PawnKindDef ParentName="SHG_HeroBase" Name="SHG_HeroSupport">
         <defName>SHG_HeroLaborer</defName>
         <label>hero laborer</label>
         <combatPower>40</combatPower>
@@ -62,7 +62,28 @@
         </startingHediffs>
     </PawnKindDef>
 
-    <PawnKindDef ParentName="SHG_MinorHeroBase" Name="SHG_MinorHeroSoldierBase">
+    <PawnKindDef ParentName="SHG_HeroSupport">
+        <defName>SHG_Hero_Doctor</defName>
+        <label>hero doctor</label>
+        <skills>
+            <li>
+                <skill>Medicine</skill>
+                <range>10~12</range>
+            </li>
+        </skills>
+        <requiredWorkTags Inherit="False"> <!-- Must be capable of labor, as this pawn kind is used in laborer quests. -->
+            <li>Cleaning</li>
+            <li>Caring</li>
+            <li>Firefighting</li>
+        </requiredWorkTags>
+        <xenotypeSet Inherit="False">
+            <xenotypeChances>
+                <SHG_RandomSupportSuper>.15</SHG_RandomSupportSuper>
+            </xenotypeChances>
+        </xenotypeSet>
+    </PawnKindDef>
+
+    <PawnKindDef ParentName="SHG_HeroBase" Name="SHG_MinorHeroSoldierBase">
         <defName>SHG_HeroSoldier</defName>
         <label>hero</label>
         <combatPower>85</combatPower>
@@ -161,7 +182,7 @@
         </weaponTags>
     </PawnKindDef>
 
-    <PawnKindDef ParentName="SHG_MinorHeroBase" Name="SHG_MinorHero_MeleeBase">
+    <PawnKindDef ParentName="SHG_HeroBase" Name="SHG_MinorHero_MeleeBase">
         <defName>SHG_HeroSoldier_Melee</defName>
         <label>hero</label>
         <combatPower>85</combatPower>
@@ -224,7 +245,7 @@
         </startingHediffs>
     </PawnKindDef>
 
-    <PawnKindDef ParentName="SHG_MinorHeroBase">
+    <PawnKindDef ParentName="SHG_HeroBase">
         <defName>SHG_HeroLeader</defName>
         <label>hero leader</label>
         <labelPlural>leaders</labelPlural>
