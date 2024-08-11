@@ -1,3 +1,180 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+    <QuestScriptDef>
+        <defName>OpportunitySite_RescueHero</defName>
+        <rootSelectionWeight>1</rootSelectionWeight>
+        <rootMinPoints>0</rootMinPoints>
+        <rootIncreasesPopulation>true</rootIncreasesPopulation>
+        <autoAccept>true</autoAccept>
+        <questNameRules>
+          <rulesStrings>
+            <li>questName->[prisoner_nameDef]'s Salvation</li>
+            <li>questName->[prisoner_nameDef]'s Rescue</li>
+            <li>questName->[prisoner_nameDef]'s Breakout</li>
+            <li>questName->Rescuing [prisoner_nameDef]</li>
+            <li>questName->Saving [prisoner_nameDef]</li>
+            <li>questName->Breaking [prisoner_nameDef] Out</li>
+          </rulesStrings>
+        </questNameRules>
+        <questDescriptionRules>
+          <rulesStrings>
+            <!-- Implicitly, prisoner is asker. It's a bit legacy -->
+            <li>questDescription->A prisoner being held by [siteFaction_name] has managed to steal a radio and call you!
+    \n[prisoner_nameDef] is being held at a camp near [map_definite][underArmedGuard]. Rescue [prisoner_objective], and [prisoner_pronoun] will join your colony. [prisoner_pronoun] is a [prisoner_age]-year-old [prisoner_title]. [prisoner_pronoun] says that [allSitePartsDescriptionsExceptFirst][formerColonistInfo][prisonerFullRelationInfo]
+    \nIf you miss this opportunity, you may never hear from [prisoner_nameDef] again.</li>
+    
+            <li>formerColonistInfo(priority=1)->\n\n[prisoner_formerlyColonistInfo]</li>
+            <li>formerColonistInfo-></li>
+    
+            <li>underArmedGuard(allowViolentQuests==true,priority=1)-> under armed guard</li>
+            <li>underArmedGuard-></li>
+          </rulesStrings>
+        </questDescriptionRules>
+        <root Class="QuestNode_Sequence">
+            <nodes>
+                <!-- Valor reward to accepter -->
+                <li Class="QuestNode_RequireRoyalFavorFromFaction">
+                    <faction>SHG_SuperheroOrganization</faction>
+                </li>
+
+                <li Class="QuestNode_GetPawn">
+                    <storeAs>asker</storeAs>
+                    <mustBeFactionLeader>true</mustBeFactionLeader>
+                    <mustBeOfKind>SHG_HeroLeader</mustBeOfKind>
+                    <ifWorldPawnThenMustBeFreeOrLeader>true</ifWorldPawnThenMustBeFreeOrLeader>
+                    <mustBeWorldPawn>false</mustBeWorldPawn>
+                </li>
+
+                <!-- End if faction became hostile -->
+                <li Class="QuestNode_GetFaction">
+                    <storeAs>faction</storeAs>
+                    <ofPawn>$asker</ofPawn>
+                    <allowEnemy>false</allowEnemy>
+                    <allowNeutral>true</allowNeutral>
+                    <allowAlly>true</allowAlly>
+                </li>
+
+                <li Class="QuestNode_SubScript">
+                    <def>Util_RandomizePointsChallengeRating</def>
+                    <parms>
+                        <pointsFactorTwoStar>1.5</pointsFactorTwoStar>
+                        <pointsFactorThreeStar>2</pointsFactorThreeStar>
+                    </parms>
+                </li>
+                <li Class="QuestNode_SubScript">
+                    <def>Util_AdjustPointsForDistantFight</def>
+                </li>
+
+                <li Class="QuestNode_Multiply">
+                    <storeAs>royalFavorReward</storeAs>
+                    <value1>$points</value1>
+                    <value2>0.01</value2>
+                </li>
+
+                <li Class="QuestNode_GetMap" />
+        
+                <li Class="QuestNode_GetSiteTile">
+                    <storeAs>siteTile</storeAs>
+                    <preferCloserTiles>true</preferCloserTiles>
+                </li>
+
+                <li Class="QuestNode_End">
+                    <inSignal>faction.BecameHostileToPlayer</inSignal>
+                    <outcome>InvalidPreAcceptance</outcome>
+                    <signalListenMode>NotYetAcceptedOnly</signalListenMode>
+                </li>
+        
+                <li Class="QuestNode_ViolentQuestsAllowed">
+                    <node Class="QuestNode_Set">
+                        <name>siteThreatChance</name>
+                        <value>1</value>
+                    </node>
+                    <elseNode Class="QuestNode_Set">
+                        <name>siteThreatChance</name>
+                        <value>0</value>
+                    </elseNode>          
+                </li>
+        
+                <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
+                    <storeAs>sitePartDefs</storeAs>
+                    <storeFactionAs>siteFaction</storeFactionAs>
+                    <sitePartsTags>
+                        <li>
+                            <tag>PrisonerRescueQuestThreat</tag>
+                            <chance>$siteThreatChance</chance>
+                        </li>
+                    </sitePartsTags>
+                </li>
+        
+                <li Class="QuestNode_GetDefaultSitePartsParams">
+                    <tile>$siteTile</tile>
+                    <faction>$siteFaction</faction>
+                    <sitePartDefs>$sitePartDefs</sitePartDefs>
+                    <storeSitePartsParamsAs>sitePartsParams</storeSitePartsParamsAs>
+                </li>
+        
+                <li Class="QuestNode_SubScript">
+                    <def>Util_GenerateSite</def>
+                    <parms>
+                        <hiddenSitePartsPossible>true</hiddenSitePartsPossible>
+                    </parms>
+                </li>
+                
+                <li Class="QuestNode_SpawnWorldObjects">
+                    <worldObjects>$site</worldObjects>
+                    <defsToExcludeFromHyperlinks>Human</defsToExcludeFromHyperlinks>
+                </li>
+        
+                <li Class="QuestNode_WorldObjectTimeout">
+                    <worldObject>$site</worldObject>
+                    <isQuestTimeout>true</isQuestTimeout>
+                    <delayTicks>$(randInt(12,28)*60000)</delayTicks>
+                    <inSignalDisable>site.MapGenerated</inSignalDisable>
+                    <node Class="QuestNode_End">
+                        <outcome>Fail</outcome>
+                        <sendStandardLetter>true</sendStandardLetter>
+                    </node>
+                </li>
+
+                <li Class="QuestNode_Signal">
+                    <inSignal>site.AllEnemiesDefeated</inSignal>
+                    <node Class="QuestNode_Sequence">
+                        <nodes>
+                            <li Class="QuestNode_Notify_PlayerRaidedSomeone">
+                                <getRaidersFromMapParent>$site</getRaidersFromMapParent>
+                            </li>
+                            <li Class="QuestNode_GiveRewards">
+                                <parms>
+                                    <allowGoodwill>true</allowGoodwill>
+                                    <allowRoyalFavor>true</allowRoyalFavor>
+                                    <chosenPawnSignal>ChosenPawnForReward</chosenPawnSignal>
+                                </parms>
+                                <addCampLootReward>true</addCampLootReward>
+                                <customLetterLabel TKey="LetterLabelPaymentArrived">Payment arrived</customLetterLabel>
+                                <customLetterText TKey="LetterTextPaymentArrived">You have defeated the bandit camp!\n\nThe payment from [asker_faction_name] has arrived.</customLetterText>
+                                <nodeIfChosenPawnSignalUsed Class="QuestNode_Letter">
+                                    <letterDef>ChoosePawn</letterDef>
+                                    <label TKey="LetterLabelFavorReceiver">[asker_faction_royalFavorLabel]</label>
+                                    <text TKey="LetterTextFavorReceiver">These colonists participated in the victory for the quest [resolvedQuestName]. [asker_definite] wants to know who should receive the [royalFavorReward_amount] [asker_faction_royalFavorLabel] for this service.</text>
+                                    <useColonistsOnMap>$site</useColonistsOnMap>
+                                    <chosenPawnSignal>ChosenPawnForReward</chosenPawnSignal>
+                                </nodeIfChosenPawnSignalUsed>
+                            </li>
+                            <li Class="QuestNode_GiveRoyalFavorAndDevelopmentPoints">
+                                <giveToAccepter>true</giveToAccepter>
+                                <faction>SHG_SuperheroOrganization</faction>
+                                <amount>$royalFavorReward</amount>
+                                <!-- <isSingleReward>true</isSingleReward> -->
+                            </li>
+                        </nodes>
+                    </node>
+                </li>
+            
+                <li Class="QuestNode_NoWorldObject">
+                    <worldObject>$site</worldObject>
+                    <node Class="QuestNode_End" />
+                </li>
+            </nodes>
+        </root>
+    </QuestScriptDef>    
 </Defs>
