@@ -2,7 +2,7 @@
 <ModMetaData>
   <name>Superhero Genes - Hero Organization</name>
   <author>alite</author>
-  <packageId>SuperheroGenes.HeroOrganization</packageId>
+  <packageId>SuperheroGenes.Heroes</packageId>
   <supportedVersions>
     <li>1.5</li>
   </supportedVersions>

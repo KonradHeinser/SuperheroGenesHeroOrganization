@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
     <Operation Class="SuperHeroGenesBase.PatchOperationSetting">
-        <setting>medievalVillains</setting>
+        <setting>medievalHeroes</setting>
         <active Class="PatchOperationSequence">
             <operations>
                 <li Class="PatchOperationReplace">
