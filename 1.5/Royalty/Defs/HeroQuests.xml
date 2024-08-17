@@ -9,6 +9,8 @@
         <successHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">Raided_BanditCamp</successHistoryEvent>
         <questNameRules>
           <rulesStrings>
+            <li>questName->Villain Killin'</li>
+            <!--
             <li>questName->The [bandit] [camp]</li>
             <li>questName->[bandit] [camp]</li>
             <li>questName->[asker_nameDef] and the [camp]</li>
@@ -24,6 +26,7 @@
             <li>bandit->Marauder</li>
             <li>bandit->Robber</li>
             <li>bandit->Brigand</li>
+            -->
           </rulesStrings>
         </questNameRules>
         <questDescriptionRules>
@@ -78,12 +81,13 @@
             </li>
     
             <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
-              <storeAs>sitePartDefs</storeAs>
-              <storeFactionAs>siteFaction</storeFactionAs>
-              <sitePartsTags>
-                <li><tag>BanditCamp</tag></li>
-              </sitePartsTags>
-              <mustBeHostileToFactionOf>$asker</mustBeHostileToFactionOf>
+                <storeAs>sitePartDefs</storeAs>
+                <storeFactionAs>siteFaction</storeFactionAs>
+                <sitePartsTags>
+                    <li><tag>BanditCamp</tag></li>
+                    <li><tag>PrisonerWillingToJoin</tag></li>
+                </sitePartsTags>
+                <mustBeHostileToFactionOf>$asker</mustBeHostileToFactionOf>
             </li>
     
             <li Class="QuestNode_GetDefaultSitePartsParams">
@@ -187,6 +191,11 @@
                       <chosenPawnSignal>ChosenPawnForReward</chosenPawnSignal>
                     </nodeIfChosenPawnSignalUsed>
                   </li>
+                  <li Class="QuestNode_GiveRoyalFavorAndDevelopmentPoints">
+                    <giveToAccepter>true</giveToAccepter>
+                    <faction>SHG_SuperheroOrganization</faction>
+                    <amount>$universalRoyalFavorReward</amount>
+                  </li>
                 </nodes>
               </node>
             </li>
@@ -197,89 +206,4 @@
           </nodes>
         </root>
     </QuestScriptDef>
-
-    <!-- 
-        <root Class="QuestNode_Sequence">
-            <nodes>
-
-                <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
-                    <storeAs>sitePartDefs</storeAs>
-                    <storeFactionAs>siteFaction</storeFactionAs>
-                    <sitePartsTags>
-                        <li>
-                            <tag>BanditCamp</tag>
-                        </li>
-                    </sitePartsTags>
-                </li>
-        
-                <li Class="QuestNode_GetDefaultSitePartsParams">
-                    <tile>$siteTile</tile>
-                    <faction>$siteFaction</faction>
-                    <sitePartDefs>$sitePartDefs</sitePartDefs>
-                    <storeSitePartsParamsAs>sitePartsParams</storeSitePartsParamsAs>
-                </li>
-        
-                <li Class="QuestNode_SubScript">
-                    <def>Util_GenerateSite</def>
-                    <parms>
-                        <hiddenSitePartsPossible>true</hiddenSitePartsPossible>
-                    </parms>
-                </li>
-                
-                <li Class="QuestNode_SpawnWorldObjects">
-                    <worldObjects>$site</worldObjects>
-                    <defsToExcludeFromHyperlinks>Human</defsToExcludeFromHyperlinks>
-                </li>
-        
-                <li Class="QuestNode_WorldObjectTimeout">
-                    <worldObject>$site</worldObject>
-                    <isQuestTimeout>true</isQuestTimeout>
-                    <delayTicks>$(randInt(12,28)*60000)</delayTicks>
-                    <inSignalDisable>site.MapGenerated</inSignalDisable>
-                    <node Class="QuestNode_End">
-                        <outcome>Fail</outcome>
-                        <sendStandardLetter>true</sendStandardLetter>
-                    </node>
-                </li>
-
-                <li Class="QuestNode_Signal">
-                    <inSignal>site.AllEnemiesDefeated</inSignal>
-                    <node Class="QuestNode_Sequence">
-                        <nodes>
-                            <li Class="QuestNode_Notify_PlayerRaidedSomeone">
-                                <getRaidersFromMapParent>$site</getRaidersFromMapParent>
-                            </li>
-                            <li Class="QuestNode_GiveRewards">
-                                <parms>
-                                    <allowGoodwill>true</allowGoodwill>
-                                    <allowRoyalFavor>true</allowRoyalFavor>
-                                    <chosenPawnSignal>ChosenPawnForReward</chosenPawnSignal>
-                                </parms>
-                                <addCampLootReward>true</addCampLootReward>
-                                <customLetterLabel TKey="LetterLabelPaymentArrived">Payment arrived</customLetterLabel>
-                                <customLetterText TKey="LetterTextPaymentArrived">You have defeated the bandit camp!\n\nThe payment from [faction_name] has arrived.</customLetterText>
-                                <nodeIfChosenPawnSignalUsed Class="QuestNode_Letter">
-                                    <letterDef>ChoosePawn</letterDef>
-                                    <label TKey="LetterLabelFavorReceiver">[faction_royalFavorLabel]</label>
-                                    <text TKey="LetterTextFavorReceiver">These colonists participated in the victory for the quest [resolvedQuestName]. [asker_definite] wants to know who should receive the [royalFavorReward_amount] [faction_royalFavorLabel] for this service.</text>
-                                    <useColonistsOnMap>$site</useColonistsOnMap>
-                                    <chosenPawnSignal>ChosenPawnForReward</chosenPawnSignal>
-                                </nodeIfChosenPawnSignalUsed>
-                            </li>
-                            <li Class="QuestNode_GiveRoyalFavorAndDevelopmentPoints">
-                                <giveToAccepter>true</giveToAccepter>
-                                <faction>SHG_SuperheroOrganization</faction>
-                                <amount>$royalFavorReward</amount>
-                            </li>
-                        </nodes>
-                    </node>
-                </li>
-            
-                <li Class="QuestNode_NoWorldObject">
-                    <worldObject>$site</worldObject>
-                    <node Class="QuestNode_End" />
-                </li>
-            </nodes>
-        </root>
-    </QuestScriptDef>     -->
 </Defs>
