@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
     <QuestScriptDef>
-        <defName>SHG_Hero_OpportunitySite_Rescue</defName>
+        <defName>SHGHero_OpportunitySite_Rescue</defName>
         <rootSelectionWeight>1.0</rootSelectionWeight>
         <rootMinPoints>350</rootMinPoints>
         <canGiveRoyalFavor>true</canGiveRoyalFavor>
