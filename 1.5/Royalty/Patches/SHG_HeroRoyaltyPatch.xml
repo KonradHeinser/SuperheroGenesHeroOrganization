@@ -37,4 +37,48 @@
             </value>
         </nomatch>
     </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/QuestScriptDef[defName="Mission_BanditCamp"]/root/factionsToDrawLeaderFrom</xpath>
+        <value><li>SHG_SuperheroOrganization</li></value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
+        <value>
+            <!-- <li Class="StorytellerCompProperties_SingleOnceFixed">
+                <fireAfterDaysPassed>10</fireAfterDaysPassed>
+                <incident>SHG_GiveQuest_HeroStart</incident>
+                <skipIfOnExtremeBiome>false</skipIfOnExtremeBiome>
+                <allowedTargetTags>
+                    <li>World</li>
+                </allowedTargetTags>
+                <enableIfAnyModActive>
+                    <li>Ludeon.RimWorld.Royalty</li>
+                </enableIfAnyModActive>
+            </li> -->
+            <!-- <li Class="StorytellerCompProperties_RefiringUniqueQuest">
+                <minDaysPassed>60</minDaysPassed>
+                <refireEveryDays>30</refireEveryDays>
+                <incident>SHG_GiveQuest_EndGame_VillainKillin</incident>
+                <allowedTargetTags>
+                    <li>World</li>
+                </allowedTargetTags>
+                <enableIfAnyModActive>
+                    <li>Ludeon.RimWorld.Royalty</li>
+                </enableIfAnyModActive>
+            </li> -->
+            <li Class="StorytellerCompProperties_FactionInteraction">
+                <incident>SHG_Hero_CaravanArrivalTributeCollector</incident>
+                <minDaysPassed>10</minDaysPassed>
+                <baseIncidentsPerYear>4</baseIncidentsPerYear>
+                <minSpacingDays>15</minSpacingDays>
+                <minWealth>20000</minWealth>
+                <allowedTargetTags>
+                    <li>Map_PlayerHome</li>
+                </allowedTargetTags>
+            </li>
+
+        </value>
+    </Operation>
 </Patch>
