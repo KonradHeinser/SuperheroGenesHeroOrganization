@@ -47,8 +47,12 @@
         <xpath>Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
         <value>
             <li Class="StorytellerCompProperties_SingleMTB">
-                <mtbDays>15</mtbDays>
+                <mtbDays>30</mtbDays>
                 <incident>SHGHero_OpportunitySite_Rescue</incident>
+            </li>
+            <li Class="StorytellerCompProperties_SingleMTB">
+                <mtbDays>60</mtbDays> <!--Villains are less likely to ask for help because they prefer proactive assistance like gifts and settlement razing-->
+                <incident>SHGVillain_OpportunitySite_Raid</incident>
             </li>
             <li Class="StorytellerCompProperties_FactionInteraction">
                 <incident>SHG_Hero_CaravanArrivalTributeCollector</incident>

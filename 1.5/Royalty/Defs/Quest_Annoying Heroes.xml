@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+    <HistoryEventDef>
+        <defName>SHG_AttackedHeroes</defName>
+        <label>attacked hereos</label>
+    </HistoryEventDef>
+
     <IncidentDef ParentName="GiveQuestBase">
-      <defName>SHGHero_OpportunitySite_Rescue</defName>
-      <label>heroic rescue</label>
-      <questScriptDef>SHGHero_OpportunitySite_Rescue</questScriptDef>
+      <defName>SHGVillain_OpportunitySite_Raid</defName>
+      <label>vulnerable heroes</label>
+      <questScriptDef>SHGVillain_OpportunitySite_Raid</questScriptDef>
       <baseChance>0</baseChance> <!-- given by a special storyteller comp -->
     </IncidentDef>
 
     <QuestScriptDef>
-        <defName>SHGHero_OpportunitySite_Rescue</defName>
+        <defName>SHGVillain_OpportunitySite_Raid</defName>
         <rootSelectionWeight>1.0</rootSelectionWeight> <!--Can spawn randomly in addition to the periodic spawns-->
         <rootMinPoints>350</rootMinPoints>
         <canGiveRoyalFavor>true</canGiveRoyalFavor>
         <expireDaysRange>2~4</expireDaysRange>
-        <successHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">Raided_BanditCamp</successHistoryEvent>
+        <successHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">Raided_WorkSite</successHistoryEvent>
         <questNameRules>
           <rulesStrings>
-            <li>questName->Villainous Foes</li>
+            <li>questName->Annoying Heroes</li>
           </rulesStrings>
         </questNameRules>
         <questDescriptionRules>
           <rulesStrings>
-            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have ambushed [fluff]! [asker_label] believes one of the heroes was captured instead of killed, and says that [sitePart0_description] that the [siteFaction_pawnsPlural] claimed after the raid.
-            \n\n[asker_nameDef] knows there is a mole in [faction_name] who will warn the [siteFaction_pawnsPlural] as soon as a rescue operation is confirmed, meaning you will only have [siteDuration_duration] to go kill the [siteFaction_pawnsPlural] and destroy any security measures they may have set up. This will likely be a difficult fight as [siteFaction_pawnsPlural] are far stronger than the average human and will be expecting you.
-            \n\nIf you are able to free the captive they will join your colony. They will be a random super-powered being, though there is no way of knowing what type until you arrive on-site. If you kill all of the [siteFaction_pawnsPlural] but do not free the captive before all of your colonists leave the map, they will return to [faction_name] after breaking free.
-            \n\nThis will give [universalRoyalFavorReward] [faction_royalFavorLabel] to the accepter in addition to one of the rewards listed below.
+            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have [fluff] resting in a nearby work site! [faction_name] is normally tolerant of miguided super-powered beings, but [asker_label] says these ones have harrased the [faction_name]'s [faction_pawnsPlural] enough to warrant a response. [faction_name] scouts say that [sitePart0_description] that the [siteFaction_pawnsPlural] are holed up in.
+            \n\n[asker_nameDef] knows there is a mole in [faction_name] who will warn the [siteFaction_pawnsPlural] as soon as a raid is confirmed, meaning you will only have [siteDuration_duration] to go kill the [siteFaction_pawnsPlural] and destroy any security measures they may have set up. This will likely be a difficult fight as [siteFaction_pawnsPlural] are far stronger than the average human and will be expecting you.
+            \n\nThis will give [baseRewards] [faction_royalFavorLabel] to the accepter, [baseRewards] goodwill between your settlement and [faction_name], and additionally gives one of the rewards listed below. At the end of the raid, goodwill between your settlement and [siteFaction_name] will decrease by 25 in addition to the normal penalties caused by attacking another faction's people.
             </li>
-        <li>fluff(sameQuestsCount==0)->one of their hero squads</li>
-        <li>fluff(sameQuestsCount>=1)->another team of heroes</li>
+            <li>fluff(sameQuestsCount==0)->one of their hero squads</li>
+            <li>fluff(sameQuestsCount>=1)->another team of heroes</li>
           </rulesStrings>
         </questDescriptionRules>
         <root Class="QuestNode_Sequence">
@@ -62,13 +66,16 @@
               </curve>
             </li>
             <li Class="QuestNode_GetMap" />
-    
+
             <li Class="QuestNode_GetPawn">
                 <storeAs>asker</storeAs>
                 <mustBeFactionLeader>true</mustBeFactionLeader>
-                <mustBeOfKind>SHG_HeroLeader</mustBeOfKind>
+                <mustBeOfKind>SHG_VillainBoss</mustBeOfKind>
                 <ifWorldPawnThenMustBeFreeOrLeader>true</ifWorldPawnThenMustBeFreeOrLeader>
                 <mustBeWorldPawn>false</mustBeWorldPawn>
+                <excludeFactionDefs> <!--Excludes the villain factions that use the boss but aren't The League of Villains-->
+                    <li>MinorSuperVillainGang</li>
+                </excludeFactionDefs>
             </li>
 
             <li Class="QuestNode_GetFaction">
@@ -80,7 +87,7 @@
             </li>
 
             <li Class="QuestNode_RequireRoyalFavorFromFaction">
-              <faction>$faction</faction>
+                <faction>$faction</faction>
             </li>
 
             <li Class="QuestNode_End">
@@ -98,23 +105,22 @@
                 <storeAs>sitePartDefs</storeAs>
                 <storeFactionAs>siteFaction</storeFactionAs>
                 <sitePartsTags>
-                    <li><tag>BanditCamp</tag></li>
-                    <li><tag>PrisonerWillingToJoin</tag></li>
+                    <li><tag>Outpost</tag></li>
                 </sitePartsTags>
                 <mustBeHostileToFactionOf>$asker</mustBeHostileToFactionOf>
             </li>
 
             <li Class="QuestNode_GetPawn">
-                <storeAs>villainBoss</storeAs>
+                <storeAs>heroLeader</storeAs>
                 <mustBeFactionLeader>true</mustBeFactionLeader>
-                <mustBeOfKind>SHG_VillainBoss</mustBeOfKind>
+                <mustBeOfKind>SHG_HeroLeader</mustBeOfKind>
                 <ifWorldPawnThenMustBeFreeOrLeader>true</ifWorldPawnThenMustBeFreeOrLeader>
                 <mustBeWorldPawn>false</mustBeWorldPawn>
             </li>
 
             <li Class="QuestNode_GetFaction">
                 <storeAs>siteFaction</storeAs>
-                <ofPawn>$villainBoss</ofPawn>
+                <ofPawn>$heroLeader</ofPawn>
                 <allowEnemy>true</allowEnemy>
                 <allowNeutral>true</allowNeutral>
                 <allowAlly>true</allowAlly>
@@ -148,14 +154,14 @@
 
             <!--Base royal favor given regardless of reward chosen-->
             <li Class="QuestNode_Multiply">
-                <storeAs>universalRoyalFavorReward</storeAs>
+                <storeAs>baseRewards</storeAs>
                 <value1>$points</value1>
                 <value2>0.01</value2>
             </li>
 
             <li Class="SuperHeroGenesBase.QuestNode_Ceiling">
-                <value>$universalRoyalFavorReward</value>
-                <storeAs>universalRoyalFavorReward</storeAs>
+                <value>$baseRewards</value>
+                <storeAs>baseRewards</storeAs>
             </li>
     
             <li Class="QuestNode_SubScript">
@@ -181,7 +187,7 @@
                 <nodes>
                   <li Class="QuestNode_Letter">
                     <label TKey="LetterLabelQuestExpired">Quest expired: [resolvedQuestName]</label>
-                    <text TKey="LetterTextQuestExpired">The [siteFaction_pawnsPlural] have left the site. The quest [resolvedQuestName] has expired.</text>
+                    <text TKey="LetterTextQuestExpired">The [siteFaction_pawnsPlural] have packed up and moved on. The quest [resolvedQuestName] has expired.</text>
                   </li>
                   <li Class="QuestNode_End">
                     <outcome>Fail</outcome>
@@ -197,7 +203,7 @@
                 <nodes>
                   <li Class="QuestNode_Letter">
                     <label TKey="LetterLabelQuestFailed">Quest failed: [resolvedQuestName]</label>
-                    <text TKey="LetterTextQuestFailed">After being discovered, the [siteFaction_pawnsPlural] decided to pack up early. The quest [resolvedQuestName] has ended.</text>
+                    <text TKey="LetterTextQuestFailed">After being discovered, the [siteFaction_pawnsPlural] have fled. The quest [resolvedQuestName] has ended.</text>
                   </li>
                   <li Class="QuestNode_End">
                     <outcome>Fail</outcome>
@@ -231,10 +237,19 @@
                     </nodeIfChosenPawnSignalUsed>
                   </li>
                   <li Class="QuestNode_GiveRoyalFavorAndDevelopmentPoints">
-                    <inSignal>site.AllEnemiesDefeated</inSignal>
                     <giveToAccepter>true</giveToAccepter>
                     <faction>$faction</faction>
-                    <amount>$universalRoyalFavorReward</amount>
+                    <amount>$baseRewards</amount>
+                  </li>
+                  <li Class="QuestNode_ChangeFactionGoodwill">
+                    <change>$baseRewards</change>
+                    <factionOf>$asker</factionOf>
+                    <reason>SHG_AttackedHeroes</reason>
+                  </li>
+                  <li Class="QuestNode_ChangeFactionGoodwill">
+                    <change>-25</change>
+                    <factionOf>$siteFaction</factionOf>
+                    <reason>SHG_AttackedHeroes</reason>
                   </li>
                 </nodes>
               </node>
