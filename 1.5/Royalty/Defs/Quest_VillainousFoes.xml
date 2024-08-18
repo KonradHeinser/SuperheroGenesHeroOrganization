@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
+    <IncidentDef ParentName="GiveQuestBase">
+      <defName>SHGHero_OpportunitySite_Rescue</defName>
+      <label>heroic rescue</label>
+      <questScriptDef>SHGHero_OpportunitySite_Rescue</questScriptDef>
+      <baseChance>0</baseChance> <!-- given by a special storyteller comp -->
+    </IncidentDef>
+
     <QuestScriptDef>
         <defName>SHGHero_OpportunitySite_Rescue</defName>
-        <rootSelectionWeight>1.0</rootSelectionWeight>
+        <rootSelectionWeight>1.0</rootSelectionWeight> <!--Can spawn randomly in addition to the periodic spawns-->
         <rootMinPoints>350</rootMinPoints>
         <canGiveRoyalFavor>true</canGiveRoyalFavor>
-        <expireDaysRange>4~8</expireDaysRange>
+        <expireDaysRange>2~4</expireDaysRange>
         <successHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">Raided_BanditCamp</successHistoryEvent>
         <questNameRules>
           <rulesStrings>
-            <li>questName->Villain Killin'</li>
-            <!--
-            <li>questName->The [bandit] [camp]</li>
-            <li>questName->[bandit] [camp]</li>
-            <li>questName->[asker_nameDef] and the [camp]</li>
-            <li>camp->Camp</li>
-            <li>camp->Outpost</li>
-            <li>camp->Lair</li>
-            <li>camp->Encampment</li>
-            <li>bandit->Bandit</li>
-            <li>bandit->Raider</li>
-            <li>bandit->Outlaw</li>
-            <li>bandit->Desperado</li>
-            <li>bandit->Fugitive</li>
-            <li>bandit->Marauder</li>
-            <li>bandit->Robber</li>
-            <li>bandit->Brigand</li>
-            -->
+            <li>questName->Villainous Foes</li>
           </rulesStrings>
         </questNameRules>
         <questDescriptionRules>
           <rulesStrings>
-            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. Apparently, [siteFaction_pawnsPlural] based in a nearby camp have been raiding their caravans. The camp is controlled by [siteFaction_name].
-    \n[asker_nameDef] is asking us to destroy the camp, which means eliminating all enemies and turrets. [asker_label] says that [sitePart0_description].</li>
+            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have ambushed [fluff]! [asker_label] believes one of the heroes was captured instead of killed, and says that [sitePart0_description] that the [siteFaction_pawnsPlural] claimed after the raid.
+            \n\n[asker_nameFull] knows there is a mole in [faction_name] who will warn the [siteFaction_pawnsPlural] as soon as a rescue operation is confirmed, meaning you will only have [siteDuration_duration] to go kill the [siteFaction_pawnsPlural] and destroy any security measures they may have set up.
+            \n\nIf you are able to free the captive they will join your colony. They will be a random super-powered being, though there is no way of knowing what type until you arrive on-site. If you kill all of the [siteFaction_pawnsPlural] but do not free the captive before all of your colonists leave the map, they will return to [faction_name] after breaking free.
+            \n\nThis will give [universalRoyalFavorReward] [faction_royalFavorLabel] to the accepter in addition to one of the rewards listed below.
+            </li>
+        <li>fluff(sameQuestsCount==0)->one of their hero squads</li>
+        <li>fluff(sameQuestsCount>=1)->another team of heroes</li>
           </rulesStrings>
         </questDescriptionRules>
         <root Class="QuestNode_Sequence">
           <nodes>
+            <!-- For description -->
+            <li Class="QuestNode_GetSameQuestsCount">
+                <storeAs>sameQuestsCount</storeAs>
+            </li>
+            
             <li Class="QuestNode_SubScript">
               <def>Util_RandomizePointsChallengeRating</def>
               <parms>
@@ -44,8 +44,22 @@
                 <pointsFactorThreeStar>2</pointsFactorThreeStar>
               </parms>
             </li>
-            <li Class="QuestNode_SubScript">
-              <def>Util_AdjustPointsForDistantFight</def>
+            <!--Uses a distance curve that has higher point values than normal-->
+            <li Class="QuestNode_EvaluateSimpleCurve">
+              <value>$points</value>
+              <storeAs>points</storeAs>
+              <curve>
+                <points>
+                <li>   35,   35</li>
+                <li>  400,  200</li>
+                <li> 1000,  400</li>
+                <li> 2000,  650</li>
+                <li> 3000,  950</li>
+                <li> 4000,  1300</li>
+                <li> 5000,  1700</li>
+                <li>10000, 2150</li>
+                </points>
+              </curve>
             </li>
             <li Class="QuestNode_GetMap" />
     
@@ -89,6 +103,22 @@
                 </sitePartsTags>
                 <mustBeHostileToFactionOf>$asker</mustBeHostileToFactionOf>
             </li>
+
+            <li Class="QuestNode_GetPawn">
+                <storeAs>villainBoss</storeAs>
+                <mustBeFactionLeader>true</mustBeFactionLeader>
+                <mustBeOfKind>SHG_VillainBoss</mustBeOfKind>
+                <ifWorldPawnThenMustBeFreeOrLeader>true</ifWorldPawnThenMustBeFreeOrLeader>
+                <mustBeWorldPawn>false</mustBeWorldPawn>
+            </li>
+
+            <li Class="QuestNode_GetFaction">
+                <storeAs>siteFaction</storeAs>
+                <ofPawn>$villainBoss</ofPawn>
+                <allowEnemy>true</allowEnemy>
+                <allowNeutral>true</allowNeutral>
+                <allowAlly>true</allowAlly>
+            </li>
     
             <li Class="QuestNode_GetDefaultSitePartsParams">
               <tile>$siteTile</tile>
@@ -109,11 +139,10 @@
               </parms>
             </li>
     
-            <!-- Inflate reward value. Since we're basing the reward value on the threat points generated, we need to do this
-                 even though the threat points was deflated from the input points already. -->
+            <!-- Inflate reward value some to counter the deflation on site points. -->
             <li Class="QuestNode_Multiply">
                 <value1>$rewardValue</value1>
-                <value2>1.75</value2>
+                <value2>1.50</value2>
                 <storeAs>rewardValue</storeAs>
             </li>
 
@@ -122,6 +151,11 @@
                 <storeAs>universalRoyalFavorReward</storeAs>
                 <value1>$points</value1>
                 <value2>0.01</value2>
+            </li>
+
+            <li Class="SuperHeroGenesBase.QuestNode_Ceiling">
+                <value>$universalRoyalFavorReward</value>
+                <storeAs>universalRoyalFavorReward</storeAs>
             </li>
     
             <li Class="QuestNode_SubScript">
@@ -132,10 +166,15 @@
               <worldObjects>$site</worldObjects>
             </li>
     
+            <li Class="QuestNode_Set">
+                <name>siteDuration</name>
+                <value>120000</value>
+            </li>
+
             <li Class="QuestNode_WorldObjectTimeout">
               <worldObject>$site</worldObject>
               <isQuestTimeout>true</isQuestTimeout>
-              <delayTicks>$(randInt(12,28)*60000)</delayTicks>
+              <delayTicks>$siteDuration</delayTicks>
               <inSignalDisable>site.MapGenerated</inSignalDisable>
               <destroyOnCleanup>true</destroyOnCleanup>
               <node Class="QuestNode_Sequence">
@@ -150,6 +189,12 @@
                 </nodes>
               </node>
             </li>
+
+            <!-- <li Class="QuestNode_AddPawnReward">
+                <pawn>$prisoner</pawn>
+                <inSignalChoiceUsed>site.MapGenerated</inSignalChoiceUsed>
+                <rewardDetailsHidden>false</rewardDetailsHidden>
+            </li> -->
     
             <!-- If we enter and leave, the map is destroyed. Fail the quest. -->
             <li Class="QuestNode_Signal">
@@ -167,6 +212,13 @@
               </node>
             </li>
     
+            <li Class="QuestNode_GiveRoyalFavorAndDevelopmentPoints">
+                <inSignal>site.AllEnemiesDefeated</inSignal>
+                <giveToAccepter>true</giveToAccepter>
+                <faction>SHG_SuperheroOrganization</faction>
+                <amount>$universalRoyalFavorReward</amount>
+            </li>
+
             <li Class="QuestNode_Signal">
               <inSignal>site.AllEnemiesDefeated</inSignal>
               <node Class="QuestNode_Sequence">
@@ -190,11 +242,6 @@
                       <useColonistsOnMap>$site</useColonistsOnMap>
                       <chosenPawnSignal>ChosenPawnForReward</chosenPawnSignal>
                     </nodeIfChosenPawnSignalUsed>
-                  </li>
-                  <li Class="QuestNode_GiveRoyalFavorAndDevelopmentPoints">
-                    <giveToAccepter>true</giveToAccepter>
-                    <faction>SHG_SuperheroOrganization</faction>
-                    <amount>$universalRoyalFavorReward</amount>
                   </li>
                 </nodes>
               </node>
