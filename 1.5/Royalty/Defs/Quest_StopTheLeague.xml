@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <ThingDef ParentName="BuildingBase">
+        <defName>SHG_VillainDevice</defName>
+        <label>villain device</label>
+        <description>An ultratech weapon of mass destruction repurposed to work in a network that will blanket the planet in a lethal gas. If a planet has enough of them they can all be activated at the same time to begin the somewhat lengthy process of blanketing the world, but this network will be broken if the main one is destroyed.</description>   
+        <graphicData>
+            <texPath>Things/Building/Misc/SmokeSpewer</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(8,8)</drawSize>
+            <shadowData>
+                <volume>(4.5,3.5,4.4)</volume>
+                <offset>(0,0,0)</offset>
+            </shadowData>
+            <damageData>
+                <rect>(0.1, 0.8, 5.8, 3.9)</rect>
+            </damageData>
+        </graphicData> 
+        <altitudeLayer>Building</altitudeLayer>
+        <pathCost>50</pathCost>
+        <blockWind>true</blockWind>
+        <passability>Impassable</passability>
+        <canOverlapZones>false</canOverlapZones>
+        <fillPercent>1.0</fillPercent>
+        <statBases>
+          <MaxHitPoints>1000</MaxHitPoints>
+          <Flammability>0</Flammability>
+        </statBases>
+        <damageMultipliers>
+          <li>
+            <damageDef>Flame</damageDef>
+            <multiplier>0</multiplier>
+          </li>
+        </damageMultipliers>
+        <building>
+          <claimable>false</claimable>
+          <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+        </building>
+        <rotatable>false</rotatable>
+        <selectable>true</selectable>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+        <drawerType>MapMeshOnly</drawerType>
+        <castEdgeShadows>True</castEdgeShadows>
+        <repairEffect>ConstructMetal</repairEffect>
+        <forceDebugSpawnable>true</forceDebugSpawnable>
+        <killedLeavings>
+          <Steel>60</Steel>
+          <ComponentIndustrial>1</ComponentIndustrial>
+          <Plasteel>10</Plasteel>
+          <ChunkSlagSteel>4</ChunkSlagSteel>
+        </killedLeavings>    
+    </ThingDef>
+</Defs>
+
+<!-- 
+Use QuestNode_Incident to create the next quest
+Make it one long quest so StorytellerCompProperties_RefiringUniqueQuest doesn't have any issues?
+Total of 4 sites to raid, each one with better defenses(higher points) than the last
+Destroy building on site to unlock next site
+Becoming enemies with The Hero Organization will NOT cause a quest failure, but the player must be allies to receive the quest in the first place
+Use QuestNode_ChangeFactionGoodwill on The Organization and The League at each stage to ensure ally/enemy status
+    Allows for player trickery between stages, but intentions become clear after each stage
+Needs custom site stuff for each part
+-->
