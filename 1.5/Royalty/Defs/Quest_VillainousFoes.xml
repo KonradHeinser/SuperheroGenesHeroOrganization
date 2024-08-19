@@ -9,7 +9,7 @@
 
     <QuestScriptDef>
         <defName>SHGHero_OpportunitySite_Rescue</defName>
-        <rootSelectionWeight>1.0</rootSelectionWeight> <!--Can spawn randomly in addition to the periodic spawns-->
+        <rootSelectionWeight>0</rootSelectionWeight> <!--Created 1~3 times per year by the incident-->
         <rootMinPoints>350</rootMinPoints>
         <canGiveRoyalFavor>true</canGiveRoyalFavor>
         <expireDaysRange>2~4</expireDaysRange>

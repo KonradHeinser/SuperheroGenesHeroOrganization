@@ -14,7 +14,7 @@
 
     <QuestScriptDef>
         <defName>SHGVillain_OpportunitySite_Raid</defName>
-        <rootSelectionWeight>1.0</rootSelectionWeight> <!--Can spawn randomly in addition to the periodic spawns-->
+        <rootSelectionWeight>0</rootSelectionWeight> <!--Created randomly around once per year by the incident-->
         <rootMinPoints>350</rootMinPoints>
         <canGiveRoyalFavor>true</canGiveRoyalFavor>
         <expireDaysRange>2~4</expireDaysRange>
