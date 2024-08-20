@@ -57,7 +57,8 @@
 Use QuestNode_Incident to create the next quest
 Make it one long quest so StorytellerCompProperties_RefiringUniqueQuest doesn't have any issues?
 Total of 4 sites to raid, each one with better defenses(higher points) than the last
-Destroy building on site to unlock next site
+Set up an epic quest system similar to RelicHunt's
+  May want to make something that checks for the highest hero rank in the colony so players can only receive the quest when they have an S-rank hero
 Becoming enemies with The Hero Organization will NOT cause a quest failure, but the player must be allies to receive the quest in the first place
 Use QuestNode_ChangeFactionGoodwill on The Organization and The League at each stage to ensure ally/enemy status
     Allows for player trickery between stages, but intentions become clear after each stage
