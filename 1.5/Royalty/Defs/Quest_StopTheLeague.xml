@@ -51,16 +51,87 @@
           <ChunkSlagSteel>4</ChunkSlagSteel>
         </killedLeavings>    
     </ThingDef>
-</Defs>
+
+    <HistoryEventDef>
+      <defName>SHGHero_StopTheLeague</defName>
+      <label>stopped The League's villainous plan</label>
+    </HistoryEventDef>
+  
+    <QuestScriptDef>
+      <defName>SHGHero_EndGame_StopTheLeague</defName>
+      <rootSelectionWeight>0</rootSelectionWeight>
+      <isRootSpecial>true</isRootSpecial>
+      <rootMinPoints>300</rootMinPoints>
+      <defaultChallengeRating>5</defaultChallengeRating>
+      <epic>true</epic>
+      <successHistoryEvent>SHGHero_StopTheLeague</successHistoryEvent>
+      <questNameRules>
+        <rulesStrings> 
+          <li>questName->Stop the League of Villains</li>
+        </rulesStrings>
+      </questNameRules>
+      <questDescriptionRules>
+        <rulesStrings>
+          <li>questDescription->The villains appear to be planning something that may kill a large number of people!</li>
+          <li>questDescriptionPartBeforeDiscovery->First you'll need to destroy some of the nearby devices that are making it hard to pinpoint which one is the central point of the network.</li>
+        </rulesStrings>
+      </questDescriptionRules>
+      <root Class="QuestNode_Sequence">
+        <nodes>
+          <li Class="SuperHeroGenesBase.QuestNode_Root_StopTheLeague">
+            <villainousDevices>
+              <li>SHG_VillainDevice</li>
+            </villainousDevices>
+            <faction>SuperVillainGang</faction>
+            <sitePartDef>AncientAltar</sitePartDef>
+            <ticksBetweenSubquests>60000~120000</ticksBetweenSubquests> <!--Defaults to 1~2 days-->
+            <totalSubquests>3</totalSubquests> <!--The number of devices that need to be destroyed before the main one becomes available-->
+          </li>
+          <!--Need end game when quest success, plus giving ever evolving hediffs. Hediff that gradually increases ever-evolving hediffs?-->
+        </nodes>
+      </root>
+    </QuestScriptDef>
+  
+    <QuestScriptDef>
+      <defName>SHGHero_DestroyVillainousDevice</defName>
+      <rootSelectionWeight>0</rootSelectionWeight>
+      <defaultChallengeRating>3</defaultChallengeRating>
+      <isRootSpecial>true</isRootSpecial>
+      <epicParent>SHGHero_EndGame_StopTheLeague</epicParent>
+      <questNameRules>
+        <rulesStrings>
+          <li>questName->Destroy Villainous Device</li>
+        </rulesStrings>
+      </questNameRules>
+      <questDescriptionRules>
+        <rulesStrings>
+        
+          <!-- description -->
+          <li>questDescription->You've learned of an ancient complex nearby. It is said to contain information about [relic_name].\n\nIf you can break into the structure and hack the computers inside, you can collect the information.\n\nWatch out - there may be all manner of dangers inside, and other enemies may also be attracted by activity at the structure.</li>
+  
+        </rulesStrings>
+      </questDescriptionRules>
+      <questContentRules>
+        <rulesStrings>
+          
+          <!-- Misc -->
+          <li>terminalHackedMessage->Terminal hacked. {COUNT} / [terminalCount] complete.</li>
+          <li>allTerminalsHackedMessage->You've hacked all of the terminals and discovered secret information about [relic_name]! You can now leave.</li>
+  
+        </rulesStrings>
+      </questContentRules>
+      <root Class="QuestNode_Root_Hack_AncientComplex" />
+      <!--Needs reworked completely for obvious reasons-->
+    </QuestScriptDef>
+  
+  </Defs>
 
 <!-- 
-Use QuestNode_Incident to create the next quest
-Make it one long quest so StorytellerCompProperties_RefiringUniqueQuest doesn't have any issues?
-Total of 4 sites to raid, each one with better defenses(higher points) than the last
-Set up an epic quest system similar to RelicHunt's
-  May want to make something that checks for the highest hero rank in the colony so players can only receive the quest when they have an S-rank hero
 Becoming enemies with The Hero Organization will NOT cause a quest failure, but the player must be allies to receive the quest in the first place
-Use QuestNode_ChangeFactionGoodwill on The Organization and The League at each stage to ensure ally/enemy status
+Use QuestNode_ChangeFactionGoodwill on The Organization and The League at each stage to ensure ally/enemy status?
     Allows for player trickery between stages, but intentions become clear after each stage
+    Would need to be in the subquests
 Needs custom site stuff for each part
+  See the AncientComplex ComplexLayoutDef for an idea
+    Will need a ComplexThreatDef
 -->

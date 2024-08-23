@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
     <SHG_HeroEnd>With most of the League of Villains leaders dead and their hidden base destroyed the Hero Organization will be free to expand and chase out any remaining groups of Villains and bandits.\n\nThank you for playing the Superhero Genes mod! Once this popup is closed you'll be able to continue your colony with all your pawns that survived the final confrontation, so you can destroy some more villain settlements or go for another victory. Please make sure to give the mod a thumbs up in the workshop if you enjoyed it to make it more likely that others will have a chance to see the mod.\n\nIn the future I plan on making things like implants and drugs that will make it possible for non-supers to stand a better chance against supers, as long as the colony is willing to pay the price.</SHG_HeroEnd>
+    <SHGHero_DestroyedDevices>Subdevices destroyed</SHGHero_DestroyedDevices>
+    <SHGHero_DeviceDestroyed>Subdevice destroyed</SHGHero_DeviceDestroyed>
+    <SHGHero_DeviceFoundLocation>You've finally learned the location of the central device!</SHGHero_DeviceFoundLocation>
+    <SHGHero_DeviceFoundLocationFoundSecurityThreats>The device is housed in a large villain complex. You should expect heavy resistance as this is a very important place to {0}.</SHGHero_DeviceFoundLocationFoundSecurityThreats>
+    <SHGHero_ThreatsDistrubed>The {0} have noticed your presence and are moving to get rid of you!</SHGHero_ThreatsDistrubed>
+    <SHGHero_ThreatsAlerted>The {0} have been alerted to your presence.</SHGHero_ThreatsAlerted>  
+  
 
         <!--Settings stuff-->
     <SHG_Heroes_ModName>Superhero Genes - Hero Organization</SHG_Heroes_ModName>
