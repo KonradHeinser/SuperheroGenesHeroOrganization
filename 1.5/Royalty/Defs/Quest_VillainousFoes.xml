@@ -21,9 +21,9 @@
         </questNameRules>
         <questDescriptionRules>
           <rulesStrings>
-            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have ambushed [fluff]! [asker_label] believes one of the heroes was captured instead of killed, and says that [sitePart0_description] that the [siteFaction_pawnsPlural] claimed after the raid.
-            \n\n[asker_nameDef] knows there is a mole in [faction_name] who will warn the [siteFaction_pawnsPlural] as soon as a rescue operation is confirmed, meaning you will only have [siteDuration_duration] to go kill the [siteFaction_pawnsPlural] and destroy any security measures they may have set up. This will likely be a difficult fight as [siteFaction_pawnsPlural] are far stronger than the average human and will be expecting you.
-            \n\nIf you are able to free the captive they will join your colony. They will be a random super-powered being, though there is no way of knowing what type until you arrive on-site. If you kill all of the [siteFaction_pawnsPlural] but do not free the captive before all of your colonists leave the map, they will return to [faction_name] after breaking free.
+            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have ambushed [fluff], and [asker_label] believes one of the heroes was captured instead of killed. [sitePart0_description] that the [siteFaction_pawnsPlural] claimed after the raid.
+            \n\n[asker_nameDef] knows there is a mole in [faction_name] who will warn the [siteFaction_pawnsPlural] as soon as a rescue operation is confirmed, meaning you will only have [siteDuration_duration] to stop them. This will likely be a difficult fight as [siteFaction_pawnsPlural] are far stronger than the average human and will be expecting you.
+            \n\nIf you are able to free the captive they will join your colony. They will be a random super-powered being, which you can learn more about when you arrive on-site. If you kill all of the [siteFaction_pawnsPlural] but do not free the captive before leaving the map, they will return to [faction_name] after breaking free.
             \n\nThis will give [universalRoyalFavorReward] [faction_royalFavorLabel] to the accepter in addition to one of the rewards listed below.
             </li>
         <li>fluff(sameQuestsCount==0)->one of their hero squads</li>
@@ -231,7 +231,6 @@
                     </nodeIfChosenPawnSignalUsed>
                   </li>
                   <li Class="QuestNode_GiveRoyalFavorAndDevelopmentPoints">
-                    <inSignal>site.AllEnemiesDefeated</inSignal>
                     <giveToAccepter>true</giveToAccepter>
                     <faction>$faction</faction>
                     <amount>$universalRoyalFavorReward</amount>

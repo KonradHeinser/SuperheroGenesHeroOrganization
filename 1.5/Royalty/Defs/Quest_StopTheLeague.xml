@@ -83,7 +83,7 @@
               <li>SHG_VillainDevice</li>
             </villainousDevices>
             <faction>SuperVillainGang</faction>
-            <sitePartDef>SHGHero_VillainDevice</sitePartDef>
+            <sitePartDef>SHGHero_VillainComplex</sitePartDef>
             <ticksBetweenSubquests>60000~120000</ticksBetweenSubquests> <!--Defaults to 1~2 days-->
             <totalSubquests>3</totalSubquests> <!--The number of devices that need to be destroyed before the main one becomes available-->
           </li>

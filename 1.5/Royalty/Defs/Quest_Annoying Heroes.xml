@@ -26,9 +26,9 @@
         </questNameRules>
         <questDescriptionRules>
           <rulesStrings>
-            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have [fluff] resting in a nearby work site! [faction_name] is normally tolerant of miguided super-powered beings, but [asker_label] says these ones have harrased the [faction_name]'s [faction_pawnsPlural] enough to warrant a response. [faction_name] scouts say that [sitePart0_description] that the [siteFaction_pawnsPlural] are holed up in.
-            \n\n[asker_nameDef] knows there is a mole in [faction_name] who will warn the [siteFaction_pawnsPlural] as soon as a raid is confirmed, meaning you will only have [siteDuration_duration] to go kill the [siteFaction_pawnsPlural] and destroy any security measures they may have set up. This will likely be a difficult fight as [siteFaction_pawnsPlural] are far stronger than the average human and will be expecting you.
-            \n\nThis will give [baseRewards] [faction_royalFavorLabel] to the accepter, [baseRewards] goodwill between your settlement and [faction_name], and additionally gives one of the rewards listed below. At the end of the raid, goodwill between your settlement and [siteFaction_name] will decrease by 25 in addition to the normal penalties caused by attacking another faction's people.
+            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have [fluff] resting in a nearby work site! [faction_name] is normally tolerant of miguided super-powered beings, but [asker_label] says these ones have harrased the [faction_name]'s [faction_pawnsPlural] enough to warrant a response. [faction_name] scouts say that [sitePart0_description] where the [siteFaction_pawnsPlural] are resting briefly.
+            \n\n[asker_nameDef] knows as soon as a raid is confirmed, the [siteFaction_pawnsPlural] will be gone within [siteDuration_duration], so you'll need to move quickly. This will likely be a difficult fight as [siteFaction_pawnsPlural] are far stronger than the average human and will be expecting you.
+            \n\nThis will give [baseRewards] [faction_royalFavorLabel] to the accepter, [baseRewards] goodwill between your settlement and [faction_name], and additionally gives one of the rewards listed below.
             </li>
             <li>fluff(sameQuestsCount==0)->one of their hero squads</li>
             <li>fluff(sameQuestsCount>=1)->another team of heroes</li>
@@ -81,19 +81,13 @@
             <li Class="QuestNode_GetFaction">
                 <storeAs>faction</storeAs>
                 <ofPawn>$asker</ofPawn>
-                <allowEnemy>false</allowEnemy>
+                <allowEnemy>true</allowEnemy>
                 <allowNeutral>true</allowNeutral>
                 <allowAlly>true</allowAlly>
             </li>
 
             <li Class="QuestNode_RequireRoyalFavorFromFaction">
                 <faction>$faction</faction>
-            </li>
-
-            <li Class="QuestNode_End">
-                <inSignal>faction.BecameHostileToPlayer</inSignal>
-                <outcome>InvalidPreAcceptance</outcome>
-                <signalListenMode>NotYetAcceptedOnly</signalListenMode>
             </li>
     
             <li Class="QuestNode_GetSiteTile">
@@ -248,7 +242,7 @@
                   </li>
                   <li Class="QuestNode_ChangeFactionGoodwill">
                     <change>-25</change>
-                    <factionOf>$siteFaction</factionOf>
+                    <factionOf>$heroLeader</factionOf>
                     <reason>SHG_AttackedHeroes</reason>
                   </li>
                 </nodes>
