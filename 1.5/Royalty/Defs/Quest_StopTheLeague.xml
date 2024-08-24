@@ -83,7 +83,7 @@
               <li>SHG_VillainDevice</li>
             </villainousDevices>
             <faction>SuperVillainGang</faction>
-            <sitePartDef>AncientAltar</sitePartDef>
+            <sitePartDef>SHGHero_VillainDevice</sitePartDef>
             <ticksBetweenSubquests>60000~120000</ticksBetweenSubquests> <!--Defaults to 1~2 days-->
             <totalSubquests>3</totalSubquests> <!--The number of devices that need to be destroyed before the main one becomes available-->
           </li>
@@ -93,38 +93,34 @@
     </QuestScriptDef>
   
     <QuestScriptDef>
-      <defName>SHGHero_DestroyVillainousDevice</defName>
-      <rootSelectionWeight>0</rootSelectionWeight>
-      <defaultChallengeRating>3</defaultChallengeRating>
-      <isRootSpecial>true</isRootSpecial>
-      <epicParent>SHGHero_EndGame_StopTheLeague</epicParent>
-      <questNameRules>
-        <rulesStrings>
-          <li>questName->Destroy Villainous Device</li>
-        </rulesStrings>
-      </questNameRules>
-      <questDescriptionRules>
-        <rulesStrings>
-        
-          <!-- description -->
-          <li>questDescription->You've learned of an ancient complex nearby. It is said to contain information about [relic_name].\n\nIf you can break into the structure and hack the computers inside, you can collect the information.\n\nWatch out - there may be all manner of dangers inside, and other enemies may also be attracted by activity at the structure.</li>
-  
-        </rulesStrings>
-      </questDescriptionRules>
-      <questContentRules>
-        <rulesStrings>
-          
-          <!-- Misc -->
-          <li>terminalHackedMessage->Terminal hacked. {COUNT} / [terminalCount] complete.</li>
-          <li>allTerminalsHackedMessage->You've hacked all of the terminals and discovered secret information about [relic_name]! You can now leave.</li>
-  
-        </rulesStrings>
-      </questContentRules>
-      <root Class="QuestNode_Root_Hack_AncientComplex" />
-      <!--Needs reworked completely for obvious reasons-->
+        <defName>SHGHero_DestroyVillainousDevice</defName>
+        <rootSelectionWeight>0</rootSelectionWeight>
+        <defaultChallengeRating>3</defaultChallengeRating>
+        <isRootSpecial>true</isRootSpecial>
+        <epicParent>SHGHero_EndGame_StopTheLeague</epicParent>
+        <questNameRules>
+            <rulesStrings>
+                <li>questName->Destroy Villainous Device</li>
+            </rulesStrings>
+        </questNameRules>
+        <questDescriptionRules>
+            <rulesStrings>
+                
+                <!-- description -->
+                <li>questDescription->You've learned of a villain complex nearby that contains a doomsday device. This device is probably .\n\nWatch out - there may be all manner of dangers inside, and other enemies may also be attracted by activity at the structure.</li>
+            </rulesStrings>
+        </questDescriptionRules>
+        <questContentRules>
+            <rulesStrings>
+                <!-- Misc -->
+                <li>terminalHackedMessage->Terminal hacked. {COUNT} / [terminalCount] complete.</li>
+                <li>allTerminalsHackedMessage->You can now leave.</li>
+            </rulesStrings>
+        </questContentRules>
+        <root Class="QuestNode_Root_Hack_AncientComplex" />
+        <!--Needs reworked completely for obvious reasons-->
     </QuestScriptDef>
-  
-  </Defs>
+</Defs>
 
 <!-- 
 Becoming enemies with The Hero Organization will NOT cause a quest failure, but the player must be allies to receive the quest in the first place

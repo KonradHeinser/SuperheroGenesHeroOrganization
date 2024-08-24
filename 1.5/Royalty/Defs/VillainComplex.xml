@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <SitePartDef>
+        <defName>SHGHero_VillainComplex</defName>
+        <label>villain complex</label>
+        <description>A villain complex housing a dangerous device.</description>
+        <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
+        <workerClass>SuperHeroGenesBase.SitePartWorker_FactionComplex</workerClass>
+        <conditionCauserDef>SHG_VillainDevice</conditionCauserDef>
+        <expandingIconTexture>World/WorldObjects/Expanding/Sites/AncientRelic</expandingIconTexture>
+        <approachOrderString>Investigate {0}</approachOrderString>
+        <approachingReportString>Investigate {0}</approachingReportString>
+        <arrivedLetter>There is a villain complex housing a dangerous device in this area.</arrivedLetter>
+        <arrivedLetterDef>NeutralEvent</arrivedLetterDef>
+        <wantsThreatPoints>true</wantsThreatPoints>
+        <tags>
+            <li>SHGHero_VillainComplex</li>
+        </tags>
+    </SitePartDef>
+  
+    <GenStepDef>
+        <defName>SHGHero_VillainComplex</defName>
+        <linkWithSite>SHGHero_VillainComplex</linkWithSite>
+        <order>450</order>
+        <genStep Class="GenStep_Outpost" /> <!--May need to remake GenStep_AncientComplex-->
+    </GenStepDef>
+  
+    <ComplexLayoutDef>
+        <defName>SHGHero_VillainComplex</defName>
+        <workerClass>SuperHeroGenesBase.LayoutWorkerComplex_FixedFaction</workerClass>
+        <roomDefs>
+            <li>SHGHero_Armory</li>
+        </roomDefs>
+        <threats>
+            <li>
+                <def>SHGHero_VillainComplex</def>
+            </li>
+        </threats>
+        <rewardThingSetMakerDef>SHGHero_VillainComplex</rewardThingSetMakerDef>
+    </ComplexLayoutDef>
+    
+    <ComplexThreatDef>
+        <defName>SHGHero_VillainComplex</defName>
+        <workerClass>ComplexThreatWorker_Ambush</workerClass>
+        <faction>SuperVillainGang</faction>
+        <minPoints>500</minPoints>
+    </ComplexThreatDef>
+
+    <LayoutRoomDef Abstract="True" Name="SHGHero_VillainComplex">
+        <floorTypes>
+            <li>PavedTile</li>
+            <li>Concrete</li>
+        </floorTypes>
+    </LayoutRoomDef>
+    
+    <LayoutRoomDef ParentName="SHGHero_VillainComplex">
+        <defName>SHGHero_Armory</defName>
+        <selectionWeight>1</selectionWeight>
+        <sketchResolverDef>SHGHero_Armory</sketchResolverDef>
+        <areaSizeRange>25~26</areaSizeRange>
+    </LayoutRoomDef>
+
+    <SketchResolverDef>
+        <defName>SHGHero_Armory</defName>
+        <isRoot>true</isRoot>
+        <resolver Class="SketchResolver_AncientArmory" />
+    </SketchResolverDef>
+        
+    
+    <ThingSetMakerDef>
+        <defName>SHGHero_VillainComplex</defName>
+        <root Class="ThingSetMaker_RandomOption">
+          <options>
+            <!-- Survival meal -->
+            <li>
+              <weight>1</weight>
+              <thingSetMaker Class="ThingSetMaker_StackCount">
+                <fixedParams>
+                  <filter>
+                    <thingDefs>
+                      <li>MealSurvivalPack</li>
+                    </thingDefs>
+                  </filter>
+                  <countRange>3~9</countRange>
+                </fixedParams>
+              </thingSetMaker>
+            </li>
+    
+            <!-- Medicine -->
+            <li>
+              <weight>1</weight>
+              <thingSetMaker Class="ThingSetMaker_StackCount">
+                <fixedParams>
+                  <filter>
+                    <thingDefs>
+                      <li>MedicineIndustrial</li>
+                    </thingDefs>
+                  </filter>
+                  <countRange>5~9</countRange>
+                </fixedParams>
+              </thingSetMaker>
+            </li>
+    
+            <!-- Luciferium -->
+            <li>
+              <weight>1</weight>
+              <thingSetMaker Class="ThingSetMaker_StackCount">
+                <fixedParams>
+                  <filter>
+                    <thingDefs>
+                      <li>Luciferium</li>
+                    </thingDefs>
+                  </filter>
+                  <countRange>7~18</countRange>
+                </fixedParams>
+              </thingSetMaker>
+            </li>
+    
+            <!-- Uranium, Jade, and Plasteel -->
+            <li>
+              <weight>3</weight>
+              <thingSetMaker Class="ThingSetMaker_StackCount">
+                <fixedParams>
+                  <filter>
+                    <thingDefs>
+                      <li>Uranium</li>
+                      <li>Jade</li>
+                      <li>Plasteel</li>
+                    </thingDefs>
+                  </filter>
+                  <countRange>45~75</countRange>
+                </fixedParams>
+              </thingSetMaker>
+            </li>
+                
+            <!-- Advanced components -->
+            <li>
+              <weight>0.15</weight>
+              <thingSetMaker Class="ThingSetMaker_StackCount">
+                <fixedParams>
+                  <filter>
+                    <thingDefs>
+                      <li>ComponentSpacer</li>
+                    </thingDefs>
+                  </filter>
+                  <countRange>2~4</countRange>
+                </fixedParams>
+              </thingSetMaker>
+            </li>
+    
+            <!-- Ultratech meds -->
+            <li>
+              <weight>0.15</weight>
+              <thingSetMaker Class="ThingSetMaker_StackCount">
+                <fixedParams>
+                  <filter>
+                    <thingDefs>
+                      <li>MedicineUltratech</li>
+                    </thingDefs>
+                  </filter>
+                  <countRange>2~5</countRange>
+                </fixedParams>
+              </thingSetMaker>
+            </li>
+    
+            <!-- Techprint -->
+            <li>
+              <weight>0.05</weight> 
+              <thingSetMaker Class="ThingSetMaker_Count">
+                <fixedParams>
+                  <filter>
+                    <thingSetMakerTagsToAllow>
+                      <li>Techprint</li>
+                    </thingSetMakerTagsToAllow>
+                  </filter>
+                  <countRange>1</countRange>
+                </fixedParams>
+              </thingSetMaker>
+            </li>
+    
+            <!-- Misc high value -->
+            <li>
+              <weight>0.05</weight>
+              <thingSetMaker Class="ThingSetMaker_StackCount">
+                <fixedParams>
+                  <filter>
+                    <thingDefs>
+                      <li>Apparel_PsychicInsanityLance</li>
+                      <li>Apparel_PsychicShockLance</li>
+                      <li>Gun_DoomsdayRocket</li>
+                      <li>Gun_TripleRocket</li>
+                      <li>MechSerumHealer</li>
+                      <li>MechSerumResurrector</li>
+                      <li>OrbitalTargeterBombardment</li>
+                      <li>OrbitalTargeterPowerBeam</li>
+                      <li>PsychicAnimalPulser</li>
+                      <li>PsychicEmanator</li>
+                      <li>PsychicSoothePulser</li>
+                      <li>ReinforcedBarrel</li>
+                      <li>Shell_AntigrainWarhead</li>
+                      <li>TechprofSubpersonaCore</li>
+                      <li>TornadoGenerator</li>
+                      <li>VanometricPowerCell</li>
+                      <li MayRequire="Ludeon.RimWorld.Biotech">ArchiteCapsule</li>
+                      <li MayRequire="Ludeon.RimWorld.Biotech">DeathrestCapacitySerum</li>
+                      <li MayRequire="Ludeon.RimWorld.Anomaly">BiomutationPulser</li>
+                      <li MayRequire="Ludeon.RimWorld.Anomaly">Apparel_BiomutationLance</li>
+                    </thingDefs>
+                  </filter>
+                  <countRange>1</countRange>
+                </fixedParams>
+              </thingSetMaker>
+            </li>
+        
+       <!-- Books -->
+            <li>
+              <weight>0.7</weight>
+              <thingSetMaker Class="ThingSetMaker_StackCount">
+                <fixedParams>
+                  <filter>
+                    <thingDefs>
+                      <li MayRequire="Ludeon.RimWorld.Anomaly">Tome</li>
+                      <li>TextBook</li>
+                      <li>Schematic</li>
+                      <li>Novel</li>
+                    </thingDefs>
+                  </filter>
+                  <countRange>1</countRange>
+                </fixedParams>
+              </thingSetMaker>
+            </li>
+          </options>
+        </root>
+    </ThingSetMakerDef>
+</Defs>
