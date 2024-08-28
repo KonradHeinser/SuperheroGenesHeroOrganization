@@ -16,6 +16,7 @@
                 <rect>(0.1, 0.8, 5.8, 3.9)</rect>
             </damageData>
         </graphicData> 
+        <size>(6,5)</size>
         <altitudeLayer>Building</altitudeLayer>
         <pathCost>50</pathCost>
         <blockWind>true</blockWind>
@@ -78,6 +79,11 @@
       </questDescriptionRules>
       <root Class="QuestNode_Sequence">
         <nodes>
+          <li Class="QuestNode_Set">
+            <name>points</name>
+            <value>6000</value>
+          </li>
+
           <li Class="SuperHeroGenesBase.QuestNode_Root_StopTheLeague">
             <villainousDevices>
               <li>SHG_VillainDevice</li>
@@ -88,6 +94,41 @@
             <totalSubquests>3</totalSubquests> <!--The number of devices that need to be destroyed before the main one becomes available-->
           </li>
           <!--Need end game when quest success, plus giving ever evolving hediffs. Hediff that gradually increases ever-evolving hediffs?-->
+
+          <li Class="QuestNode_GetPawn">
+            <storeAs>asker</storeAs>
+            <mustBeFactionLeader>true</mustBeFactionLeader>
+            <mustBeOfKind>SHG_HeroLeader</mustBeOfKind>
+            <ifWorldPawnThenMustBeFreeOrLeader>true</ifWorldPawnThenMustBeFreeOrLeader>
+            <mustBeWorldPawn>false</mustBeWorldPawn>
+        </li>
+
+          <li Class="QuestNode_Signal">
+            <inSignal>thing.Destroyed</inSignal>
+            <node Class="QuestNode_Sequence">
+              <nodes>
+                
+                <li Class="QuestNode_EndGame">
+                  <signalListenMode>Always</signalListenMode>
+                  <introText TKey="SHG_HeroEndIntro">You've successfully destroyed the villainous device for [asker_faction_name]!</introText>
+                  <endingText TKey="SHG_HeroEndOutro">With this, the plan that the villains had has been set back decades, giving this world a chance for a brighter future. Most people will never know what happened here, and once your people leave with whatever loot they can find this place will be razed by a squad of S-Rank heroes. It looks some of those at the site did receive an unexpected reward for your good deed.</endingText>
+                </li>
+                <li Class="QuestNode_ChangeFactionGoodwill">
+                  <change>100</change>
+                  <factionOf>$asker</factionOf>
+                  <reason>SHGHero_StopTheLeague</reason>
+                </li>
+                <li Class="QuestNode_ChangeFactionGoodwill">
+                  <change>-100</change>
+                  <faction>SuperVillainGang</faction>
+                  <reason>SHGHero_StopTheLeague</reason>
+                </li>
+                <li Class="QuestNode_End">
+                  <outcome>Success</outcome>
+                </li>
+              </nodes>
+            </node>
+          </li>
         </nodes>
       </root>
     </QuestScriptDef>

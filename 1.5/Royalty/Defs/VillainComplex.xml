@@ -22,14 +22,34 @@
         <defName>SHGHero_VillainComplex</defName>
         <linkWithSite>SHGHero_VillainComplex</linkWithSite>
         <order>450</order>
-        <genStep Class="GenStep_Outpost" /> <!--May need to remake GenStep_AncientComplex-->
+        <genStep Class="SuperHeroGenesBase.GenStep_ComplexLayout">
+          <ruleDef>VillainComplex</ruleDef>
+        </genStep>
     </GenStepDef>
+
+    <RuleDef>
+      <defName>VillainComplex</defName>
+      <symbol>villainComplex</symbol>
+      <resolvers>
+        <li Class="SuperHeroGenesBase.SymbolResolver_NewComplex">
+          <minRectSize>(50, 50)</minRectSize>
+          <defaultLayout>SHGHero_VillainComplex</defaultLayout>
+          <firstLayerThingOptions>
+            <li>RawToxipotato</li>
+          </firstLayerThingOptions>
+        </li>
+      </resolvers>
+    </RuleDef>  
   
     <ComplexLayoutDef>
         <defName>SHGHero_VillainComplex</defName>
         <workerClass>SuperHeroGenesBase.LayoutWorkerComplex_FixedFaction</workerClass>
         <roomDefs>
             <li>SHGHero_Armory</li>
+            <li>SHGHero_BufferRoom</li>
+            <li>SHGHero_StorageRoom</li>
+            <li>SHGHero_Barracks</li>
+            <li>SHGHero_Fridge</li>
         </roomDefs>
         <threats>
             <li>
@@ -42,30 +62,12 @@
     <ComplexThreatDef>
         <defName>SHGHero_VillainComplex</defName>
         <workerClass>ComplexThreatWorker_Ambush</workerClass>
+        <signalActionAmbushType>Normal</signalActionAmbushType>
+        <allowPassive>false</allowPassive>
+        <fallbackToRoomEnteredTrigger>true</fallbackToRoomEnteredTrigger>
         <faction>SuperVillainGang</faction>
         <minPoints>500</minPoints>
     </ComplexThreatDef>
-
-    <LayoutRoomDef Abstract="True" Name="SHGHero_VillainComplex">
-        <floorTypes>
-            <li>PavedTile</li>
-            <li>Concrete</li>
-        </floorTypes>
-    </LayoutRoomDef>
-    
-    <LayoutRoomDef ParentName="SHGHero_VillainComplex">
-        <defName>SHGHero_Armory</defName>
-        <selectionWeight>1</selectionWeight>
-        <sketchResolverDef>SHGHero_Armory</sketchResolverDef>
-        <areaSizeRange>25~26</areaSizeRange>
-    </LayoutRoomDef>
-
-    <SketchResolverDef>
-        <defName>SHGHero_Armory</defName>
-        <isRoot>true</isRoot>
-        <resolver Class="SketchResolver_AncientArmory" />
-    </SketchResolverDef>
-        
     
     <ThingSetMakerDef>
         <defName>SHGHero_VillainComplex</defName>

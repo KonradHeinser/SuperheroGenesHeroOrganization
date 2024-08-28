@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <LayoutRoomDef Abstract="True" Name="SHGHero_VillainComplex">
+        <selectionWeight>1</selectionWeight>
+        <floorTypes>
+            <li>TileSlate</li>
+        </floorTypes>
+    </LayoutRoomDef>
+
+    <LayoutRoomDef ParentName="SHGHero_VillainComplex">
+        <defName>SHGHero_Armory</defName>
+        <sketchResolverDef>SHGHero_Armory</sketchResolverDef>
+        <areaSizeRange>10~20</areaSizeRange>
+    </LayoutRoomDef>
+
+    <SketchResolverDef>
+        <defName>SHGHero_Armory</defName>
+        <isRoot>true</isRoot>
+        <resolver Class="SuperHeroGenesBase.SketchResolver_FlexibleRoom">
+            <centerThing>ReinforcedBarrel</centerThing>
+            <wallEdgeThing>Shelf</wallEdgeThing>
+        </resolver>
+    </SketchResolverDef>
+
+    <LayoutRoomDef ParentName="SHGHero_VillainComplex">
+        <defName>SHGHero_Fridge</defName>
+        <sketchResolverDef>SHGHero_Fridge</sketchResolverDef>
+        <areaSizeRange>5~20</areaSizeRange>
+        <countRange>0~1</countRange>
+    </LayoutRoomDef>
+    
+    <SketchResolverDef>
+        <defName>SHGHero_Fridge</defName>
+        <isRoot>true</isRoot>
+        <resolver Class="SuperHeroGenesBase.SketchResolver_FlexibleRoom">
+            <cornerThing>MealSurvivalPack</cornerThing>
+            <wallEdgeThing>Shelf</wallEdgeThing>
+            <centerThing>MealSurvivalPack</centerThing>
+        </resolver>
+    </SketchResolverDef>
+
+    <LayoutRoomDef ParentName="SHGHero_VillainComplex">
+        <defName>SHGHero_BufferRoom</defName>
+        <sketchResolverDef>SHGHero_BufferRoom</sketchResolverDef>
+        <areaSizeRange>5~200</areaSizeRange>
+        <selectionWeight>0.1</selectionWeight>
+    </LayoutRoomDef>
+    
+    <SketchResolverDef>
+        <defName>SHGHero_BufferRoom</defName>
+        <isRoot>true</isRoot>
+        <resolver Class="SuperHeroGenesBase.SketchResolver_FlexibleRoom">
+            <cornerThing>TorchLamp</cornerThing>
+        </resolver>
+    </SketchResolverDef>
+
+    <LayoutRoomDef ParentName="SHGHero_VillainComplex">
+        <defName>SHGHero_StorageRoom</defName>
+        <sketchResolverDef>SHGHero_StorageRoom</sketchResolverDef>
+        <areaSizeRange>20~30</areaSizeRange>
+    </LayoutRoomDef>
+    
+    <SketchResolverDef>
+        <defName>SHGHero_StorageRoom</defName>
+        <isRoot>true</isRoot>
+        <resolver Class="SuperHeroGenesBase.SketchResolver_FlexibleRoom">
+            <centerThing>Shelf</centerThing>
+            <wallEdgeThing>Shelf</wallEdgeThing>
+        </resolver>
+    </SketchResolverDef>
+
+    <LayoutRoomDef ParentName="SHGHero_VillainComplex">
+        <defName>SHGHero_Barracks</defName>
+        <sketchResolverDef>SHGHero_Barracks</sketchResolverDef>
+        <areaSizeRange>30~60</areaSizeRange>
+        <floorTypes Inherit="False">
+            <li>FineTileSlate</li>
+        </floorTypes>
+    </LayoutRoomDef>
+
+    <SketchResolverDef>
+        <defName>SHGHero_Barracks</defName>
+        <isRoot>true</isRoot>
+        <resolver Class="SuperHeroGenesBase.SketchResolver_FlexibleRoom">
+            <bedType>Bed</bedType>
+            <wallEdgeThing>Bed</wallEdgeThing>
+        </resolver>
+    </SketchResolverDef>
+</Defs>
