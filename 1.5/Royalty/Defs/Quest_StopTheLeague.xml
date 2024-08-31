@@ -185,7 +185,7 @@
                 <li Class="QuestNode_EndGame">
                   <signalListenMode>Always</signalListenMode>
                   <introText TKey="SHG_HeroEndIntro">You've successfully destroyed the villainous device for [asker_faction_name]!</introText>
-                  <endingText TKey="SHG_HeroEndOutro">With this, the plan that the villains had has been set back decades, giving this world a chance for a brighter future. Most people will never know what happened here, and once your people leave with whatever loot they can find this place will be razed by a squad of S-Rank heroes. It looks those at the site received an unexpected reward for your good deed.</endingText>
+                  <endingText TKey="SHG_HeroEndOutro">With this, the plan that the villains had has been set back decades, giving this world a chance for a brighter future. Most people will never know what happened here, and once your people leave with whatever loot they can find this place will be razed by a squad of S-Rank heroes. It looks those at the site received a reward for your good deed.</endingText>
                 </li>
                 <li Class="QuestNode_ChangeFactionGoodwill">
                   <change>100</change>
