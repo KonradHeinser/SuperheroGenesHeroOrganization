@@ -46,17 +46,21 @@
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
         <value>
-            <li Class="StorytellerCompProperties_SingleMTB">
-                <mtbDays>30</mtbDays>
+            <li Class="StorytellerCompProperties_OnOffCycle">
                 <incident>SHGHero_OpportunitySite_Rescue</incident>
+                <onDays>5</onDays>
+                <offDays>25</offDays>
+                <numIncidentsRange>1</numIncidentsRange>
             </li>
-            <li Class="StorytellerCompProperties_SingleMTB">
-                <mtbDays>60</mtbDays> <!--Villains are less likely to ask for help because they prefer proactive assistance like gifts and settlement razing-->
+            <li Class="StorytellerCompProperties_OnOffCycle">
                 <incident>SHGVillain_OpportunitySite_Raid</incident>
+                <onDays>5</onDays>
+                <offDays>55</offDays>
+                <numIncidentsRange>1</numIncidentsRange>
             </li>
             <li Class="StorytellerCompProperties_FactionInteraction">
                 <incident>SHG_Hero_CaravanArrivalTributeCollector</incident>
-                <minDaysPassed>10</minDaysPassed>
+                <minDaysPassed>15</minDaysPassed>
                 <baseIncidentsPerYear>4</baseIncidentsPerYear>
                 <minSpacingDays>15</minSpacingDays>
                 <minWealth>20000</minWealth>
@@ -64,6 +68,38 @@
                     <li>Map_PlayerHome</li>
                 </allowedTargetTags>
             </li>
+            <li Class="StorytellerCompProperties_RefiringUniqueQuest">
+                <minDaysPassed>120</minDaysPassed> 
+                <!--2 years need to pass before The Hero Organization will believe you're dedicated enough to life on this world to be trusted with this-->
+                <refireEveryDays>30</refireEveryDays>
+                <incident>SHGHero_EndGame_StopTheLeague</incident>
+                <allowedTargetTags>
+                    <li>World</li>
+                </allowedTargetTags>
+                <enableIfAnyModActive>
+                    <li>Ludeon.RimWorld.Royalty</li>
+                </enableIfAnyModActive>
+            </li>
         </value>
+    </Operation>
+
+    <Operation Class="SuperHeroGenesBase.PatchOperationSetting">
+        <setting>leagueGathering</setting>
+        <active Class="PatchOperationAdd">
+            <xpath>Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
+            <value>
+                <li Class="StorytellerCompProperties_RefiringUniqueQuest">
+                    <minDaysPassed>240</minDaysPassed> 
+                    <!--Doomsday begins about 4 years in-->
+                    <incident>SHGHero_EndGame_LeagueGathering</incident>
+                    <allowedTargetTags>
+                        <li>World</li>
+                    </allowedTargetTags>
+                    <enableIfAnyModActive>
+                        <li>Ludeon.RimWorld.Royalty</li>
+                    </enableIfAnyModActive>
+                </li>    
+            </value>
+        </active>
     </Operation>
 </Patch>

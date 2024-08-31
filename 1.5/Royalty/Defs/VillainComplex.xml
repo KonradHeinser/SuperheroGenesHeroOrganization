@@ -6,7 +6,7 @@
         <description>A villain complex housing a dangerous device.</description>
         <siteTexture>World/WorldObjects/Sites/GenericSite</siteTexture>
         <workerClass>SuperHeroGenesBase.SitePartWorker_FactionComplex</workerClass>
-        <conditionCauserDef>SHG_VillainDevice</conditionCauserDef>
+        <conditionCauserDef>SHG_VillainousDevice</conditionCauserDef>
         <expandingIconTexture>World/WorldObjects/Expanding/Sites/AncientRelic</expandingIconTexture>
         <approachOrderString>Investigate {0}</approachOrderString>
         <approachingReportString>Investigate {0}</approachingReportString>
@@ -32,11 +32,9 @@
       <symbol>villainComplex</symbol>
       <resolvers>
         <li Class="SuperHeroGenesBase.SymbolResolver_NewComplex">
-          <minRectSize>(50, 50)</minRectSize>
+          <minRectSize>(30, 30)</minRectSize>
           <defaultLayout>SHGHero_VillainComplex</defaultLayout>
-          <firstLayerThingOptions>
-            <li>RawToxipotato</li>
-          </firstLayerThingOptions>
+          <defendRadius>6</defendRadius>
         </li>
       </resolvers>
     </RuleDef>  
@@ -44,6 +42,7 @@
     <ComplexLayoutDef>
         <defName>SHGHero_VillainComplex</defName>
         <workerClass>SuperHeroGenesBase.LayoutWorkerComplex_FixedFaction</workerClass>
+        <roomRewardCrateFactor>0</roomRewardCrateFactor>
         <roomDefs>
             <li>SHGHero_Armory</li>
             <li>SHGHero_BufferRoom</li>

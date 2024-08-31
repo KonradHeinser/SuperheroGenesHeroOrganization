@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <IncidentDef ParentName="GiveQuestBase">
+        <defName>SHGHero_EndGame_LeagueGathering</defName>
+        <label>league gathering</label>
+        <questScriptDef>SHGHero_EndGame_LeagueGathering</questScriptDef>
+        <baseChance>0</baseChance> <!-- given by a special storyteller comp if the setting is active -->
+    </IncidentDef>
+  
+    <QuestScriptDef>
+        <defName>SHGHero_EndGame_LeagueGathering</defName>
+        <autoAccept>true</autoAccept>
+        <rootSelectionWeight>0</rootSelectionWeight>
+        <defaultChallengeRating>5</defaultChallengeRating>
+        <isRootSpecial>true</isRootSpecial>
+        <questNameRules>
+            <rulesStrings>
+                <li>questName->League Gathering</li>
+            </rulesStrings>
+        </questNameRules>
+        <questDescriptionRules>
+            <rulesStrings>
+                <li>questDescription->You've learned of a villain complex where an exceptionally large number of villains are gathering. The only reason so many would gather in one place without killing each other is to put a world destroying event into motion. You probably have around [siteDuration_duration] to get to the site to disrupt their plans.\n\nTaking this complex by yourself would be exceptionally difficult, but there's a chance you may be able to work with The Hero Organization to Stop the League. Working with them to destroy some of the smaller Villain Complexes may make it possible for The Organization to bait out some of the villains, leaving the main site easier to take, wherever it happens to be.</li>
+            </rulesStrings>
+        </questDescriptionRules>
+        <root Class="QuestNode_Sequence">
+            <nodes>
+                <li Class="QuestNode_Set">
+                    <name>points</name>
+                    <value>10000</value>
+                </li>
+
+                <li Class="SuperHeroGenesBase.QuestNode_NotAllowedIfOthersPassed">
+                    <quests>
+                        <li>SHG_EndGame_ArmageddonClock</li>
+                        <li>SHGHero_EndGame_StopTheLeague</li>
+                    </quests>
+                </li>
+
+                <li Class="QuestNode_GetSiteTile">
+                    <storeAs>siteTile</storeAs>
+                    <preferCloserTiles>true</preferCloserTiles>
+                </li>
+
+                <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
+                    <storeAs>sitePartDefs</storeAs>
+                    <storeFactionAs>siteFaction</storeFactionAs>
+                    <sitePartsTags>
+                        <li><tag>SHGHero_VillainComplex</tag></li>
+                    </sitePartsTags>
+                </li>
+
+                <li Class="QuestNode_GetDefaultSitePartsParams">
+                    <tile>$siteTile</tile>
+                    <faction>$siteFaction</faction>
+                    <sitePartDefs>$sitePartDefs</sitePartDefs>
+                    <storeSitePartsParamsAs>sitePartsParams</storeSitePartsParamsAs>
+                </li>
+
+                <li Class="QuestNode_SubScript">
+                    <def>Util_GetDefaultRewardValueFromPoints</def>
+                    <parms>
+                        <!-- Curve based on threat points to find a good market value -->
+                        <points>$sitePoints</points>
+                    </parms>
+                </li>
+                
+                <li Class="QuestNode_SubScript">
+                    <def>Util_GenerateSite</def>
+                </li>
+
+                <li Class="QuestNode_SpawnWorldObjects">
+                    <worldObjects>$site</worldObjects>
+                </li>
+
+                <li Class="QuestNode_Set">
+                    <name>siteDuration</name>
+                    <value>3600000</value>
+                </li>
+
+                <li Class="SuperHeroGenesBase.QuestNode_FailOtherQuests">
+                    <inSignal>endQuests</inSignal>
+                    <quests>
+                        <li>SHGHero_EndGame_StopTheLeague</li>
+                        <li>SHG_EndGame_ArmageddonClock</li>
+                    </quests>
+                </li>
+
+                <li Class="QuestNode_Signal">
+                    <inSignal>site.Destroyed</inSignal>
+                    <node Class="QuestNode_Sequence">
+                        <nodes>
+                            <li Class="QuestNode_Letter">
+                                <label TKey="LetterLabelQuestFailed">Quest failed: [resolvedQuestName]</label>
+                                <text TKey="LetterTextQuestFailed">We left before destroying the device, and there's no way to be ready to engage again before they finish activating their device. The quest [resolvedQuestName] has ended, and soon the world will be too.</text>
+                            </li>
+                            <li Class="QuestNode_SendSignals">
+                                <outSignals>
+                                    <li>endQuests</li>
+                                </outSignals>
+                            </li>
+                            <!--Start armageddon-->
+                            <li Class="QuestNode_GameCondition">
+                                <gameCondition>SHGHero_ArmageddonClock</gameCondition>
+                                <targetWorld>True</targetWorld>
+                                <duration>60000</duration>
+                            </li>
+                            <li Class="QuestNode_End">
+                                <outcome>Fail</outcome>
+                            </li>
+                        </nodes>
+                    </node>
+                </li>
+
+                <li Class="QuestNode_WorldObjectTimeout">
+                    <worldObject>$site</worldObject>
+                    <isQuestTimeout>true</isQuestTimeout>
+                    <delayTicks>$siteDuration</delayTicks>
+                    <inSignalDisable>site.MapGenerated</inSignalDisable>
+                    <destroyOnCleanup>true</destroyOnCleanup>
+                    <node Class="QuestNode_Sequence">
+                        <nodes>
+                            <li Class="QuestNode_Letter">
+                                <label TKey="LetterLabelQuestFailed">Quest failed: [resolvedQuestName]</label>
+                                <text TKey="LetterTextQuestFailed">The deafening roar of a legion of ships taking off is quickly followed followed by an eerie silence. The quest [resolvedQuestName] has ended, and soon the world will be too.</text>
+                            </li>
+                            <li Class="QuestNode_SendSignals">
+                                <outSignals>
+                                    <li>endQuests</li>
+                                </outSignals>
+                            </li>
+                            <!--Start armageddon-->
+                            <li Class="QuestNode_GameCondition">
+                                <gameCondition>SHGHero_ArmageddonClock</gameCondition>
+                                <targetWorld>True</targetWorld>
+                                <duration>60000</duration>
+                            </li>
+                            <li Class="QuestNode_End">
+                                <outcome>Fail</outcome>
+                            </li>
+                        </nodes>
+                    </node>
+                </li>
+
+                <li Class="QuestNode_Signal">
+                    <inSignal>thing.Destroyed</inSignal>
+                    <node Class="QuestNode_Sequence">
+                        <nodes>
+                            <li Class="QuestNode_EndGame">
+                                <signalListenMode>Always</signalListenMode>
+                                <introText TKey="SHG_HeroEndIntro">You've successfully destroyed the villainous device!</introText>
+                                <endingText TKey="SHG_HeroEndOutro">With this, the plan that the villains had has been set back decades, giving this world a chance for a brighter future. Most people will never know what happened here, and once your people leave with whatever loot they can find this place will be probably be picked clean by scavengers. It looks those at the site received an unexpected boon caused by the gas.</endingText>
+                            </li>
+                            <li Class="QuestNode_SendSignals">
+                                <outSignals>
+                                    <li>endQuests</li>
+                                </outSignals>
+                            </li>
+                            <li Class="QuestNode_ChangeFactionGoodwill">
+                                <change>-100</change>
+                                <faction>SuperVillainGang</faction>
+                                <reason>SHGHero_StopTheLeague</reason>
+                            </li>
+                            <li Class="QuestNode_End">
+                                <outcome>Success</outcome>
+                            </li>
+                        </nodes>
+                    </node>
+                </li>
+            </nodes>
+        </root>
+    </QuestScriptDef>
+</Defs>

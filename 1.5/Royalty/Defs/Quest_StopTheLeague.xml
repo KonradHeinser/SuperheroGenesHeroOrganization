@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-    <ThingDef ParentName="BuildingBase">
-        <defName>SHG_VillainDevice</defName>
-        <label>villain device</label>
-        <description>An ultratech weapon of mass destruction repurposed to work in a network that will blanket the planet in a lethal gas. If a planet has enough of them they can all be activated at the same time to begin the somewhat lengthy process of blanketing the world, but this network will be broken if the main one is destroyed.</description>   
+    <ThingDef ParentName="BuildingBase" Name="SHGHero_VillainousDevice">
+        <defName>SHG_VillainousDevice</defName>
+        <label>villainous device</label>
+        <description>An ultratech weapon of mass destruction repurposed to work in a network that will blanket the planet in a lethal gas. If a planet has enough of them they can all be activated at the same time to begin the somewhat lengthy process of blanketing the world, but this network will be broken if one of the main ones is destroyed.</description>   
         <graphicData>
             <texPath>Things/Building/Misc/SmokeSpewer</texPath>
             <graphicClass>Graphic_Single</graphicClass>
@@ -35,6 +35,7 @@
         </damageMultipliers>
         <building>
           <claimable>false</claimable>
+          <deconstructible>false</deconstructible>
           <destroySound>BuildingDestroyed_Metal_Big</destroySound>
         </building>
         <rotatable>false</rotatable>
@@ -46,18 +47,40 @@
         <repairEffect>ConstructMetal</repairEffect>
         <forceDebugSpawnable>true</forceDebugSpawnable>
         <killedLeavings>
-          <Steel>60</Steel>
-          <ComponentIndustrial>1</ComponentIndustrial>
-          <Plasteel>10</Plasteel>
-          <ChunkSlagSteel>4</ChunkSlagSteel>
+          <Steel>100</Steel>
+          <ComponentIndustrial>5</ComponentIndustrial>
+          <Plasteel>50</Plasteel>
         </killedLeavings>    
+        <comps>
+          <!--Turns out adding hediffs via rewards is really really hard due to how quests are designed. This gives the hediff to all colonists on the map when destroyed-->
+          <li Class="SuperHeroGenesBase.CompProperties_GiveHediffsToColonistsOnDestroy">
+            <hediff>SHGHero_EverEvolving</hediff>
+          </li>
+        </comps>
     </ThingDef>
+
+    <HistoryEventDef>
+      <defName>SHGHero_HinderedTheLeague</defName>
+      <label>hindered The League's villainous plan</label>
+    </HistoryEventDef>
 
     <HistoryEventDef>
       <defName>SHGHero_StopTheLeague</defName>
       <label>stopped The League's villainous plan</label>
     </HistoryEventDef>
   
+    <IncidentDef ParentName="GiveQuestBase">
+      <defName>SHGHero_EndGame_StopTheLeague</defName>
+      <label>stop the league</label>
+      <questScriptDef>SHGHero_EndGame_StopTheLeague</questScriptDef>
+      <baseChance>0</baseChance> <!-- given by a special storyteller comp -->
+    </IncidentDef>
+
+    <GameConditionDef ParentName="SHG_ArmageddonClock">
+      <defName>SHGHero_ArmageddonClock</defName>
+      <conditionClass>SuperHeroGenesBase.GameCondition_ArmageddonClockFailure</conditionClass>
+    </GameConditionDef>
+
     <QuestScriptDef>
       <defName>SHGHero_EndGame_StopTheLeague</defName>
       <rootSelectionWeight>0</rootSelectionWeight>
@@ -73,27 +96,45 @@
       </questNameRules>
       <questDescriptionRules>
         <rulesStrings>
-          <li>questDescription->The villains appear to be planning something that may kill a large number of people!</li>
-          <li>questDescriptionPartBeforeDiscovery->First you'll need to destroy some of the nearby devices that are making it hard to pinpoint which one is the central point of the network.</li>
+          <li>questDescription->The villains appear to be planning something that may kill a large number of people! It appears to be some elaborate plan involving a bunch of gas-releasing devices that will wipe out everything in the world when they are all activated at the same time. Once a central device is located you'll have one chance to break in and destroy it, and if you fail The League will start their terrible plan early, dooming this world forever. </li>
+          <li>questDescriptionPartBeforeDiscovery->First you'll need to destroy some of the nearby devices that are making it hard to pinpoint which one is a central point of the network.</li>
+          <li>questDescriptionPartAfterDiscovery->You'll have to prepare a lot before you go there because the place will be swarming with super-villains. You'll only have one chance to enter this site before they decide to skip any remaining precautions and wipe out this world.\n\nIf you enter the site then leave it, you will lose the game. They won't bother starting it up on their own though, so you can make as many preparations as you need.</li>
         </rulesStrings>
       </questDescriptionRules>
       <root Class="QuestNode_Sequence">
         <nodes>
+          <li Class="SuperHeroGenesBase.QuestNode_NotAllowedIfOthersPassed">
+            <quests>
+                <li>SHG_EndGame_ArmageddonClock</li>
+                <li>SHGHero_EndGame_LeagueGathering</li>
+            </quests>
+          </li>
+
           <li Class="QuestNode_Set">
             <name>points</name>
             <value>6000</value>
           </li>
 
+          <li Class="QuestNode_SubScript">
+            <def>Util_GetDefaultRewardValueFromPoints</def>
+            <parms>
+              <!-- Curve based on threat points to find a good market value -->
+              <points>$sitePoints</points>
+            </parms>
+          </li>
+
+          <li Class="QuestNode_RequirementsToAcceptColonistWithTitle">
+            <minimumTitle>SHG_HeroRank_S</minimumTitle>
+            <faction>SHG_SuperheroOrganization</faction>
+          </li>
+
           <li Class="SuperHeroGenesBase.QuestNode_Root_StopTheLeague">
-            <villainousDevices>
-              <li>SHG_VillainDevice</li>
-            </villainousDevices>
-            <faction>SuperVillainGang</faction>
+            <faction>SHG_SuperheroOrganization</faction>
+            <enemyFaction>SuperVillainGang</enemyFaction>
             <sitePartDef>SHGHero_VillainComplex</sitePartDef>
             <ticksBetweenSubquests>60000~120000</ticksBetweenSubquests> <!--Defaults to 1~2 days-->
             <totalSubquests>3</totalSubquests> <!--The number of devices that need to be destroyed before the main one becomes available-->
           </li>
-          <!--Need end game when quest success, plus giving ever evolving hediffs. Hediff that gradually increases ever-evolving hediffs?-->
 
           <li Class="QuestNode_GetPawn">
             <storeAs>asker</storeAs>
@@ -101,17 +142,50 @@
             <mustBeOfKind>SHG_HeroLeader</mustBeOfKind>
             <ifWorldPawnThenMustBeFreeOrLeader>true</ifWorldPawnThenMustBeFreeOrLeader>
             <mustBeWorldPawn>false</mustBeWorldPawn>
-        </li>
+          </li>
+
+          <li Class="SuperHeroGenesBase.QuestNode_FailOtherQuests">
+            <inSignal>endQuests</inSignal>
+            <quests>
+              <li>SHGHero_EndGame_LeagueGathering</li>
+              <li>SHG_EndGame_ArmageddonClock</li>
+            </quests>
+          </li>
+
+          <li Class="QuestNode_Signal">
+            <inSignal>site.Destroyed</inSignal>
+            <node Class="QuestNode_Sequence">
+              <nodes>
+                <li Class="QuestNode_Letter">
+                  <label TKey="LetterLabelQuestFailed">Quest failed: [resolvedQuestName]</label>
+                  <text TKey="LetterTextQuestFailed">We left before destroying the device, and there's no way to be ready to engage again before the gas is released. The quest [resolvedQuestName] has ended, and soon the world will be too.</text>
+                </li>
+                <li Class="QuestNode_SendSignals">
+                  <outSignals>
+                    <li>endQuests</li>
+                  </outSignals>
+                </li>
+                <!--Start armageddon-->
+                <li Class="QuestNode_GameCondition">
+                  <gameCondition>SHGHero_ArmageddonClock</gameCondition>
+                  <targetWorld>True</targetWorld>
+                  <duration>60000</duration>
+                </li>
+                <li Class="QuestNode_End">
+                  <outcome>Fail</outcome>
+                </li>
+              </nodes>
+            </node>
+          </li>
 
           <li Class="QuestNode_Signal">
             <inSignal>thing.Destroyed</inSignal>
             <node Class="QuestNode_Sequence">
               <nodes>
-                
                 <li Class="QuestNode_EndGame">
                   <signalListenMode>Always</signalListenMode>
                   <introText TKey="SHG_HeroEndIntro">You've successfully destroyed the villainous device for [asker_faction_name]!</introText>
-                  <endingText TKey="SHG_HeroEndOutro">With this, the plan that the villains had has been set back decades, giving this world a chance for a brighter future. Most people will never know what happened here, and once your people leave with whatever loot they can find this place will be razed by a squad of S-Rank heroes. It looks some of those at the site did receive an unexpected reward for your good deed.</endingText>
+                  <endingText TKey="SHG_HeroEndOutro">With this, the plan that the villains had has been set back decades, giving this world a chance for a brighter future. Most people will never know what happened here, and once your people leave with whatever loot they can find this place will be razed by a squad of S-Rank heroes. It looks those at the site received an unexpected reward for your good deed.</endingText>
                 </li>
                 <li Class="QuestNode_ChangeFactionGoodwill">
                   <change>100</change>
@@ -123,6 +197,11 @@
                   <faction>SuperVillainGang</faction>
                   <reason>SHGHero_StopTheLeague</reason>
                 </li>
+                <li Class="QuestNode_SendSignals">
+                  <outSignals>
+                    <li>endQuests</li>
+                  </outSignals>
+                </li>
                 <li Class="QuestNode_End">
                   <outcome>Success</outcome>
                 </li>
@@ -132,11 +211,39 @@
         </nodes>
       </root>
     </QuestScriptDef>
+
+    <HediffDef>
+      <defName>SHGHero_EverEvolving</defName>
+      <label>ever evolving</label>
+      <description>This pawn's body is constantly evolving in different ways. It will probably take a quite while for their bodies to finish evolving, but once it does they'll be far stronger than they were before. This evolution will not pass onto any children this pawn may end up having.</description>
+      <hediffClass>HediffWithComps</hediffClass>
+      <initialSeverity>1.01</initialSeverity>
+      <comps>
+        <li Class="SuperHeroGenesBase.HediffCompProperties_CreateOtherHediffs">
+          <hediffSets>
+            <li>
+              <hediffDef>SHG_EverEvolving_Foodless</hediffDef>
+              <initialSeverity>1</initialSeverity>
+              <severityPerDay>1</severityPerDay>
+            </li>
+            <li>
+              <hediffDef>SHG_EverEvolving_Enlightenment</hediffDef>
+              <initialSeverity>1</initialSeverity>
+              <severityPerDay>1</severityPerDay>
+            </li>
+          </hediffSets>
+        </li>
+        <li Class="HediffCompProperties_SeverityPerDay">
+          <severityPerDay>-0.01</severityPerDay>
+          <showDaysToRecover>true</showDaysToRecover>
+        </li>
+      </comps>
+    </HediffDef>
   
     <QuestScriptDef>
         <defName>SHGHero_DestroyVillainousDevice</defName>
         <rootSelectionWeight>0</rootSelectionWeight>
-        <defaultChallengeRating>3</defaultChallengeRating>
+        <defaultChallengeRating>4</defaultChallengeRating>
         <isRootSpecial>true</isRootSpecial>
         <epicParent>SHGHero_EndGame_StopTheLeague</epicParent>
         <questNameRules>
@@ -146,29 +253,112 @@
         </questNameRules>
         <questDescriptionRules>
             <rulesStrings>
-                
-                <!-- description -->
-                <li>questDescription->You've learned of a villain complex nearby that contains a doomsday device. This device is probably .\n\nWatch out - there may be all manner of dangers inside, and other enemies may also be attracted by activity at the structure.</li>
+                <li>questDescription->You've learned of a villain complex nearby that contains a doomsday device. This device doesn't appear to be a central one, but destroying it may help disrupt the network enough to aid in the search.\n\nBe careful - Each new one you find will likely have far stronger defenses than the last as the villains catch onto your plan.</li>
             </rulesStrings>
         </questDescriptionRules>
-        <questContentRules>
-            <rulesStrings>
-                <!-- Misc -->
-                <li>terminalHackedMessage->Terminal hacked. {COUNT} / [terminalCount] complete.</li>
-                <li>allTerminalsHackedMessage->You can now leave.</li>
-            </rulesStrings>
-        </questContentRules>
-        <root Class="QuestNode_Root_Hack_AncientComplex" />
-        <!--Needs reworked completely for obvious reasons-->
+        <root Class="QuestNode_Sequence">
+          <nodes>
+            <li Class="QuestNode_Set">
+              <name>points</name>
+              <value>1500</value>
+            </li>
+
+            <li Class="SuperHeroGenesBase.QuestNode_GetSameQuestsSuccessOnly">
+              <storeAs>sameQuestsCount</storeAs>
+            </li>
+
+            <li Class="QuestNode_Add">
+              <value1>$sameQuestsCount</value1>
+              <value2>1</value2>
+              <storeAs>pointMultiplier</storeAs>
+            </li>
+
+            <li Class="QuestNode_Multiply">
+              <value1>$points</value1>
+              <value2>$pointMultiplier</value2>
+              <storeAs>points</storeAs>
+            </li>
+  
+            <li Class="QuestNode_GetSiteTile">
+              <storeAs>siteTile</storeAs>
+              <preferCloserTiles>true</preferCloserTiles>
+            </li>
+    
+            <li Class="QuestNode_GetSitePartDefsByTagsAndFaction">
+                <storeAs>sitePartDefs</storeAs>
+                <storeFactionAs>siteFaction</storeFactionAs>
+                <sitePartsTags>
+                    <li><tag>SHGHero_VillainComplex</tag></li>
+                </sitePartsTags>
+            </li>
+
+            <li Class="QuestNode_GetDefaultSitePartsParams">
+              <tile>$siteTile</tile>
+              <faction>$siteFaction</faction>
+              <sitePartDefs>$sitePartDefs</sitePartDefs>
+              <storeSitePartsParamsAs>sitePartsParams</storeSitePartsParamsAs>
+            </li>
+
+            <li Class="QuestNode_SubScript">
+              <def>Util_GetDefaultRewardValueFromPoints</def>
+              <parms>
+                <!-- Curve based on threat points to find a good market value -->
+                <points>$sitePoints</points>
+              </parms>
+            </li>
+  
+            <li Class="QuestNode_GetPawn">
+              <storeAs>asker</storeAs>
+              <mustBeFactionLeader>true</mustBeFactionLeader>
+              <mustBeOfKind>SHG_HeroLeader</mustBeOfKind>
+              <ifWorldPawnThenMustBeFreeOrLeader>true</ifWorldPawnThenMustBeFreeOrLeader>
+              <mustBeWorldPawn>false</mustBeWorldPawn>
+            </li>
+            
+            <li Class="QuestNode_SubScript">
+              <def>Util_GenerateSite</def>
+            </li>
+
+            <li Class="QuestNode_SpawnWorldObjects">
+              <worldObjects>$site</worldObjects>
+            </li>
+
+            <li Class="QuestNode_Signal">
+              <inSignal>site.Destroyed</inSignal>
+              <node Class="QuestNode_Sequence">
+                <nodes>
+                  <li Class="QuestNode_Letter">
+                    <label TKey="LetterLabelQuestFailed">Quest failed: [resolvedQuestName]</label>
+                    <text TKey="LetterTextQuestFailed">We left before destroying the device, and there's no way we'll be able to deal with the sheer number of villains that will show up now that they know we know about this site. The quest [resolvedQuestName] has ended.</text>
+                  </li>
+                  <li Class="QuestNode_End">
+                    <outcome>Fail</outcome>
+                  </li>
+                </nodes>
+              </node>
+            </li>
+  
+            <li Class="QuestNode_Signal">
+              <inSignal>thing.Destroyed</inSignal>
+              <node Class="QuestNode_Sequence">
+                <nodes>
+                  <li Class="QuestNode_ChangeFactionGoodwill">
+                    <change>25</change>
+                    <factionOf>$asker</factionOf>
+                    <reason>SHGHero_HinderedTheLeague</reason>
+                  </li>
+                  <li Class="QuestNode_ChangeFactionGoodwill">
+                    <change>-25</change>
+                    <faction>SuperVillainGang</faction>
+                    <reason>SHGHero_HinderedTheLeague</reason>
+                  </li>
+                  <li Class="QuestNode_End">
+                    <outcome>Success</outcome>
+                  </li>
+                </nodes>
+              </node>
+            </li>
+          </nodes>
+        </root>
     </QuestScriptDef>
 </Defs>
-
-<!-- 
-Becoming enemies with The Hero Organization will NOT cause a quest failure, but the player must be allies to receive the quest in the first place
-Use QuestNode_ChangeFactionGoodwill on The Organization and The League at each stage to ensure ally/enemy status?
-    Allows for player trickery between stages, but intentions become clear after each stage
-    Would need to be in the subquests
-Needs custom site stuff for each part
-  See the AncientComplex ComplexLayoutDef for an idea
-    Will need a ComplexThreatDef
--->

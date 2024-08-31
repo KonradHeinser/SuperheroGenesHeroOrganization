@@ -4,17 +4,20 @@
     <SHGHero_DestroyedDevices>Subdevices destroyed</SHGHero_DestroyedDevices>
     <SHGHero_DeviceDestroyed>Subdevice destroyed</SHGHero_DeviceDestroyed>
     <SHGHero_DeviceFoundLocation>You've finally learned the location of the central device!</SHGHero_DeviceFoundLocation>
-    <SHGHero_DeviceFoundLocationFoundSecurityThreats>The device is housed in a large villain complex. You should expect heavy resistance as this is a very important place to {0}.</SHGHero_DeviceFoundLocationFoundSecurityThreats>
+    <SHGHero_DeviceFoundLocationFoundSecurityThreats>The device is housed in a nearby villain complex. You should expect heavy resistance as this is a very important place to {0}.</SHGHero_DeviceFoundLocationFoundSecurityThreats>
     <SHGHero_ThreatsDistrubed>The {0} have noticed your presence and are moving to get rid of you!</SHGHero_ThreatsDistrubed>
     <SHGHero_ThreatsAlerted>The {0} have been alerted to your presence.</SHGHero_ThreatsAlerted>  
-    <SHGHero_ThreatsWaking>The villains will arrive in {0}</SHGHero_ThreatsWaking>
-    <SHGHero_ThreatsWakingDesc>The villains will arrive in {0}. They will attack any who may threaten the device.</SHGHero_ThreatsWakingDesc>
+    <SHGHero_Reward_Hediff_Label>Hediff</SHGHero_Reward_Hediff_Label>
+    <SHGHero_GivesHediff>Gives {0} to pawn(s)</SHGHero_GivesHediff>
+    <SHG_VillainEndVictory>All the wildlife around the colony suddenly starts dying at an extremely fast rate, then colonists start falling over, unable to breath and fealing as though their body were on fire. Then, with one massive beam of light everything in the colony is turned to ash. It would appear that The League of Villains grew tired of your colony's existence.</SHG_VillainEndVictory>
 
 
         <!--Settings stuff-->
     <SHG_Heroes_ModName>Superhero Genes - Hero Organization</SHG_Heroes_ModName>
     <SHG_Heroes_ModDescription>When evil super-powered beings control the land, it is only natural that good super-powered people will band together to fight back. The Hero Organization is a group dedicated to fighting supervillains and any other group that aims to harm the innocent, and will do eveything in its power to ensure the crimes commited by The League of Villains in the past will not happen again.\n\nThe Hero Organization looks favorably on those who destroy the settlements of "evil" factions, and will regularly give quests to fight said factions, especially the League, and to hopefully save people in the process.\n\nThird mod of the Superhero Genes series.</SHG_Heroes_ModDescription>
 
-    <SHG_MedievalHeroes>    Medieval Heroes (Restart Required)</SHG_MedievalHeroes>
+    <SHG_MedievalHeroes>    Medieval Heroes</SHG_MedievalHeroes>
     <SHG_MedievalHeroesDescription>Heroes and pawns from minor super groups will only use equipment with a technology level of medieval or lower.</SHG_MedievalHeroesDescription>
+    <SHG_LeagueGathering>    League Gathering (Probably need new game)</SHG_LeagueGathering>
+    <SHG_LeagueGatheringDescription>Normally, The League of Villains will wait until you interact with them in certain ways before starting their world-ending plan, either by using you as bait for the Armageddon Clock quest or because they feel the need to rush after you fail the Stop the League quest. If this setting is active they will set their plan into motion by themselves starting around year 4, and you will have 1 year to figure out what to do. The villain complex will be swarming with villains, so don't expect a fair fight. Failing the League Gathering quest will cause you to lose the game.\n\nThis setting is only intended for those who want to make a colony that isn't trying to escape as quickly as possible, but will be up to what can best be described as a completely unfair challenge.</SHG_LeagueGatheringDescription>
 </LanguageData>
