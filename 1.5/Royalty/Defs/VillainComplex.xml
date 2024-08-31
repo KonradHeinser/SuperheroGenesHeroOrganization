@@ -24,6 +24,9 @@
         <order>450</order>
         <genStep Class="SuperHeroGenesBase.GenStep_ComplexLayout">
           <ruleDef>VillainComplex</ruleDef>
+          <!--Remove these for the full challenge, or increase them for an even worse challenge-->
+          <externalPointsMultiplier>0.7</externalPointsMultiplier> <!--This is the larger group that stays in the complex regardless of what happens-->
+          <internalPointsMultiplier>0.75</internalPointsMultiplier> <!--This is the group that will attack the player a few hours after they show up-->
         </genStep>
     </GenStepDef>
 
