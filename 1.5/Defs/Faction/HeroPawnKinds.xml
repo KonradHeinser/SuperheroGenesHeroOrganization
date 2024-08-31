@@ -55,7 +55,7 @@
             </xenotypeChances>
         </xenotypeSet>
         <startingHediffs Inherit="False">
-            <li>
+            <li MayRequire="Ludeon.Rimworld.Royalty">
                 <def>SHG_HeroRank_E</def>
                 <chance>1</chance>
                 <severity>1</severity>
@@ -137,7 +137,7 @@
             </xenotypeChances>
         </xenotypeSet>
         <startingHediffs Inherit="False">
-            <li>
+            <li MayRequire="Ludeon.Rimworld.Royalty">
                 <def>SHG_HeroRank_B</def>
                 <chance>1</chance>
                 <severity>1</severity>
@@ -172,7 +172,7 @@
         <weaponMoney>1000~1250</weaponMoney>
         <titleRequired MayRequire="Ludeon.Rimworld.Royalty">SHG_HeroRank_C</titleRequired>
         <startingHediffs Inherit="False">
-            <li>
+            <li MayRequire="Ludeon.Rimworld.Royalty">
                 <def>SHG_HeroRank_C</def>
                 <chance>1</chance>
                 <severity>1</severity>
@@ -198,7 +198,7 @@
             <li>IndustrialMilitaryAdvanced</li>
         </apparelTags>
         <startingHediffs Inherit="False">
-            <li>
+            <li MayRequire="Ludeon.Rimworld.Royalty">
                 <def>SHG_HeroRank_A</def>
                 <chance>1</chance>
                 <severity>1</severity>
@@ -238,7 +238,7 @@
         <trader>true</trader>
         <titleRequired MayRequire="Ludeon.Rimworld.Royalty">SHG_HeroRank_D</titleRequired>
         <startingHediffs Inherit="False">
-            <li>
+            <li MayRequire="Ludeon.Rimworld.Royalty">
                 <def>SHG_HeroRank_D</def>
                 <chance>1</chance>
                 <severity>1</severity>
@@ -271,7 +271,7 @@
             </li>
         </skills>
         <startingHediffs Inherit="False">
-            <li>
+            <li MayRequire="Ludeon.Rimworld.Royalty">
                 <def>SHG_HeroRank_S</def>
                 <chance>1</chance>
                 <severity>1</severity>
