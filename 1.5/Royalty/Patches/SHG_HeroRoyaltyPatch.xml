@@ -46,18 +46,6 @@
     <Operation Class="PatchOperationAdd">
         <xpath>Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
         <value>
-            <li Class="StorytellerCompProperties_OnOffCycle">
-                <incident>SHGHero_OpportunitySite_Rescue</incident>
-                <onDays>5</onDays>
-                <offDays>25</offDays>
-                <numIncidentsRange>1</numIncidentsRange>
-            </li>
-            <li Class="StorytellerCompProperties_OnOffCycle">
-                <incident>SHGVillain_OpportunitySite_Raid</incident>
-                <onDays>5</onDays>
-                <offDays>55</offDays>
-                <numIncidentsRange>1</numIncidentsRange>
-            </li>
             <li Class="StorytellerCompProperties_FactionInteraction">
                 <incident>SHG_Hero_CaravanArrivalTributeCollector</incident>
                 <minDaysPassed>15</minDaysPassed>
@@ -81,6 +69,27 @@
                 </enableIfAnyModActive>
             </li>
         </value>
+    </Operation>
+
+    <Operation Class="SuperHeroGenesBase.PatchOperationSetting">
+        <setting>radiantQuests</setting>
+        <active Class="PatchOperationAdd">
+            <xpath>Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
+            <value>
+                <li Class="StorytellerCompProperties_OnOffCycle">
+                    <incident>SHGHero_OpportunitySite_Rescue</incident>
+                    <onDays>5</onDays>
+                    <offDays>25</offDays>
+                    <numIncidentsRange>1</numIncidentsRange>
+                </li>
+                <li Class="StorytellerCompProperties_OnOffCycle">
+                    <incident>SHGVillain_OpportunitySite_Raid</incident>
+                    <onDays>5</onDays>
+                    <offDays>55</offDays>
+                    <numIncidentsRange>1</numIncidentsRange>
+                </li>
+            </value>
+        </active>
     </Operation>
 
     <Operation Class="SuperHeroGenesBase.PatchOperationSetting">
