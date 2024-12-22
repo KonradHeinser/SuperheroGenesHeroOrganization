@@ -78,12 +78,14 @@
             <value>
                 <li Class="StorytellerCompProperties_OnOffCycle">
                     <incident>SHGHero_OpportunitySite_Rescue</incident>
+                    <minDaysPassed>10</minDaysPassed>
                     <onDays>5</onDays>
                     <offDays>25</offDays>
                     <numIncidentsRange>1</numIncidentsRange>
                 </li>
                 <li Class="StorytellerCompProperties_OnOffCycle">
                     <incident>SHGVillain_OpportunitySite_Raid</incident>
+                    <minDaysPassed>10</minDaysPassed>
                     <onDays>5</onDays>
                     <offDays>55</offDays>
                     <numIncidentsRange>1</numIncidentsRange>
