@@ -141,6 +141,7 @@
                 <statOffsets>
                     <PainShockThreshold>0.01</PainShockThreshold>
                     <MentalBreakThreshold>-0.01</MentalBreakThreshold>
+                    <SHG_FearSusceptibility>-0.05</SHG_FearSusceptibility>
                 </statOffsets>
             </li>
         </stages>
@@ -155,6 +156,7 @@
                 <statOffsets>
                     <PainShockThreshold>0.05</PainShockThreshold>
                     <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+                    <SHG_FearSusceptibility>-0.10</SHG_FearSusceptibility>
                 </statOffsets>
             </li>
         </stages>
@@ -169,6 +171,7 @@
                 <statOffsets>
                     <PainShockThreshold>0.10</PainShockThreshold>
                     <MentalBreakThreshold>-0.10</MentalBreakThreshold>
+                    <SHG_FearSusceptibility>-0.20</SHG_FearSusceptibility>
                 </statOffsets>
             </li>
         </stages>
@@ -183,6 +186,7 @@
                 <statOffsets>
                     <PainShockThreshold>0.15</PainShockThreshold>
                     <MentalBreakThreshold>-0.15</MentalBreakThreshold>
+                    <SHG_FearSusceptibility>-0.30</SHG_FearSusceptibility>
                 </statOffsets>
             </li>
         </stages>
@@ -197,6 +201,7 @@
                 <statOffsets>
                     <PainShockThreshold>0.20</PainShockThreshold>
                     <MentalBreakThreshold>-0.20</MentalBreakThreshold>
+                    <SHG_FearSusceptibility>-0.40</SHG_FearSusceptibility>
                 </statOffsets>
             </li>
         </stages>
@@ -211,6 +216,7 @@
                 <statOffsets>
                     <PainShockThreshold>0.30</PainShockThreshold>
                     <MentalBreakThreshold>-0.30</MentalBreakThreshold>
+                    <SHG_FearSusceptibility>-0.60</SHG_FearSusceptibility>
                 </statOffsets>
             </li>
         </stages>
