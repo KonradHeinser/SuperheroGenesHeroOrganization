@@ -27,7 +27,9 @@
         <questDescriptionRules>
           <rulesStrings>
             <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have [fluff] resting in a nearby work site! [faction_name] is normally tolerant of miguided super-powered beings, but [asker_label] says these ones have harrased the [faction_name]'s [faction_pawnsPlural] enough to warrant a response. [faction_name] scouts say that [sitePart0_description] where the [siteFaction_pawnsPlural] are resting briefly.
+
             \n\n[asker_nameDef] knows as soon as a raid is confirmed, the [siteFaction_pawnsPlural] will be gone within [siteDuration_duration], so you'll need to move quickly. This will likely be a difficult fight as [siteFaction_pawnsPlural] are far stronger than the average human and will be expecting you.
+            
             \n\nThis will give [baseRewards] [faction_royalFavorLabel] to the accepter, [baseRewards] goodwill between your settlement and [faction_name], and additionally gives one of the rewards listed below.
             </li>
             <li>fluff(sameQuestsCount==0)->one of their hero squads</li>

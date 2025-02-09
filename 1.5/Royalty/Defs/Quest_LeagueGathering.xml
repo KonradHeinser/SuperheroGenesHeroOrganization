@@ -20,7 +20,9 @@
         </questNameRules>
         <questDescriptionRules>
             <rulesStrings>
-                <li>questDescription->You've learned of a villain complex where an exceptionally large number of villains are gathering. The only reason so many would gather in one place without killing each other is to put a world destroying event into motion. You probably have around [siteDuration_duration] to get to the site to disrupt their plans.\n\nTaking this complex by yourself would be exceptionally difficult, but there's a chance you may be able to work with The Hero Organization to Stop the League. Working with them to destroy some of the smaller Villain Complexes may make it possible for The Organization to bait out some of the villains, leaving the main site easier to take, wherever it happens to be.</li>
+                <li>questDescription->You've learned of a villain complex where an exceptionally large number of villains are gathering. The only reason so many would gather in one place without killing each other is to put a world destroying event into motion. You probably have around [siteDuration_duration] to get to the site to disrupt their plans.
+                
+                \n\nTaking this complex by yourself would be exceptionally difficult, but there's a chance you may be able to work with The Hero Organization to Stop the League. Working with them to destroy some of the smaller Villain Complexes may make it possible for The Organization to bait out some of the villains, leaving the main site easier to take, wherever it happens to be.</li>
             </rulesStrings>
         </questDescriptionRules>
         <root Class="QuestNode_Sequence">
