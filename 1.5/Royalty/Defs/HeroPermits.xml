@@ -26,7 +26,6 @@
         <description>Call the Organization to request they send two doctors to aid any of your wounded colonists. They will have decent medical skill and be a random support super.</description>
         <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
         <minTitle>SHG_HeroRank_E</minTitle>
-        <prerequisite>SHG_Hero_EmergencyDrop</prerequisite>
         <uiPosition>(1,0)</uiPosition>
         <royalAid>
             <pawnKindDef>SHG_Hero_Doctor</pawnKindDef>
@@ -57,7 +56,6 @@
         <label>request hero laborers</label>
         <description>Call the Organization to request they send three laborers to assist your colony develop for 6 days. The expertise of the laborers is randomized, from intellectual to summoner to all-rounder.</description>
         <workerClass>RoyalTitlePermitWorker_CallLaborers</workerClass>
-        <prerequisite>SHG_Hero_BuilderDrop</prerequisite>
         <minTitle>SHG_HeroRank_E</minTitle>
         <uiPosition>(1,1)</uiPosition>
         <royalAid>
