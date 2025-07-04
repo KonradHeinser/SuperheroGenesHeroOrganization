@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <FactionDef ParentName="SuperFactionBase">
+        <defName>SHG_MinorSuperGroup</defName>
+        <label>minor super group</label>
+        <description>A small group of supers who are unaffiliated with The Hero Organization and The League of Villains. They are unlikely to ever become a major player on the world stage, and try to stay out of the eternal squabbles of Heroes and Villains.</description>
+        <settlementGenerationWeight>0.3</settlementGenerationWeight>
+        <pawnSingular>super</pawnSingular>
+        <pawnsPlural>supers</pawnsPlural>
+        <leaderTitle>chief</leaderTitle>
+        <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>
+        <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+        <configurationListOrderPriority>990</configurationListOrderPriority>
+        <maxConfigurableAtWorldCreation>99</maxConfigurableAtWorldCreation>
+        <requiredCountAtGameStart>0</requiredCountAtGameStart>
+        <maxCountAtGameStart>99</maxCountAtGameStart>
+        <fixedLeaderKinds>
+            <li>SHG_SuperChief</li>
+        </fixedLeaderKinds>
+        <backstoryFilters>
+            <li>
+                <categories>
+                    <li>Hero</li>
+                    <li>Villain</li>
+                </categories>
+            </li>
+        </backstoryFilters>
+        <pawnGroupMakers>
+            <li>
+                <kindDef>Combat</kindDef>
+                <options>
+                    <SHG_SuperSoldier_Melee>7</SHG_SuperSoldier_Melee>
+                    <SHG_SuperSoldier>10</SHG_SuperSoldier>
+                    <SHG_SuperSoldier_Sniper>10</SHG_SuperSoldier_Sniper>
+                    <SHG_SuperChief>1</SHG_SuperChief>
+                </options>
+            </li>
+            <li>
+                <kindDef>Trader</kindDef>
+                <traders>
+                    <SHG_MinorSuperTrader>1</SHG_MinorSuperTrader>
+                </traders>
+                <carriers>
+                    <Muffalo>6</Muffalo>
+                    <Dromedary>5</Dromedary>
+                    <Alpaca>2</Alpaca>
+                    <Elephant>1</Elephant>
+                </carriers>
+                <guards>
+                    <SHG_SuperSoldier_Melee>7</SHG_SuperSoldier_Melee>
+                    <SHG_SuperSoldier>10</SHG_SuperSoldier>
+                    <SHG_SuperSoldier_Sniper>10</SHG_SuperSoldier_Sniper>
+                </guards>
+            </li>
+            <li>
+                <kindDef>Settlement</kindDef>
+                <options>
+                    <SHG_SuperSoldier_Melee>7</SHG_SuperSoldier_Melee>
+                    <SHG_SuperSoldier>10</SHG_SuperSoldier>
+                    <SHG_SuperSoldier_Sniper>10</SHG_SuperSoldier_Sniper>
+                    <SHG_SuperChief>1</SHG_SuperChief>
+                </options>
+            </li>
+        </pawnGroupMakers>
+
+        <baseTraderKinds>
+            <li>SHG_MinorSuperBase</li>
+        </baseTraderKinds>
+        <caravanTraderKinds>
+            <li>SHG_MinorSuperCaravan</li>
+        </caravanTraderKinds>
+    </FactionDef>
+
+    <FactionDef ParentName="SuperFactionBase">
+        <defName>SHG_SuperheroOrganization</defName>
+        <label>superhero organization</label>
+        <description>Hundreds of years ago, super-powered beings were successfully created in a laboratory on a now desolated planet. Many of these supers turned to villainy, but a small number of supers found their destructive tendencies deplorable. This small group successfully stopped the villains' tyranical rule and formed The Superhero Organization, thus beginning hundreds of years of war with The League of Villains.\n\nThis faction offers a type of royal favor in some of their quests, but unlike most "royal" titles, heroes never demand better food, bedrooms, thronerooms, or any sort of special apparel. The titles also do not get inherited when the pawn dies.</description>
+        <pawnSingular>hero</pawnSingular>
+        <pawnsPlural>heroes</pawnsPlural>
+        <leaderTitle>hero</leaderTitle>
+        <fixedLeaderKinds>
+            <li>SHG_HeroLeader</li>
+        </fixedLeaderKinds>
+        <autoFlee>false</autoFlee>
+        <configurationListOrderPriority>998</configurationListOrderPriority>
+        <factionIconPath>Base/SuperheroGeneBase</factionIconPath>
+        <settlementTexturePath>Base/SuperheroGeneBase</settlementTexturePath>
+        <fixedName>The Hero Organization</fixedName>
+        <royalFavorLabel>valor</royalFavorLabel>
+        <royalFavorIconPath>Base/SuperheroGeneBase</royalFavorIconPath>
+        <royalTitleTags>
+            <li>SHG_HeroRank</li>
+        </royalTitleTags>
+
+        <fixedIdeo>true</fixedIdeo>
+        <ideoName>Heroism</ideoName>
+        <ideoDescription>Many years after the first villain began his tyrannical rule, a new group of super powered beings arose, ones who pledged to do everything in their power to everything they can to destroy the evil around them, stop evils that seek to consume the innocent, and atone for the evils they could not stop in the past.</ideoDescription>
+        <structureMemeWeights>
+            <Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">1</Structure_Ideological>
+        </structureMemeWeights>
+        <requiredMemes>
+            <li MayRequire="Ludeon.RimWorld.Ideology">SHG_HolySupers</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Collectivist</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Proselytizer</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Guilty</li>
+        </requiredMemes>
+        <disallowedPrecepts>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_Acceptable</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_Preferred</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_RequiredStrong</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_RequiredRavenous</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Abhorrent</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Horrible</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Disapproved</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">OrganUse_Abhorrent</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">OrganUse_HorribleNoSell</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Execution_Required</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Execution_RespectedIfGuilty</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Execution_DontCare</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Skullspike_Desired</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Honorable</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Acceptable</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">Pain_Idealized</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">ChildLabor_Encouraged</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">GrowthVat_Essential</li>
+            <li MayRequire="Ludeon.RimWorld.Ideology">PreferredXenotype</li>
+        </disallowedPrecepts>
+        
+        <baseTraderKinds>
+            <li>SHG_HeroBase</li>
+        </baseTraderKinds>
+        <caravanTraderKinds>
+            <li>SHG_HeroCaravan</li>
+        </caravanTraderKinds>
+        <backstoryFilters>
+            <li>
+                <categories>
+                    <li>Hero</li>
+                    <li>Offworld</li>
+                    <li>FormerVillain</li>
+                </categories>
+            </li>
+        </backstoryFilters>
+
+        <pawnGroupMakers>
+            <li>
+                <kindDef>Combat</kindDef>
+                <options>
+                    <SHG_HeroSoldier_Melee>3</SHG_HeroSoldier_Melee>
+                    <SHG_HeroSoldier>5</SHG_HeroSoldier>
+                    <SHG_HeroSoldier_Sniper>5</SHG_HeroSoldier_Sniper>
+                    <SHG_HeroLeader>1</SHG_HeroLeader>
+                </options>
+            </li>
+            <li>
+                <kindDef>Trader</kindDef>
+                <traders>
+                    <SHG_MinorHeroTrader>1</SHG_MinorHeroTrader>
+                </traders>
+                <carriers>
+                    <Muffalo>6</Muffalo>
+                    <Dromedary>5</Dromedary>
+                    <Alpaca>2</Alpaca>
+                    <Elephant>1</Elephant>
+                </carriers>
+                <guards>
+                    <SHG_HeroSoldier_Melee>7</SHG_HeroSoldier_Melee>
+                    <SHG_HeroSoldier>10</SHG_HeroSoldier>
+                    <SHG_HeroSoldier_Sniper>10</SHG_HeroSoldier_Sniper>
+                </guards>
+            </li>
+            <li>
+                <kindDef>Settlement</kindDef>
+                <options>
+                    <SHG_HeroSoldier_Melee>7</SHG_HeroSoldier_Melee>
+                    <SHG_HeroSoldier>10</SHG_HeroSoldier>
+                    <SHG_HeroSoldier_Sniper>10</SHG_HeroSoldier_Sniper>
+                    <SHG_HeroLeader>1</SHG_HeroLeader>
+                </options>
+            </li>
+        </pawnGroupMakers>
+
+        <!--Only here because errors are thrown without an heir-->
+        <royalTitleInheritanceWorkerClass>RoyalTitleInheritanceWorker</royalTitleInheritanceWorkerClass>
+        <royalTitleInheritanceRelations>
+            <li>Child</li>
+            <li>Grandchild</li>
+            <li>GreatGrandchild</li>
+            <li>NephewOrNiece</li>
+            <li>Spouse</li>
+            <li>Sibling</li>
+            <li>HalfSibling</li>
+            <li>Cousin</li>
+            <li>Parent</li>
+            <li>UncleOrAunt</li>
+        </royalTitleInheritanceRelations>
+    </FactionDef>
+</Defs>

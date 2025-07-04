@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <TraderKindDef>
+        <defName>SHG_Hero_TributeCollector</defName>
+        <label>hero donation collector</label>
+        <requestable>False</requestable>
+        <commonality>1</commonality>
+        <category>TributeCollector</category>
+        <tradeCurrency>Favor</tradeCurrency>
+        <faction>SHG_SuperheroOrganization</faction>
+        <hideThingsNotWillingToTrade>True</hideThingsNotWillingToTrade>
+        <stockGenerators>
+            <!-- Buying -->
+            <li Class="StockGenerator_BuySingleDef">
+                <thingDef>MedicineIndustrial</thingDef>
+            </li>
+            <li Class="StockGenerator_BuySingleDef">
+                <thingDef>MedicineUltratech</thingDef>
+            </li>
+            <li Class="StockGenerator_BuySingleDef">
+                <thingDef>MealSurvivalPack</thingDef>
+            </li>
+            <li Class="StockGenerator_Category" MayRequire="HonorableOrgans.Mod">
+                <categoryDef>BodyPartsNatural</categoryDef>
+            </li>
+        </stockGenerators>
+    </TraderKindDef>
+
+    <IncidentDef>
+        <defName>SHG_Hero_CaravanArrivalTributeCollector</defName>
+        <label>hero donation collector arrival</label>
+        <targetTags>
+          <li>Map_PlayerHome</li>
+        </targetTags>
+        <workerClass>SuperHeroGenesBase.IncidentWorker_CaravanArrivalBetterTributeCollector</workerClass>
+        <category>FactionArrival</category>
+        <baseChance>0</baseChance> <!-- given by a special storyteller comp -->
+        <requireColonistsPresent>True</requireColonistsPresent>
+        <modExtensions>
+			<li Class="SuperHeroGenesBase.SHGExtension">
+				<faction>SHG_SuperheroOrganization</faction>
+                <descriptionOverrideA>any medicine or packaged meals</descriptionOverrideA> <!--Specifies what the trader accepts in the letter description-->
+                <descriptionOverrideB>providing resources to aid people</descriptionOverrideB> <!--The reason given in the letter for a colonist gaining valor this way-->
+                <descriptionOverrideC>around once every quadrum</descriptionOverrideC> <!--Specifies how often traders will arrive-->
+			</li>
+		</modExtensions>
+    </IncidentDef>
+</Defs>
