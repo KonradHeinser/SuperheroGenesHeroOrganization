@@ -59,9 +59,6 @@
 			<SHGHero_Fridge>
 				<countRange>1~2</countRange>
 			</SHGHero_Fridge>
-			<Circle>
-				<countRange>1</countRange>
-			</Circle>
 		</roomDefs>
 		<threats>
 			<SHGHero_VillainComplex />
