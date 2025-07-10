@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
     <LayoutRoomDef Abstract="True" Name="SHGHero_VillainComplex">
+        <areaSizeRange>20~70</areaSizeRange>
         <floorTypes>
             <li>TileSlate</li>
         </floorTypes>
@@ -9,7 +10,6 @@
     <LayoutRoomDef ParentName="SHGHero_VillainComplex">
         <defName>SHGHero_Armory</defName>
         <sketchResolverDef>SHGHero_Armory</sketchResolverDef>
-        <areaSizeRange>10~20</areaSizeRange>
     </LayoutRoomDef>
 
     <SketchResolverDef>
@@ -24,7 +24,6 @@
     <LayoutRoomDef ParentName="SHGHero_VillainComplex">
         <defName>SHGHero_Fridge</defName>
         <sketchResolverDef>SHGHero_Fridge</sketchResolverDef>
-        <areaSizeRange>5~20</areaSizeRange>
     </LayoutRoomDef>
     
     <SketchResolverDef>
@@ -40,7 +39,6 @@
     <LayoutRoomDef ParentName="SHGHero_VillainComplex">
         <defName>SHGHero_StorageRoom</defName>
         <sketchResolverDef>SHGHero_StorageRoom</sketchResolverDef>
-        <areaSizeRange>20~30</areaSizeRange>
     </LayoutRoomDef>
     
     <SketchResolverDef>
@@ -55,7 +53,6 @@
     <LayoutRoomDef ParentName="SHGHero_VillainComplex">
         <defName>SHGHero_Barracks</defName>
         <sketchResolverDef>SHGHero_Barracks</sketchResolverDef>
-        <areaSizeRange>30~60</areaSizeRange>
         <floorTypes Inherit="False">
             <li>FineTileSlate</li>
         </floorTypes>
