@@ -22,6 +22,19 @@
 		<defName>SHGHero_VillainComplex</defName>
 		<linkWithSite>SHGHero_VillainComplex</linkWithSite>
 		<order>450</order>
+		<preventsGenSteps>
+			<li>RockChunks</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">ScatterRoadDebris</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">ScatterCaveDebris</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AncientUtilityBuilding</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">MechanoidRemains</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AncientTurret</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AncientMechs</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AncientLandingPad</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AncientFences</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AncientPipelineSection</li>
+			<li MayRequire="Ludeon.RimWorld.Ideology">AncientJunkClusters</li>
+		</preventsGenSteps>
 		<genStep Class="SuperHeroGenesBase.GenStep_ComplexLayout">
 			<ruleDef>VillainComplex</ruleDef>
 			<!--Remove these for the full challenge, or increase them for an even worse challenge-->
