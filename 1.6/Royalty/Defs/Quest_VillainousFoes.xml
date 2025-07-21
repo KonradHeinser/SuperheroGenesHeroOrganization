@@ -21,7 +21,7 @@
         </questNameRules>
         <questDescriptionRules>
           <rulesStrings>
-            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have ambushed [fluff], and [asker_label] believes one of the heroes was captured instead of killed. [sitePart0_description] that the [siteFaction_pawnsPlural] claimed after the raid.
+            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have ambushed [fluff], and [asker_label] believes one of the heroes was captured instead of killed. [siteFaction_pawnsPlural] claimed a location after their raid.
             \n\n[asker_nameDef] knows there is a mole in [faction_name] who will warn the [siteFaction_pawnsPlural] as soon as a rescue operation is confirmed, meaning you will only have [siteDuration_duration] to stop them. This will likely be a difficult fight as [siteFaction_pawnsPlural] are far stronger than the average human and will be expecting you.
             \n\nIf you are able to free the captive they will join your colony. They will be a random super-powered being, which you can learn more about when you arrive on-site. If you kill all of the [siteFaction_pawnsPlural] but do not free the captive before leaving the map, they will return to [faction_name] after breaking free.
             \n\nThis will give [universalRoyalFavorReward] [faction_royalFavorLabel] to the accepter in addition to one of the rewards listed below.
@@ -44,22 +44,8 @@
                 <pointsFactorThreeStar>2</pointsFactorThreeStar>
               </parms>
             </li>
-            <!--Uses a distance curve that has higher point values than normal-->
-            <li Class="QuestNode_EvaluateSimpleCurve">
-              <value>$points</value>
-              <storeAs>points</storeAs>
-              <curve>
-                <points>
-                <li>   35,   35</li>
-                <li>  400,  200</li>
-                <li> 1000,  400</li>
-                <li> 2000,  650</li>
-                <li> 3000,  950</li>
-                <li> 4000,  1300</li>
-                <li> 5000,  1700</li>
-                <li>10000, 2150</li>
-                </points>
-              </curve>
+            <li Class="QuestNode_SubScript">
+              <def>Util_AdjustPointsForDistantFight</def>
             </li>
             <li Class="QuestNode_GetMap" />
     

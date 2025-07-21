@@ -26,7 +26,7 @@
         </questNameRules>
         <questDescriptionRules>
           <rulesStrings>
-            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have [fluff] resting in a nearby work site! [faction_name] is normally tolerant of miguided super-powered beings, but [asker_label] says these ones have harrased the [faction_name]'s [faction_pawnsPlural] enough to warrant a response. [faction_name] scouts say that [sitePart0_description] where the [siteFaction_pawnsPlural] are resting briefly.
+            <li>questDescription->[asker_nameFull], [faction_leaderTitle] of [faction_name], has sent us a message. [siteFaction_pawnsPlural] from [siteFaction_name] have [fluff] resting in a nearby work site! [faction_name] is normally tolerant of miguided super-powered beings, but [asker_label] says these ones have harrased the [faction_name]'s [faction_pawnsPlural] enough to warrant a response. [faction_name] scouts say they have found a place where the [siteFaction_pawnsPlural] are resting briefly.
 
             \n\n[asker_nameDef] knows as soon as a raid is confirmed, the [siteFaction_pawnsPlural] will be gone within [siteDuration_duration], so you'll need to move quickly. This will likely be a difficult fight as [siteFaction_pawnsPlural] are far stronger than the average human and will be expecting you.
             
@@ -50,22 +50,8 @@
                 <pointsFactorThreeStar>2</pointsFactorThreeStar>
               </parms>
             </li>
-            <!--Uses a distance curve that has higher point values than normal-->
-            <li Class="QuestNode_EvaluateSimpleCurve">
-              <value>$points</value>
-              <storeAs>points</storeAs>
-              <curve>
-                <points>
-                <li>   35,   35</li>
-                <li>  400,  200</li>
-                <li> 1000,  400</li>
-                <li> 2000,  650</li>
-                <li> 3000,  950</li>
-                <li> 4000,  1300</li>
-                <li> 5000,  1700</li>
-                <li>10000, 2150</li>
-                </points>
-              </curve>
+            <li Class="QuestNode_SubScript">
+              <def>Util_AdjustPointsForDistantFight</def>
             </li>
             <li Class="QuestNode_GetMap" />
 
