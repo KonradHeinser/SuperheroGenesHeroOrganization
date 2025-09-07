@@ -22,6 +22,20 @@
         <label>super laborer</label>
         <combatPower>40</combatPower>
         <maxGenerationAge>50</maxGenerationAge>
+        <skills>
+            <li>
+                <skill>Construction</skill>
+                <range>8~10</range>
+            </li>
+            <li>
+                <skill>Crafting</skill>
+                <range>8~10</range>
+            </li>
+            <li>
+                <skill>Mining</skill>
+                <range>8~10</range>
+            </li>
+        </skills>
         <styleItemTags>
             <li>
                 <tag>Soldier</tag>
