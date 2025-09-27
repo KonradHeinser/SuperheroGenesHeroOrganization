@@ -157,6 +157,11 @@
                 <value>120000</value>
             </li>
 
+            <li Class="SuperHeroGenesBase.QuestNode_CopyIdeology">
+              <origin>$asker</origin>
+              <target>$prisoner</target>
+            </li>
+
             <li Class="QuestNode_WorldObjectTimeout">
               <worldObject>$site</worldObject>
               <isQuestTimeout>true</isQuestTimeout>
