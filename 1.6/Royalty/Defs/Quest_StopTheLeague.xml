@@ -220,7 +220,7 @@
     <HediffDef>
       <defName>SHGHero_EverEvolving</defName>
       <label>ever evolving</label>
-      <description>This pawn's body is constantly evolving in different ways. It will probably take a quite while for their bodies to finish evolving, but once it does they'll be far stronger than they were before. This evolution will not pass onto any children this pawn may end up having.</description>
+      <description>This pawn's body is constantly evolving in different ways. It will probably take a quite while for their bodies to finish evolving, but once it does they'll be far stronger than they were before. This evolution will not pass on to any children this pawn may end up having.</description>
       <hediffClass>HediffWithComps</hediffClass>
       <initialSeverity>1.001</initialSeverity>
       <comps>
