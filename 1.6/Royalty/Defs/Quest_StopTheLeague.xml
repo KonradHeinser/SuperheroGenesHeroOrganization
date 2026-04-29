@@ -163,7 +163,7 @@
               <nodes>
                 <li Class="QuestNode_Letter">
                   <label TKey="LetterLabelQuestFailed">Quest failed: [resolvedQuestName]</label>
-                  <text TKey="LetterTextQuestFailed">We left before destroying the device, and there's no way to be ready to engage again before the gas is released. The quest [resolvedQuestName] has ended, and soon the world will be too.</text>
+                  <text TKey="LetterTextQuestFailed">We left before destroying the device, and there's no way to be ready to engage again before the gas is released. The quest [resolvedQuestName] has ended, and soon the world will too.</text>
                 </li>
                 <li Class="QuestNode_SendSignals">
                   <outSignals>

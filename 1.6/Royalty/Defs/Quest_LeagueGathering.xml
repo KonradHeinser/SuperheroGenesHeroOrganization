@@ -94,7 +94,7 @@
                         <nodes>
                             <li Class="QuestNode_Letter">
                                 <label TKey="LetterLabelQuestFailed">Quest failed: [resolvedQuestName]</label>
-                                <text TKey="LetterTextQuestFailed">We left before destroying the device, and there's no way to be ready to engage again before they finish activating their device. The quest [resolvedQuestName] has ended, and soon the world will be too.</text>
+                                <text TKey="LetterTextQuestFailed">We left before destroying the device, and there's no way to be ready to engage again before they finish activating their device. The quest [resolvedQuestName] has ended, and soon the world will too.</text>
                             </li>
                             <li Class="QuestNode_SendSignals">
                                 <outSignals>
@@ -124,7 +124,7 @@
                         <nodes>
                             <li Class="QuestNode_Letter">
                                 <label TKey="LetterLabelQuestFailed">Quest failed: [resolvedQuestName]</label>
-                                <text TKey="LetterTextQuestFailed">The deafening roar of a legion of ships taking off is quickly followed followed by an eerie silence. The quest [resolvedQuestName] has ended, and soon the world will be too.</text>
+                                <text TKey="LetterTextQuestFailed">The deafening roar of a legion of ships taking off is quickly followed followed by an eerie silence. The quest [resolvedQuestName] has ended, and soon the world will too.</text>
                             </li>
                             <li Class="QuestNode_SendSignals">
                                 <outSignals>
