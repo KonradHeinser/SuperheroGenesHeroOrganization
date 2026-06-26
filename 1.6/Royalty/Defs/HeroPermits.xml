@@ -79,7 +79,7 @@
     </RoyalTitlePermitDef>
 
     <RoyalTitlePermitDef ParentName="SHG_HeroPermitBase">
-        <defName>SHG_VillainSuperCreatingPill</defName>
+        <defName>SHG_Hero_SuperCreatingPill</defName>
         <label>super creating pill</label>
         <description>Request a pill that allows for turning a non-super pawn into a super. If used on a pawn that already has the basic superhero gene, this item is wasted.</description>
         <minTitle>SHG_HeroRank_C</minTitle>
